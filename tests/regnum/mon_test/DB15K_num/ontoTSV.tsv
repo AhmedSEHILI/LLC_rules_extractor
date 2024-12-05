@@ -1,0 +1,13 @@
+nf1c96fd959d74111bde35231b5f701dbb263	http://www.w3.org/1999/02/22-rdf-syntax-ns#first	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutTP53
+nf1c96fd959d74111bde35231b5f701dbb654	http://www.w3.org/2003/11/swrl#argument1	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#trait1
+http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Zap70	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#DatatypeProperty
+http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#intervalP1ii	http://www.w3.org/2006/time#hasEnd	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#dateStadeP1iii
+nf1c96fd959d74111bde35231b5f701dbb680	http://www.w3.org/1999/02/22-rdf-syntax-ns#first	nf1c96fd959d74111bde35231b5f701dbb674
+nf1c96fd959d74111bde35231b5f701dbb315	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2003/11/swrl#IndividualPropertyAtom
+nf1c96fd959d74111bde35231b5f701dbb276	http://www.w3.org/2003/11/swrl#argument1	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#obs1
+nf1c96fd959d74111bde35231b5f701dbb25	http://www.w3.org/2002/07/owl#oneOf	nf1c96fd959d74111bde35231b5f701dbb26
+http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#intervalP1ii	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#NamedIndividual
+nf1c96fd959d74111bde35231b5f701dbb555	http://www.w3.org/2003/11/swrl#propertyPredicate	http://www.w3.org/2006/time#hasTime
+nf1c96fd959d74111bde35231b5f701dbb574	http://www.w3.org/1999/02/22-rdf-syntax-ns#rest	nf1c96fd959d74111bde35231b5f701dbb575
+http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#patient10	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurPronostic	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#fPp10
+nf1c96fd959d74111bde35231b5f701dbb420	http://www.w3.org/2003/11/swrl#argument1	http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#p

@@ -1,0 +1,19 @@
+Assuming rdf:type as type relation
+Loading files... 
+  Starting train.txt
+  Finished train.txt, still running: 0
+Loaded 13 facts in 0 s using 2 MB
+Using HeadCoverage as pruning metric with minimum threshold 0.01
+Using recursivity limit 3
+Lazy mining assistant that stops counting when the denominator gets too high
+Filtering on standard confidence with minimum threshold 0.1
+Filtering on PCA confidence with minimum threshold 0.1
+Constants in the arguments of relations are disabled
+Lossless (query refinement) heuristics enabled
+MRT calls: 0
+Starting the mining phase... Rule	Head Coverage	Std Confidence	PCA Confidence	Positive Examples	Body size	PCA Body size	Functional variable
+Using 16 threads
+Mining done in 0.004 s
+Total time 0.110 s
+0 rules mined.
+

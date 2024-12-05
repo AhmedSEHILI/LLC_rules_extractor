@@ -1,0 +1,43 @@
+Assuming rdf:type as type relation
+Loading files... 
+  Starting test.ttl
+  Finished test.ttl, still running: 0
+Loaded 2898 facts in 0 s using 0 MB
+Using HeadCoverage as pruning metric with minimum threshold 0.01
+Using recursivity limit 3
+Lazy mining assistant that stops counting when the denominator gets too high
+Filtering on standard confidence with minimum threshold 0.1
+Filtering on PCA confidence with minimum threshold 0.1
+Constants in the arguments of relations are disabled
+Lossless (query refinement) heuristics enabled
+MRT calls: 0
+Starting the mining phase... Using 16 threads
+Rule	Head Coverage	Std Confidence	PCA Confidence	Positive Examples	Body size	PCA Body size	Functional variable
+?a  p1:disjointWith  ?f  ?f  p6:subClassOf  ?b   => ?a  p6:subClassOf  ?b	0.050847458	1	1	6	6	6	?a
+?e  p1:disjointWith  ?a  ?e  p6:subClassOf  ?b   => ?a  p6:subClassOf  ?b	0.050847458	1	1	6	6	6	?a
+?f  p2:type  ?b  ?a  p7:aPourMaladie  ?f   => ?a  p2:type  ?b	0.016826923	0.333333333	0.333333333	14	42	42	?a
+?f  p1:oneOf  ?a  ?b  p2:type  ?f   => ?a  p2:first  ?b	0.018617021	0.636363636	0.636363636	7	11	11	?a
+?a  p1:equivalentClass  ?f  ?f  p2:type  ?b   => ?a  p2:type  ?b	0.010817308	0.6	0.6	9	15	15	?a
+?f  p2:type  ?b  ?a  p3:hasTime  ?f   => ?a  p2:type  ?b	0.044471154	0.5	0.5	37	74	74	?a
+?e  p2:type  ?b  ?e  p7:aPourFacteurPronostic  ?a   => ?a  p2:type  ?b	0.016826923	0.5	0.5	14	28	28	?a
+?f  p2:type  ?b  ?a  p3:before  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?b  p2:type  ?f  ?a  p9:argument2  ?f   => ?a  p9:argument2  ?b	0.107913669	1	1	15	15	15	?a
+?e  p2:type  ?b  ?e  p3:after  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?e  p2:type  ?b  ?e  p3:hasTime  ?a   => ?a  p2:type  ?b	0.043269231	0.5	0.5	36	72	72	?a
+?e  p2:type  ?b  ?e  p7:aPourPrelevement  ?a   => ?a  p2:type  ?b	0.033653846	0.5	0.5	28	56	56	?a
+?f  p2:type  ?b  ?a  p7:aPourFacteurPronostic  ?f   => ?a  p2:type  ?b	0.016826923	0.5	0.5	14	28	28	?a
+?f  p2:type  ?b  ?a  p3:after  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?e  p1:equivalentClass  ?a  ?e  p2:type  ?b   => ?a  p2:type  ?b	0.010817308	0.6	0.6	9	15	15	?a
+?e  p2:type  ?b  ?e  p3:before  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?a  p2:type  ?e  ?e  p6:subClassOf  ?b   => ?a  p2:type  ?b	0.034855769	0.284313725	0.284313725	29	102	102	?a
+?e  p2:type  ?b  ?e  p6:subClassOf  ?a   => ?a  p2:type  ?b	0.042067308	0.777777778	0.795454545	35	45	44	?a
+?f  p2:type  ?b  ?a  p6:subClassOf  ?f   => ?a  p2:type  ?b	0.122596154	0.927272727	0.927272727	102	110	110	?a
+p6:http://www.w3.org/2000/01/rdf-schema#
+p1:http://www.w3.org/2002/07/owl#
+p2:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+p7:http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#
+p3:http://www.w3.org/2006/time#
+p9:http://www.w3.org/2003/11/swrl#
+Mining done in 0.224 s
+Total time 0.588 s
+19 rules mined.

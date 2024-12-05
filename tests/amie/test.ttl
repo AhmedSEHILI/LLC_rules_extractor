@@ -1,0 +1,3377 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns0: <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#> .
+@prefix ns1: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix ns2: <http://www.w3.org/2003/11/swrl#> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto>
+  a owl:Ontology ;
+  owl:versionIRI <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto> ;
+  owl:imports time:2016 ;
+  owl:versionInfo "V1" .
+
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> a owl:AnnotationProperty .
+xsd:date a rdfs:Datatype .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aEvolueVers>
+  a owl:ObjectProperty, owl:TransitiveProperty ;
+  owl:inverseOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aOrigine> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aOrigine> a owl:ObjectProperty, owl:TransitiveProperty .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourComorbidite>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourComplication>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourEtat>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Etat> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurBonPronostic>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurBonPronostic> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurDeRisque>
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurMauvaisPronostic>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurMauvaisPronostic> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurPronostic>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurPronostic> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFormeDeLLC>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourMaladie>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourObservation> a owl:ObjectProperty .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourPrelevement>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Prelevement> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourRegimeNutritionnel>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNutritionnel> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourSigne>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourSigneClinique>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourSigneParaclinique>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourStade>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Stade> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourStatutCytogenetique>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourTraitement>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#precede>
+  a owl:ObjectProperty, owl:TransitiveProperty ;
+  owl:inverseOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#suivi> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#suivi> a owl:ObjectProperty .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#ATM>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#BIRC3>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#BTK>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#CD38>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FBXW7>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#IGHV>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LigneTraitement>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#NOTCH1>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#NomTraitement>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PLCG2>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#POT1>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RPS15>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SF3B1>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TP53>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#XPO1>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Zap70>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#age>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#antecedentFamiliaux>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#chromosome11q>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#chromosome13q>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#chromosome17p>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#dedoublementLymphocytaireValeurLymphocyte>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementLymphocyte> ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#etatPatient>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#evolueVersLaTaille>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#groupeEthniqueGenetique>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#hemoglobine>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#localisationSigneClinique>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#lymphocyte>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementLymphocyte> ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#nombreAdenopathie>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AdenopathieSuperficielle> ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#nombreDeMois>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#plaquette>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#poids>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#polynucleaireNeutrophile>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementPolynucleaireNeutrophile> ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#profession>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#reponseTraitement>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> ;
+  rdfs:range xsd:string ;
+  rdfs:comment """Une évaluation de la réponse thérapeutique, c’est-à-dire de la façon dont la LLC a réagi aux traitements, est réalisée lorsque les traitements s’achèvent.
+
+Pour cela, les examens réalisés initialement sont de nouveau prescrits. Un hémogramme est effectué afin de contrôler la quantité de lymphocytes présents dans le sang. Un examen clinique est réalisé afin de vérifier la présence ou non d’aires lymphoïdes palpables et éventuellement un scanner afin de vérifier l’évolution des sites de maladie, repérés au moment du diagnostic.
+
+La meilleure réponse dans la plupart des cas est la rémission complète, c’est-à-dire la disparition complète de tous les signes de la maladie. La rémission complète permet de vivre normalement avec un suivi régulier. Dans le cas d’une maladie chronique comme la LLC, on ne parle généralement pas de guérison.
+
+
+On distingue 
+-PR:  réponse partielle
+-CR: réponse complète""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#scoreMatutes>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#sexe>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#stadePatient>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Stade> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#statutPatient>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#taille>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Observation> ;
+  rdfs:range xsd:integer .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#tailleSigneClinique>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:range xsd:float .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#trisomieChromosome12>
+  a owl:DatatypeProperty ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#typeTraitement>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#valeurStatut>
+  a owl:DatatypeProperty ;
+  rdfs:domain <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> ;
+  rdfs:range xsd:string .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AHAI>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieAutoImmune> ;
+  rdfs:comment "Un trouble dans lequel les anticorps sont dirigés contre les globules rouges, causant une anémie de gravité variable" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AdenopathieProfonde>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique> ;
+  rdfs:comment """Les ganglions profonds ne sont pas accessibles à l'examen clinique, mais seront détectés en imagerie médicale.
+
+Ganglions médiastinaux : 
+para-trachéaux, inter-trachéo-bronchiques, inter-bronchiques
+
+Ganglions abdomino-pelviens : 
+mésentériques, aortico-mésentériques, lombaires, iliaques, pelviens, retro-cruraux.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AdenopathieSuperficielle>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:comment """Augmentation, douloureuse ou non, de la taille d'un ganglion qui devient dur et, parfois, enflammé. Une adénopathie peut être provoquée par une infection ou par la migration de cellules cancéreuses.
+Elle peut être découverte par le patient lui-même (adénopathies superficielles), par le médecin lors de la consultation
+
+Les ganglions superficiels sont accessibles à l'examen clinique.
+
+-Ganglions cervicaux : 
+retro- et sous-maxillaires mentonniers, carotidiens (ou jugulaires), sus-claviculaires, occipitaux.
+
+-Ganglions des membres et ceintures :
+axillaires, épitrochléens (au niveau du coude), inguinaux, rétro-poplités (dans le creux du genou)"""@fr .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AgentAlkylant>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chlorambucil>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Cyclophosphamide>
+   )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chlorambucil>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Cyclophosphamide>
+   )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AgentAlkylantEtAnalogueDePurine>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Bendamustine> )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Bendamustine> )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnalogueDePurine>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Fludarabine> )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Fludarabine> )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnticorpsMonoclonaux>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] ;
+  rdfs:comment """Les anticorps sont des protéines fabriquées par le système de défense de l’organisme (système immunitaire). Leur rôle est de repérer et de neutraliser certaines substances étrangères comme les virus, les bactéries ainsi que les cellules anormales ou cancéreuses. Pour les neutraliser, l’anticorps se fixe sur une molécule, l’antigène présent sur la surface de la substance étrangère ou de la cellule anormale ou cancéreuse, et permet son élimination par le système immunitaire.
+
+Les anticorps monoclonaux sont des anticorps produits en laboratoire, à partir d’un clone de cellule (plusieurs cellules identiques, d’où le terme monoclonal). Grâce à la recherche médicale, des anticorps monoclonaux « anticancer » ont pu être fabriqués. Ces anticorps ont la capacité de bloquer certains mécanismes spécifiques des cellules cancéreuses ou de repérer la cellule cancéreuse elle-même pour qu’elle soit détruite
+
+Appelée aussi immunothérapie""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#BR>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Polytherapie> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FCR> ;
+  rdfs:comment """Rituximab Bendamustine(analogue des purines et alkylant)
+
+appelé aussi RB""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#CGH>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TechniqueCytogenetique> ;
+  rdfs:comment "L'hybridation génomique comparative ( CGH micro-arrays) peuvent être employées" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie> ;
+  rdfs:comment """C’est un traitement systémique parce qu'il intéresse le corps tout entier. Les médicaments circulent dans le sang pour atteindre les cellules cancéreuses dans le corps tout entier. Ils peuvent être administrés par voie intraveineuse ou par voie orale.
+Ces médicaments ont pour but de détruire les cellules cancéreuses. La particularité de ces drogues est qu'elles sont toxiques sur toutes les cellules capables de se diviser. Les chimiothérapies bloquent la prolifération des cellules cancéreuses tout comme des autres, en empêchant la synthèse d'ADN indispensable à la duplication des cellules et en détruisant les fibres de la trame cellulaire (qui structurent la cellule).""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#CytometrieDeFlux>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TechniqueCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Etat>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#indolent>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#progressif>
+   )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FCR>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Polytherapie> ;
+  rdfs:comment """Administration par voie intraveineuse de 3 médicaments : le rituximab, le fludarabine et le cyclophosphamide
+
+Appelé aussi RFC
+
+Le FCR est considéré comme le traitement de première et de seconde ligne chez les patients en bon état général car des études ont récemment montré sa plus grande efficacité et sa relative bonne tolérance, en dehors de sa myélotoxicité (toxicité pour les cellules de la moelle osseuse).
+Les événements indésirables pouvant amener à un arrêt de traitement sont, principalement, hématologiques (neutropénie, thrombopénie) ; et une augmentation du risque d'infections.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FISH>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TechniqueCytogenetique> ;
+  rdfs:comment "Hybridation in situ avec sonde fluorescente (FISH)", "L'hybridation in situ en fluorescence (FISH) est un test génétique moléculaire qui permet d'identifier les anomalies chromosomiques et d'autres changements génétiques dans les cellules cancéreuses, ou blastes. On utilise des sondes d'ADN spéciales marquées par des colorants fluorescents. La FISH permet de différencier les leucémies qui se ressemblent mais dont les anomalies génétiques diffèrent et qui pourraient donc devoir être traitées différemment." .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurAgentAllergeneEtInfectieux>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque> ;
+  rdfs:comment "Des études ont évoqué la possibilité d'une association entre la LLC et certains virus, comme le virus d'Epstein-Barr et les virus lymphotropiques T humains (HTLV-1 et HTLV-2)." .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurBonPronostic>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurPronostic> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurMauvaisPronostic> ;
+  rdfs:comment """Un facteur de bon pronostic est un élément ou une caractéristique qui indique que l'évolution d'une maladie ou d'un état de santé sera favorable.
+les facteurs de bon pronostic sont souvent utilisés pour aider à prédire l'issue d'une maladie ou d'un traitement. Ces facteurs peuvent être liés à la maladie elle-même (par exemple, la taille ou la localisation d'une tumeur), aux caractéristiques du patient (par exemple, l'âge ou l'état de santé général) ou aux réponses aux traitements précédents.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque>
+  a owl:Class ;
+  rdfs:comment """Elément qui peut favoriser le développement d'un cancer ou sa rechute. Par exemple, le tabac est un facteur de risque des cancers du poumon, de la vessie, du pancréas.
+Un facteur de risque est un élément augmentant la probabilité de développer une maladie. Le facteur de risque peut être inné (entre 5 % et 10 % des cancers auraient ainsi une cause héréditaire) ou réversible, c'est-à-dire qu'il peut être supprimé ou diminué en stoppant l'exposition à ce facteur. L'association d'un facteur de risque à une maladie résulte de recherches épidémiologiques montrant la probabilité d'incidence dans une population en fonction de ce facteur.""" ;
+  owl:versionInfo "" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurEnvironnemental>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurMauvaisPronostic>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurPronostic> ;
+  rdfs:comment """Un facteur de mauvais pronostic est un élément ou une caractéristique qui indique que l'évolution d'une maladie ou d'un état de santé sera défavorable.
+Les facteurs de mauvais pronostic sont souvent utilisés pour aider à prédire l'issue d'une maladie ou d'un traitement. Ces facteurs peuvent être liés à la maladie elle-même (par exemple, la taille ou la localisation d'une tumeur), aux caractéristiques du patient (par exemple, l'âge ou l'état de santé général) ou aux réponses aux traitements précédents""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurNutritionnel>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurPronostic>
+  a owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:comment """Un facteur pronostique :
+C’est l’aspect du cancer ou une caractéristique de la personne que le médecin prend en considération lorsqu'il fait un pronostic.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#HbBasse>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#hemoglobine> ;
+    owl:someValuesFrom [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:float ;
+      owl:withRestrictions ( _:genid30 )
+    ]
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique>, [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#hemoglobine> ;
+    owl:someValuesFrom [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:float ;
+      owl:withRestrictions ( _:genid34 )
+    ]
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Hepatomegalie>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:comment """Une hépatomégalie est une augmentation du volume du foie. Elle peut être localisée à un segment ou un lobe du foie ou bien être diffuse. Elle peut être homogène ou hétérogène à la palpation.
+Elle est définit par une augmentation du volume du foie supérieur à 12 cm. La taille se mesure par la projection sur la ligne médio-claviculaire de la flèche hépatique (distance entre la limite supérieure de la matité hépatique et le bord inférieur du foie)""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurBCL2>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Venetoclax> )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Venetoclax> )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurPI3KinaseDelta>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Idelalisib> )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Idelalisib> )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie> ;
+  rdfs:comment "C'est des composés qui agissent en bloquant des enzymes connues sous le nom de protéine kinase, qui sont impliquées dans la croissance et le développement des cellules. En bloquant ces protéines kinases, les inhibiteurs contribuent à limiter la division et le développement des cellules cancéreuses" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurTyrosineKinaseDeBruton>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ibrutinib> )
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ibrutinib> )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LLC>
+  a owl:Class, owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LLC> ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LLCAtypique>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#scoreMatutes> ;
+    owl:hasValue 3
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LLCMixte>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#LLCTypique>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#scoreMatutes> ;
+    owl:someValuesFrom [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:integer ;
+      owl:withRestrictions ( _:genid51 )
+    ]
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieAutoImmune>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> ;
+  rdfs:comment """Il s'agit, souvent, d'une anémie hémolytique auto-immune, dans 5 à 10 % des cas. On peut aussi observer un purpura thrombopénique immun. Lorsque ces anomalies sont associées, les spécialistes parlent alors de syndrome d’Evans.
+Plus rarement une érythroblastopénie (diminution des précurseurs des globules rouges qui se traduit par une anémie par défaut de production). ou une neutropénie sont observées."""@fr .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieInfectieuse>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Maladie> ;
+  rdfs:comment """Elles sont fréquentes et représentent la première cause de morbidité et de mortalité.
+Elles peuvent survenir à tout moment de l’évolution de la LLC mais elles sont plus fréquentes quand la maladie est avancée ou en cours de traitement.
+Les infections sont le plus souvent "banales" et affectent principalement les voies respiratoires. Elles peuvent être virales ou, plus souvent, bactériennes.
+L’immunodépression, conséquence de la maladie, est à la fois humorale et se caractérise par un déficit sérique en immunoglobulines et cellulaire (altération fonctionnelle des lymphocytes, présentation altérée de l’antigène, mauvaise réponse aux stimuli antigéniques, modification de la répartition des lymphocytes T)."""@fr .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Polytherapie> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obesite>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurDeRisque> ;
+  rdfs:comment """Certaines études ont démontré que l’embonpoint et l’obésité peuvent faire augmenter votre risque de LLC. 
+L'augmentation du risque de la leucémie chez les obèses peut aussi être du à des troubles de la fonction immunitaire et une inflammation chronique chez ces patients.
+L'obésité  est généralement définie par l'indice de masse corporelle (IMC), qui est calculé en divisant le poids d'une personne en kilogrammes par le carré de sa taille en mètres. Un IMC supérieur à 30 est considéré comme obèse.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Observation> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PTI>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieAutoImmune> ;
+  rdfs:comment "Un trouble de la coagulation dans lequel les anticorps sont dirigés contre les plaquettes, ce qui provoque des épisodes hémorragiques" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PathologieInfectieuseBacterienne>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieInfectieuse> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PathologieInfectieuseVirale> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PathologieInfectieuseVirale>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieInfectieuse> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PlaquetteBasse>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#plaquette> ;
+    owl:someValuesFrom [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:integer ;
+      owl:withRestrictions ( _:genid55 )
+    ]
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique>, [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#plaquette> ;
+    owl:someValuesFrom [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:integer ;
+      owl:withRestrictions ( _:genid59 )
+    ]
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Polytherapie>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Prelevement> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementHemoglobine>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementLymphocyte>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementMTS>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Prelevement> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Prelevement> ;
+  rdfs:comment "Numération de la formule sanguine (NFS) ou hémogramme est l'analyse quantitative (numération) et qualitative (formule) des éléments figurés du sang : hématies (globules rouges ou érythrocytes), thrombocytes (plaquettes) et  leucocytes (globules blancs) avec leur répartition en diverses catégories (neutrophiles, monocytes, basophiles, lymphocytes)" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementPlaquette>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementPolynucleaireNeutrophile>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#PrelevementNFS> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#QMPSF>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TechniqueCytogenetique> ;
+  rdfs:comment "La PCR multiplex de courts fragments fluorescents (QMPSF - Quantitative Multiplex PCR of Shorts Fluorescents Fragments )" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeMediterraneen>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNutritionnel> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNeutre>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNutritionnel> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNutritionnel> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeWestern>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#RegimeNutritionnel> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SDRichter>
+  a owl:Class, owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SDRichter> ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieHematologique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe> ;
+  owl:disjointWith <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique> ;
+  rdfs:comment ""@fr, """Toute preuve objective d'une maladie est un signe.
+Un signe clinique est un fait médical ou une caractéristique liée à une réponse physique, détecté par un médecin, une infirmière ou un appareil médical lors de l'examen d'un patient. Ils peuvent souvent être mesurés, et cette mesure peut être essentielle pour diagnostiquer un problème médical.
+Parfois, un patient peut ne pas remarquer un signe et celui-ci peut ne pas sembler pertinent. Cependant, entre les mains d'un professionnel de la santé qui sait en quoi ce signe est lié au reste du corps, le même signe peut être la clé du traitement d'un problème médical sous-jacent.""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneParaclinique>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Signe> ;
+  rdfs:comment "Un signe paraclinique est une donnée objective pouvant être démontrée par un examen paraclinique indiquant la présence ou l'absence probable d'une maladie." .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SignesGeneraux>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:comment """-Une fièvre isolée , prolongée de plus de 7 jours, non expliquée par une cause infectieuse
+-Des sueurs abondantes , surtout si elles sont nocturnes
+-Un amaigrissement récent important significatif (> 5 kg)
+-Un état de fatigue anormal
+-Une infection, en particulier un zona, des poussées répétitives d’herpès, une pneumonie."""@fr .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Splenomegalie>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SigneClinique> ;
+  rdfs:comment """La splénomégalie est une augmentation anormale du volume de la rate. La rate, située sous le diaphragme, dans la partie supérieure gauche de l'abdomen, est un organe faisant partie du système immunitaire.
+La splénomégalie est parfois volumineuse et peut atteindre la fosse iliaque gauche. La mesure du débord costal s’effectue sur la ligne médio-claviculaire, en centimètres ; on réalise un calque du débord costal.
+La palpation peut être difficile ou impossible en cas d’obésité""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Stade>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#stadeA>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#stadeB>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#stadeC>
+   )
+  ] .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutATM>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutBIRC3>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> ;
+  rdfs:comment "" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutBTK>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCD38>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> ;
+  rdfs:comment """Des aberrations chromosomiques peuvent être primitives ou secondaires.
+Les aberrations secondaires apparaissent lors de l’évolution de la maladie""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome11>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome12>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome13>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome17>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutChromosome> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique>
+  a owl:Class ;
+  rdfs:comment """La présence d’anomalies génétiques est très fréquente et on estime qu'elles sont présentent dans près de 80 % des cas.
+Leur recherche est maintenant systématique car l'identification du type de mutations présente un intérêt pronostique et thérapeutique.
+
+L’hétérogénéité biologique de la LLC (état d’hypermutation des gènes des chaînes lourdes des immunoglobulines, présence d’aberrations génomiques spécifiques et/ou de mutations récurrentes dans les oncogènes et les gènes suppresseurs de tumeurs) détermine la variabilité des manifestations cliniques mais aussi et surtout l’évolution et la résistance aux différents traitement""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutFBXW7>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutIGHV>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> ;
+  owl:versionInfo """Il existe deux sous-types de LLC, selon le degré de mutations des gènes des immunoglobulines IgVH.
+
+La présence ou l'abscence de mutations des gènes des chaînes lourdes des immunoglobulines est un marqueyr de l'évolution de la LLC""" .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutNOTCH1>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutPLCG2>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutPOT1>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutRPS15>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutSF3B1>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutTP53>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutXPO1>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutZap70>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StatutCytogenetique> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#SyndromeEvans>
+  a owl:Class ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#MaladieAutoImmune> ;
+  rdfs:comment "Il s’agit d’une maladie auto-immune rare caractérisée par l’association simultanée ou décalée dans le temps d’une AHAI et d’un PTI. Autrement dit, le patient a une importante carence de globules rouges et de plaquettes." .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#TechniqueCytogenetique> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatientBP>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurPronostic> ;
+    owl:someValuesFrom <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurBonPronostic>
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatientMP>
+  a owl:Class ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#aPourFacteurPronostic> ;
+    owl:someValuesFrom <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#FacteurMauvaisPronostic>
+  ] ;
+  rdfs:subClassOf <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#UPNPatient> .
+
+time:Instant a owl:Class .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnticorpsMonoclonaux>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Bendamustine> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AgentAlkylantEtAnalogueDePurine>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Bendamustine> )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chlorambucil> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AgentAlkylant>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chlorambucil>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Cyclophosphamide>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Cyclophosphamide> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AgentAlkylant>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chlorambucil>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Cyclophosphamide>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Fludarabine> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnalogueDePurine>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Chimiotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Fludarabine> )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ibrutinib> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurTyrosineKinaseDeBruton>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ibrutinib> )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Idelalisib> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurPI3KinaseDelta>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#InhibiteurProteineKinase>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf ( <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Idelalisib> )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnticorpsMonoclonaux>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnticorpsMonoclonaux>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab> a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#AnticorpsMonoclonaux>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Monotherapie>, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Traitement>, [
+    a owl:Class ;
+    owl:oneOf (
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Alemtuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Obinutuzumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Ofatumumab>
+     <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Rituximab>
+   )
+  ] .
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#StadeP1i>
+  a owl:NamedIndividual, <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#Stade> ;
+  time:hasDuration <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#durationStadeP1i> ;
+  time:hasTime <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#intervalP1i> ;
+  ns0:stadePatient "A"^^xsd:string .
+
+ns0:StadeP1ii
+  a owl:NamedIndividual, ns0:Stade ;
+  time:hasDuration ns0:durationStadeP1ii ;
+  time:hasTime ns0:intervalP1ii ;
+  ns0:stadePatient "B"^^xsd:string .
+
+ns0:StadeP1iii
+  a owl:NamedIndividual, ns0:Stade ;
+  time:hasTime ns0:intervalP1iii ;
+  ns0:stadePatient "C"^^xsd:string .
+
+ns0:Venetoclax a owl:NamedIndividual, ns0:InhibiteurBCL2, ns0:InhibiteurProteineKinase, ns0:Monotherapie, ns0:Traitement, [
+    a owl:Class ;
+    owl:oneOf ( ns0:Venetoclax )
+  ] .
+ns0:adenopathie1
+  a owl:NamedIndividual, ns0:AdenopathieSuperficielle ;
+  ns0:aPourObservation ns0:obsAdenopathie1a, ns0:obsAdenopathie1b, ns0:obsAdenopathie1c, ns0:obsAdenopathie1d ;
+  ns0:localisationSigneClinique "axillaire" .
+
+ns0:adenopathie2
+  a owl:NamedIndividual, ns0:AdenopathieSuperficielle ;
+  ns0:aPourObservation ns0:obsAdenopathie2a, ns0:obsAdenopathie2b, ns0:obsAdenopathie2c ;
+  ns0:localisationSigneClinique "inguinale" .
+
+ns0:agriculteur a owl:NamedIndividual .
+ns0:coiffeur a owl:NamedIndividual .
+ns0:dateAdenopathie1a
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:dateAdenopathie1b ;
+  time:inXSDDate "2014-08-01"^^xsd:date .
+
+ns0:dateAdenopathie1b
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateAdenopathie1a ;
+  time:before ns0:dateAdenopathie1c ;
+  time:inXSDDate "2014-12-03"^^xsd:date .
+
+ns0:dateAdenopathie1c
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateAdenopathie1b ;
+  time:before ns0:dateAdenopathie1d ;
+  time:inXSDDate "2015-02-09"^^xsd:date .
+
+ns0:dateAdenopathie1d
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateAdenopathie1c ;
+  time:inXSDDate "2015-05-12"^^xsd:date .
+
+ns0:dateAdenopathie2a
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:dateAdenopathie2b ;
+  time:inXSDDate "2016-01-12"^^xsd:date .
+
+ns0:dateAdenopathie2b
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateAdenopathie2a ;
+  time:before ns0:dateAdenopathie2c ;
+  time:inXSDDate "2016-05-01"^^xsd:date .
+
+ns0:dateAdenopathie2c
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateAdenopathie2b ;
+  time:inXSDDate "2016-09-13"^^xsd:date .
+
+ns0:dateNFSp2a
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:dateNFSp2b ;
+  time:inXSDDate "2014-01-08"^^xsd:date .
+
+ns0:dateNFSp2b
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2a ;
+  time:before ns0:dateNFSp2c ;
+  time:inXSDDate "2014-02-18"^^xsd:date .
+
+ns0:dateNFSp2c
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2b ;
+  time:before ns0:dateNFSp2d ;
+  time:inXSDDate "2014-03-18"^^xsd:date .
+
+ns0:dateNFSp2d
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2c ;
+  time:before ns0:dateNFSp2e ;
+  time:inXSDDate "2014-07-09"^^xsd:date .
+
+ns0:dateNFSp2e
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2d ;
+  time:before ns0:dateNFSp2f ;
+  time:inXSDDate "2014-10-08"^^xsd:date .
+
+ns0:dateNFSp2f
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2e ;
+  time:before ns0:dateNFSp2g ;
+  time:inXSDDate "2015-01-07"^^xsd:date .
+
+ns0:dateNFSp2g
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2f ;
+  time:before ns0:dateNFSp2h ;
+  time:inXSDDate "2015-08-11"^^xsd:date .
+
+ns0:dateNFSp2h
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2g ;
+  time:before ns0:dateNFSp2i ;
+  time:inXSDDate "2015-08-18"^^xsd:date .
+
+ns0:dateNFSp2i
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2h ;
+  time:before ns0:dateNFSp2j ;
+  time:inXSDDate "2015-09-10"^^xsd:date .
+
+ns0:dateNFSp2j
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2i ;
+  time:before ns0:dateNFSp2k ;
+  time:inXSDDate "2015-10-06"^^xsd:date .
+
+ns0:dateNFSp2k
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2j ;
+  time:before ns0:dateNFSp2l ;
+  time:inXSDDate "2015-11-03"^^xsd:date .
+
+ns0:dateNFSp2l
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2k ;
+  time:before ns0:dateNFSp2m ;
+  time:inXSDDate "2016-02-02"^^xsd:date .
+
+ns0:dateNFSp2m
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2l ;
+  time:before ns0:dateNFSp2n ;
+  time:inXSDDate "2016-10-10"^^xsd:date .
+
+ns0:dateNFSp2n
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2m ;
+  time:before ns0:dateNFSp2o ;
+  time:inXSDDate "2016-11-15"^^xsd:date .
+
+ns0:dateNFSp2o
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2n ;
+  time:before ns0:dateNFSp2p ;
+  time:inXSDDate "2017-02-07"^^xsd:date .
+
+ns0:dateNFSp2p
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2o ;
+  time:before ns0:dateNFSp2q ;
+  time:inXSDDate "2017-04-04"^^xsd:date .
+
+ns0:dateNFSp2q
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2p ;
+  time:before ns0:dateNFSp2r ;
+  time:inXSDDate "2017-07-26"^^xsd:date .
+
+ns0:dateNFSp2r
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2q ;
+  time:before ns0:dateNFSp2s ;
+  time:inXSDDate "2017-09-19"^^xsd:date .
+
+ns0:dateNFSp2s
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2r ;
+  time:before ns0:dateNFSp2t ;
+  time:inXSDDate "2017-12-14"^^xsd:date .
+
+ns0:dateNFSp2t
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateNFSp2s ;
+  time:inXSDDate "2019-10-23"^^xsd:date .
+
+ns0:datePrelevementMTS1
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:datePrelevementMTS2 ;
+  time:inXSDDate "2012-02-02"^^xsd:date .
+
+ns0:datePrelevementMTS2
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:datePrelevementMTS1 ;
+  time:inXSDDate "2012-07-05"^^xsd:date .
+
+ns0:datePrelevementNFS1
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:datePrelevementNFS2 ;
+  time:inXSDDate "2012-01-29"^^xsd:date .
+
+ns0:datePrelevementNFS2
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:datePrelevementNFS1 ;
+  time:inXSDDate "2012-07-02"^^xsd:date .
+
+ns0:dateStadeP1i
+  a owl:NamedIndividual, time:Instant ;
+  time:inXSDDate "2015-04-12"^^xsd:date .
+
+ns0:dateStadeP1ii
+  a owl:NamedIndividual, time:Instant ;
+  time:inXSDDate "2017-05-09"^^xsd:date .
+
+ns0:dateStadeP1iii
+  a owl:NamedIndividual, time:Instant ;
+  time:inXSDDate "2018-09-11"^^xsd:date .
+
+ns0:dateTraitement1
+  a owl:NamedIndividual, time:Instant ;
+  time:before ns0:dateTraitement2 ;
+  time:inXSDDate "2015-09-01"^^xsd:date .
+
+ns0:dateTraitement2
+  a owl:NamedIndividual, time:Instant ;
+  time:after ns0:dateTraitement1 ;
+  time:inXSDDate "2018-10-02"^^xsd:date .
+
+ns0:dateTraitement3
+  a owl:NamedIndividual, time:Instant ;
+  time:inXSDDate "2016-06-01"^^xsd:date .
+
+ns0:durationStadeP1i
+  a owl:NamedIndividual, time:Duration ;
+  time:numericDuration 26.0 .
+
+ns0:durationStadeP1ii
+  a owl:NamedIndividual, time:Duration ;
+  time:numericDuration 17.0 .
+
+ns0:durationStadeP1iii a owl:NamedIndividual, time:Duration .
+ns0:fPp1 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp10 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp11 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp12 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp13 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp14 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp2 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp3 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp4 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp5 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp6 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp7 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp8 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:fPp9 a owl:NamedIndividual, ns0:FacteurPronostic .
+ns0:indolent a owl:NamedIndividual, ns0:Etat .
+ns0:intervalP1i
+  a owl:NamedIndividual, time:ProperInterval ;
+  time:hasBeginning ns0:dateStadeP1i ;
+  time:hasEnd ns0:dateStadeP1ii ;
+  time:intervalBefore ns0:intervalP1ii .
+
+ns0:intervalP1ii
+  a owl:NamedIndividual, time:ProperInterval ;
+  time:hasBeginning ns0:dateStadeP1ii ;
+  time:hasEnd ns0:dateStadeP1iii ;
+  time:intervalAfter ns0:intervalP1i ;
+  time:intervalBefore ns0:intervalP1iii .
+
+ns0:intervalP1iii
+  a owl:NamedIndividual, time:ProperInterval ;
+  time:hasBeginning ns0:dateStadeP1iii ;
+  time:intervalAfter ns0:intervalP1ii .
+
+ns0:obsAdenopathie1a
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie1a ;
+  ns0:taille 4 .
+
+ns0:obsAdenopathie1b
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie1b ;
+  ns0:taille 5 .
+
+ns0:obsAdenopathie1c
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie1c ;
+  ns0:taille 7 .
+
+ns0:obsAdenopathie1d
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie1d ;
+  ns0:taille 11 .
+
+ns0:obsAdenopathie2a
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie2a ;
+  ns0:taille 5 .
+
+ns0:obsAdenopathie2b
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie2b ;
+  ns0:taille 6 .
+
+ns0:obsAdenopathie2c
+  a owl:NamedIndividual, ns0:Observation ;
+  time:hasTime ns0:dateAdenopathie2c ;
+  ns0:taille 12 .
+
+ns0:pHbP2a
+  a owl:NamedIndividual, ns0:PrelevementHemoglobine ;
+  ns0:hemoglobine "11.6"^^xsd:float ;
+  rdfs:comment "Prélèvement hémoglobine patient 1 à la date t1" .
+
+ns0:pHbP2b
+  a owl:NamedIndividual, ns0:PrelevementHemoglobine ;
+  ns0:hemoglobine "11.7"^^xsd:float .
+
+ns0:pHbP2c
+  a owl:NamedIndividual, ns0:PrelevementHemoglobine ;
+  ns0:hemoglobine "11.8"^^xsd:float .
+
+ns0:pHbP2d
+  a owl:NamedIndividual, ns0:PrelevementHemoglobine ;
+  ns0:hemoglobine "11.5"^^xsd:float .
+
+ns0:pHbP2e a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2f a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2g a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2h a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2i a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2j a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2k a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2l a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2m a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2n a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2o a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2p a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2q a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2r a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2s a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pHbP2t a owl:NamedIndividual, ns0:PrelevementHemoglobine .
+ns0:pLymphoP2a
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2a ;
+  ns0:lymphocyte "16.24"^^xsd:float .
+
+ns0:pLymphoP2b
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2b ;
+  ns0:lymphocyte "16.38"^^xsd:float .
+
+ns0:pLymphoP2c
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2c ;
+  ns0:lymphocyte "24.57"^^xsd:float .
+
+ns0:pLymphoP2d
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2d ;
+  ns0:lymphocyte "25.17"^^xsd:float .
+
+ns0:pLymphoP2e
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2e ;
+  ns0:lymphocyte "27.76"^^xsd:float .
+
+ns0:pLymphoP2f
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2e ;
+  ns0:lymphocyte "41.86"^^xsd:float .
+
+ns0:pLymphoP2g
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2g ;
+  ns0:lymphocyte "66.59"^^xsd:float .
+
+ns0:pLymphoP2h
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2h ;
+  ns0:lymphocyte "87.98"^^xsd:float .
+
+ns0:pLymphoP2i
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2i ;
+  ns0:lymphocyte "96.14"^^xsd:float .
+
+ns0:pLymphoP2j
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2j ;
+  ns0:lymphocyte "102.87"^^xsd:float .
+
+ns0:pLymphoP2k
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2k ;
+  ns0:lymphocyte "69.55"^^xsd:float .
+
+ns0:pLymphoP2l
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2l ;
+  ns0:lymphocyte "23.64"^^xsd:float .
+
+ns0:pLymphoP2m
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2m ;
+  ns0:lymphocyte "2.97"^^xsd:float .
+
+ns0:pLymphoP2n
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2n ;
+  ns0:lymphocyte "2.63"^^xsd:float .
+
+ns0:pLymphoP2o
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2o ;
+  ns0:lymphocyte "0.81"^^xsd:float .
+
+ns0:pLymphoP2p
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2p ;
+  ns0:lymphocyte "1.55"^^xsd:float .
+
+ns0:pLymphoP2q
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2q ;
+  ns0:lymphocyte "1.14"^^xsd:float .
+
+ns0:pLymphoP2r
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2r ;
+  ns0:lymphocyte "1.95"^^xsd:float .
+
+ns0:pLymphoP2s
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2s ;
+  ns0:lymphocyte "1.61"^^xsd:float .
+
+ns0:pLymphoP2t
+  a owl:NamedIndividual, ns0:PrelevementLymphocyte ;
+  time:hasTime ns0:dateNFSp2t ;
+  ns0:lymphocyte "1.5"^^xsd:float .
+
+ns0:patient1
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp1 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:aPourPrelevement ns0:prelevementMTS1, ns0:prelevementMTS2, ns0:prelevementNFS1, ns0:prelevementNFS2 ;
+  ns0:aPourSigneClinique ns0:adenopathie1, ns0:adenopathie2 ;
+  ns0:aPourStade ns0:StadeP1i, ns0:StadeP1ii, ns0:StadeP1iii ;
+  ns0:aPourTraitement ns0:traitement1, ns0:traitement2 ;
+  ns0:sexe "F" .
+
+ns0:patient10
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp10 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:chromosome11q "POS" .
+
+ns0:patient11
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp11 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:chromosome13q "POS" .
+
+ns0:patient12
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp12 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:Zap70 "POS" .
+
+ns0:patient13
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp13 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:chromosome17p "POS" .
+
+ns0:patient14
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp14 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:TP53 "M" .
+
+ns0:patient2
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp2 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:aPourPrelevement ns0:pHbP2a, ns0:pHbP2b, ns0:pHbP2c, ns0:pHbP2d, ns0:pLymphoP2a, ns0:pLymphoP2b, ns0:pLymphoP2c, ns0:pLymphoP2d, ns0:pLymphoP2e, ns0:pLymphoP2f, ns0:pLymphoP2g, ns0:pLymphoP2h, ns0:pLymphoP2i, ns0:pLymphoP2j, ns0:pLymphoP2k, ns0:pLymphoP2l, ns0:pLymphoP2m, ns0:pLymphoP2n, ns0:pLymphoP2o, ns0:pLymphoP2p, ns0:pLymphoP2q, ns0:pLymphoP2r, ns0:pLymphoP2s, ns0:pLymphoP2t ;
+  ns0:aPourTraitement ns0:traitement3 ;
+  ns0:sexe "M" .
+
+ns0:patient3
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp3 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:age 78 .
+
+ns0:patient4
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp4 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:age 60 .
+
+ns0:patient5
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp5 ;
+  ns0:aPourMaladie ns0:SDRichter .
+
+ns0:patient6
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp6 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:IGHV "M" .
+
+ns0:patient7
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp7 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:IGHV "NM" .
+
+ns0:patient8
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp8 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:CD38 "POS" .
+
+ns0:patient9
+  a owl:NamedIndividual, ns0:UPNPatient ;
+  ns0:aPourFacteurPronostic ns0:fPp9 ;
+  ns0:aPourMaladie ns0:LLC ;
+  ns0:CD38 "NEG" .
+
+ns0:prelevementMTS1
+  a owl:NamedIndividual, ns0:PrelevementMTS ;
+  time:hasTime ns0:datePrelevementMTS1 .
+
+ns0:prelevementMTS2
+  a owl:NamedIndividual, ns0:PrelevementMTS ;
+  time:hasTime ns0:datePrelevementMTS2 .
+
+ns0:prelevementNFS1
+  a owl:NamedIndividual, ns0:PrelevementNFS ;
+  time:hasTime ns0:datePrelevementNFS1 .
+
+ns0:prelevementNFS2
+  a owl:NamedIndividual, ns0:PrelevementNFS ;
+  time:hasTime ns0:datePrelevementNFS2 .
+
+ns0:progressif a owl:NamedIndividual, ns0:Etat .
+ns0:stadeA a owl:NamedIndividual, ns0:Stade .
+ns0:stadeB a owl:NamedIndividual, ns0:Stade .
+ns0:stadeC a owl:NamedIndividual, ns0:Stade .
+ns0:traitement1
+  a owl:NamedIndividual, ns0:Traitement ;
+  time:hasTime ns0:dateTraitement1 .
+
+ns0:traitement2
+  a owl:NamedIndividual, ns0:Traitement ;
+  time:hasTime ns0:dateTraitement2 .
+
+ns0:traitement3
+  a owl:NamedIndividual, ns0:Traitement ;
+  time:hasTime ns0:dateTraitement3 .
+
+ns0:p a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:s1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:s a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:obs1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:obs2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:ta1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:ta2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:fp a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:a a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:t1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:t2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:s0 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:p2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:p1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:pre1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:ratio a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:tt1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:pre2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:tt2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:nb a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:lymph2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:lymph1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:yeart1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:montht1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:dayt1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:yeart2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:montht2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:dayt2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:val1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:val2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:val3 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:val4 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:st a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:i a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:st2 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:st1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:trait1 a <http://www.w3.org/2003/11/swrl#Variable> .
+ns0:trait2 a <http://www.w3.org/2003/11/swrl#Variable> .
+_:genid30 xsd:maxExclusive "10.0"^^xsd:float .
+_:genid34 xsd:maxExclusive "10.0"^^xsd:float .
+_:genid51 xsd:minExclusive 3 .
+_:genid55 xsd:maxExclusive 100000 .
+_:genid59 xsd:maxExclusive 100000 .
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Alemtuzumab
+   ns0:Obinutuzumab
+   ns0:Ofatumumab
+   ns0:Rituximab
+ ) ;
+  rdfs:subClassOf ns0:AnticorpsMonoclonaux .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Alemtuzumab
+   ns0:Obinutuzumab
+   ns0:Ofatumumab
+   ns0:Rituximab
+ ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Alemtuzumab
+   ns0:Obinutuzumab
+   ns0:Ofatumumab
+   ns0:Rituximab
+ ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Bendamustine ) ;
+  rdfs:subClassOf ns0:AgentAlkylantEtAnalogueDePurine .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Bendamustine ) ;
+  rdfs:subClassOf ns0:Chimiotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Bendamustine ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Bendamustine ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Chlorambucil
+   ns0:Cyclophosphamide
+ ) ;
+  rdfs:subClassOf ns0:AgentAlkylant .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Chlorambucil
+   ns0:Cyclophosphamide
+ ) ;
+  rdfs:subClassOf ns0:Chimiotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Chlorambucil
+   ns0:Cyclophosphamide
+ ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf (
+   ns0:Chlorambucil
+   ns0:Cyclophosphamide
+ ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Fludarabine ) ;
+  rdfs:subClassOf ns0:AnalogueDePurine .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Fludarabine ) ;
+  rdfs:subClassOf ns0:Chimiotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Fludarabine ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Fludarabine ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Ibrutinib ) ;
+  rdfs:subClassOf ns0:InhibiteurProteineKinase .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Ibrutinib ) ;
+  rdfs:subClassOf ns0:InhibiteurTyrosineKinaseDeBruton .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Ibrutinib ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Ibrutinib ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Idelalisib ) ;
+  rdfs:subClassOf ns0:InhibiteurPI3KinaseDelta .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Idelalisib ) ;
+  rdfs:subClassOf ns0:InhibiteurProteineKinase .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Idelalisib ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Idelalisib ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Venetoclax ) ;
+  rdfs:subClassOf ns0:InhibiteurBCL2 .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Venetoclax ) ;
+  rdfs:subClassOf ns0:InhibiteurProteineKinase .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Venetoclax ) ;
+  rdfs:subClassOf ns0:Monotherapie .
+
+[]
+  a owl:Class ;
+  owl:oneOf ( ns0:Venetoclax ) ;
+  rdfs:subClassOf ns0:Traitement .
+
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:hemoglobine ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:float ;
+    owl:withRestrictions ( _:genid172 )
+  ] ;
+  rdfs:subClassOf ns0:HbBasse .
+
+_:genid172 xsd:maxExclusive "10.0"^^xsd:float .
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:hemoglobine ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:float ;
+    owl:withRestrictions ( _:genid176 )
+  ] ;
+  rdfs:subClassOf ns0:Signe .
+
+_:genid176 xsd:maxExclusive "10.0"^^xsd:float .
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:hemoglobine ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:float ;
+    owl:withRestrictions ( _:genid180 )
+  ] ;
+  rdfs:subClassOf ns0:SigneParaclinique .
+
+_:genid180 xsd:maxExclusive "10.0"^^xsd:float .
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:plaquette ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:integer ;
+    owl:withRestrictions ( _:genid184 )
+  ] ;
+  rdfs:subClassOf ns0:PlaquetteBasse .
+
+_:genid184 xsd:maxExclusive 100000 .
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:plaquette ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:integer ;
+    owl:withRestrictions ( _:genid188 )
+  ] ;
+  rdfs:subClassOf ns0:Signe .
+
+_:genid188 xsd:maxExclusive 100000 .
+[]
+  a owl:Restriction ;
+  owl:onProperty ns0:plaquette ;
+  owl:someValuesFrom [
+    a rdfs:Datatype ;
+    owl:onDatatype xsd:integer ;
+    owl:withRestrictions ( _:genid192 )
+  ] ;
+  rdfs:subClassOf ns0:SigneParaclinique .
+
+_:genid192 xsd:maxExclusive 100000 .
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:AHAI
+   ns0:PTI
+   ns0:SyndromeEvans
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:AdenopathieProfonde
+   ns0:HbBasse
+   ns0:PlaquetteBasse
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:AdenopathieSuperficielle
+   ns0:Hepatomegalie
+   ns0:SignesGeneraux
+   ns0:Splenomegalie
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:CGH
+   ns0:CytometrieDeFlux
+   ns0:FISH
+   ns0:QMPSF
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:Etat
+   ns0:FacteurDeRisque
+   ns0:FacteurPronostic
+   ns0:Maladie
+   ns0:Observation
+   ns0:Prelevement
+   ns0:RegimeNutritionnel
+   ns0:Signe
+   ns0:Stade
+   ns0:StatutCytogenetique
+   ns0:TechniqueCytogenetique
+   ns0:Traitement
+   ns0:UPNPatient
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:FacteurAgentAllergeneEtInfectieux
+   ns0:FacteurEnvironnemental
+   ns0:FacteurNutritionnel
+   ns0:Obesite
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:LLC
+   ns0:LLCAtypique
+   ns0:LLCMixte
+   ns0:LLCTypique
+   ns0:SDRichter
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:MaladieAutoImmune
+   ns0:MaladieHematologique
+   ns0:MaladieInfectieuse
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:PrelevementHemoglobine
+   ns0:PrelevementLymphocyte
+   ns0:PrelevementPlaquette
+   ns0:PrelevementPolynucleaireNeutrophile
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:RegimeMediterraneen
+   ns0:RegimeNeutre
+   ns0:RegimeWestern
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:StatutATM
+   ns0:StatutBIRC3
+   ns0:StatutBTK
+   ns0:StatutCD38
+   ns0:StatutChromosome
+   ns0:StatutFBXW7
+   ns0:StatutIGHV
+   ns0:StatutNOTCH1
+   ns0:StatutPLCG2
+   ns0:StatutPOT1
+   ns0:StatutRPS15
+   ns0:StatutSF3B1
+   ns0:StatutTP53
+   ns0:StatutXPO1
+   ns0:StatutZap70
+ ) .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (
+   ns0:StatutChromosome11
+   ns0:StatutChromosome12
+   ns0:StatutChromosome13
+   ns0:StatutChromosome17
+ ) .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "signe clinique 1 a pour taille ta 1 est signe clinique 2 a pour taille tai2 etsigne clinique 1 est avant signe clinique 2 alors signe clinique 1 evolue vers la ta2"^^xsd:string ;
+  rdfs:label "U"^^xsd:string ;
+  a <http://www.w3.org/2003/11/swrl#Imp> ;
+  ns2:body (
+   _:genid273
+   _:genid275
+   _:genid277
+   _:genid279
+   _:genid281
+   _:genid283
+   _:genid285
+   _:genid287
+ ) ;
+  ns2:head ( _:genid289 ) .
+
+_:genid273
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourSigneClinique ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:s1 .
+
+_:genid275
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourSigneClinique ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:s .
+
+_:genid277
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s ;
+  ns2:argument2 ns0:obs1 .
+
+_:genid279
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s ;
+  ns2:argument2 ns0:obs2 .
+
+_:genid281
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aEvolueVers ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:obs2 .
+
+_:genid283
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:taille ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:ta1 .
+
+_:genid285
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:taille ;
+  ns2:argument1 ns0:obs2 ;
+  ns2:argument2 ns0:ta2 .
+
+_:genid287
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid289
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:evolueVersLaTaille ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:ta2 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "Deletion chromosome 11 et LLC alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "I"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid292
+   _:genid294
+   _:genid296
+   _:genid298
+ ) ;
+  ns2:head ( _:genid300 ) .
+
+_:genid292
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid294
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:CD38 ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "NEG"^^xsd:string .
+
+_:genid296
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid298
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid300
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurBonPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "CD38 pos et LLC alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "H"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid303
+   _:genid305
+   _:genid307
+   _:genid309
+ ) ;
+  ns2:head ( _:genid311 ) .
+
+_:genid303
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid305
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:CD38 ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "POS"^^xsd:string .
+
+_:genid307
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid309
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid311
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "IGHV muté et LLC alors bon pronostic"^^xsd:string ;
+  rdfs:label "F"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid314
+   _:genid316
+   _:genid318
+   _:genid320
+ ) ;
+  ns2:head ( _:genid322 ) .
+
+_:genid314
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid316
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:IGHV ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "M"^^xsd:string .
+
+_:genid318
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid320
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid322
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurBonPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "IGHV non muté et LLC alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "G"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid325
+   _:genid327
+   _:genid329
+   _:genid331
+ ) ;
+  ns2:head ( _:genid333 ) .
+
+_:genid325
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid327
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:IGHV ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "NM"^^xsd:string .
+
+_:genid329
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid331
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid333
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "Tp53 Muté et LLC alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "N"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid336
+   _:genid338
+   _:genid340
+   _:genid342
+ ) ;
+  ns2:head ( _:genid344 ) .
+
+_:genid336
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid338
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:TP53 ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "M"^^xsd:string .
+
+_:genid340
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid342
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid344
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "zap70 pos et LLC alors pronostic defavorable"^^xsd:string ;
+  rdfs:label "M"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid347
+   _:genid349
+   _:genid351
+   _:genid353
+ ) ;
+  ns2:head ( _:genid355 ) .
+
+_:genid347
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid349
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:Zap70 ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "POS"^^xsd:string .
+
+_:genid351
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid353
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid355
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "age sup 75 alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "C"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid358
+   _:genid360
+   _:genid364
+   _:genid366
+   _:genid368
+ ) ;
+  ns2:head ( _:genid370 ) .
+
+_:genid358
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:age ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:a .
+
+_:genid360
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+  ns2:arguments (
+   ns0:a
+   75
+ ) .
+
+_:genid364
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid366
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid368
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid370
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "age sup 75 alors bon pronostic"^^xsd:string ;
+  rdfs:label "D"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid373
+   _:genid375
+   _:genid379
+   _:genid381
+   _:genid383
+ ) ;
+  ns2:head ( _:genid385 ) .
+
+_:genid373
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:age ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:a .
+
+_:genid375
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#lessThan> ;
+  ns2:arguments (
+   ns0:a
+   75
+ ) .
+
+_:genid379
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid381
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid383
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid385
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurBonPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "deletion 11q pos et LLC alors mauvais pronostic"^^xsd:string ;
+  rdfs:label "J"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid388
+   _:genid390
+   _:genid392
+   _:genid394
+ ) ;
+  ns2:head ( _:genid396 ) .
+
+_:genid388
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid390
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:chromosome11q ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "POS"^^xsd:string .
+
+_:genid392
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid394
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid396
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "deletion chromosome 13q pos et LLC alors pronostic favorable"^^xsd:string ;
+  rdfs:label "K"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid399
+   _:genid401
+   _:genid403
+   _:genid405
+ ) ;
+  ns2:head ( _:genid407 ) .
+
+_:genid399
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid401
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:chromosome13q ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "POS"^^xsd:string .
+
+_:genid403
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid405
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid407
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurBonPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "deletion 17p  pos et LLC alors pronostic defavorable"^^xsd:string ;
+  rdfs:label "L"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid410
+   _:genid412
+   _:genid414
+   _:genid416
+ ) ;
+  ns2:head ( _:genid418 ) .
+
+_:genid410
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid412
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:chromosome17p ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "POS"^^xsd:string .
+
+_:genid414
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid416
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid418
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "Sexe feminin et LLC alors pronostic favorable"^^xsd:string ;
+  rdfs:label "A"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid421
+   _:genid423
+   _:genid425
+   _:genid427
+ ) ;
+  ns2:head ( _:genid429 ) .
+
+_:genid421
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid423
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:sexe ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "F"^^xsd:string .
+
+_:genid425
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid427
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid429
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurBonPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "Sexe masculin  et LLC alors pronostic defavorable"^^xsd:string ;
+  rdfs:label "B"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid432
+   _:genid434
+   _:genid436
+   _:genid438
+ ) ;
+  ns2:head ( _:genid440 ) .
+
+_:genid432
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid434
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:sexe ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 "M"^^xsd:string .
+
+_:genid436
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid438
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid440
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "SD de Richter et LLC alors pronostic defavorable"^^xsd:string ;
+  rdfs:label "E"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid443
+   _:genid445
+   _:genid447
+ ) ;
+  ns2:head ( _:genid449 ) .
+
+_:genid443
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:SDRichter .
+
+_:genid445
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+_:genid447
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid449
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourFacteurMauvaisPronostic ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:fp .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "signe clinique 1 a pour date t1 et signe clinique 2 a pour date t2 et date t1 avant date t2 alors signe clinique 1 avant signe clinique 2"^^xsd:string ;
+  rdfs:label "T"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid452
+   _:genid454
+   _:genid456
+   _:genid458
+   _:genid460
+   _:genid462
+   _:genid464
+   _:genid466
+ ) ;
+  ns2:head ( _:genid468 ) .
+
+_:genid452
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourMaladie ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:LLC .
+
+_:genid454
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourSigneClinique ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:s .
+
+_:genid456
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s ;
+  ns2:argument2 ns0:obs1 .
+
+_:genid458
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s ;
+  ns2:argument2 ns0:obs2 .
+
+_:genid460
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid462
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:obs2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid464
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:before ;
+  ns2:argument1 ns0:t1 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid466
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid468
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aEvolueVers ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:obs2 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "signe clinique 1 a pour date t1 et signe clinique 2 a pour date t2 et date t2 aprés date t1 alors signe clinique 2 aprés signe clinique 1"^^xsd:string ;
+  rdfs:label "S"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid471
+   _:genid473
+   _:genid475
+   _:genid477
+   _:genid479
+   _:genid481
+   _:genid483
+ ) ;
+  ns2:head ( _:genid485 ) .
+
+_:genid471
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:t2 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid473
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourSigneClinique ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:s .
+
+_:genid475
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s ;
+  ns2:argument2 ns0:obs1 .
+
+_:genid477
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourObservation ;
+  ns2:argument1 ns0:s0 ;
+  ns2:argument2 ns0:obs2 .
+
+_:genid479
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:obs1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid481
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:obs2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid483
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid485
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aOrigine ;
+  ns2:argument1 ns0:obs2 ;
+  ns2:argument2 ns0:obs1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "si prelevement 1 a pour date t1 et prelevement 2 a pour date t2 et t1 apres t2 alors prelevement 2 apres prelevement 1"^^xsd:string ;
+  rdfs:label "R"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid488
+   _:genid490
+   _:genid492
+   _:genid494
+   _:genid496
+   _:genid498
+ ) ;
+  ns2:head ( _:genid500 ) .
+
+_:genid488
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:t2 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid490
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:p2 .
+
+_:genid492
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:p1 .
+
+_:genid494
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:p1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid496
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:p2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid498
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid500
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:precede ;
+  ns2:argument1 ns0:p2 ;
+  ns2:argument2 ns0:p1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "si prelevement 1 a pour date t1 et prelevement 2 a pour date t2 et t1 avant t2 alors prelevement 1 avant prelevement 2"^^xsd:string ;
+  rdfs:label "Q"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid503
+   _:genid505
+   _:genid507
+   _:genid509
+   _:genid511
+   _:genid513
+ ) ;
+  ns2:head ( _:genid515 ) .
+
+_:genid503
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:p2 .
+
+_:genid505
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:p1 .
+
+_:genid507
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:p1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid509
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:p2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid511
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:before ;
+  ns2:argument1 ns0:t1 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid513
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid515
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:suivi ;
+  ns2:argument1 ns0:p1 ;
+  ns2:argument2 ns0:p2 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "xx"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid518
+   _:genid520
+   _:genid524
+   _:genid526
+   _:genid528
+   _:genid530
+   _:genid532
+   _:genid537
+   _:genid539
+   _:genid541
+   _:genid543
+   _:genid547
+ ) ;
+  ns2:head ( _:genid549 ) .
+
+_:genid518
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:pre1 .
+
+_:genid520
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+  ns2:arguments (
+   ns0:ratio
+   2
+ ) .
+
+_:genid524
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:pre1 ;
+  ns2:argument2 ns0:tt1 .
+
+_:genid526
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:pre2 .
+
+_:genid528
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:tt2 .
+
+_:genid530
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:nombreDeMois ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:nb .
+
+_:genid532
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#divide> ;
+  ns2:arguments (
+   ns0:ratio
+   ns0:lymph2
+   ns0:lymph1
+ ) .
+
+_:genid537
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:tt2 ;
+  ns2:argument2 ns0:tt1 .
+
+_:genid539
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:lymphocyte ;
+  ns2:argument1 ns0:pre1 ;
+  ns2:argument2 ns0:lymph1 .
+
+_:genid541
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:lymphocyte ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:lymph2 .
+
+_:genid543
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+  ns2:arguments (
+   ns0:nb
+   6
+ ) .
+
+_:genid547
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid549
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:dedoublementLymphocytaireValeurLymphocyte ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:lymph1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "X"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid552
+   _:genid554
+   _:genid556
+   _:genid558
+   _:genid560
+   _:genid562
+   _:genid564
+   _:genid570
+   _:genid572
+   _:genid574
+   _:genid580
+   _:genid585
+   _:genid590
+   _:genid595
+ ) ;
+  ns2:head ( _:genid600 ) .
+
+_:genid552
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid554
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:pre1 .
+
+_:genid556
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:pre1 ;
+  ns2:argument2 ns0:tt1 .
+
+_:genid558
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourPrelevement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:pre2 .
+
+_:genid560
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:tt2 .
+
+_:genid562
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:tt2 ;
+  ns2:argument2 ns0:tt1 .
+
+_:genid564
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#date> ;
+  ns2:arguments (
+   ns0:t1
+   ns0:yeart1
+   ns0:montht1
+   ns0:dayt1
+ ) .
+
+_:genid570
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate time:inXSDDate ;
+  ns2:argument1 ns0:tt1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid572
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate time:inXSDDate ;
+  ns2:argument1 ns0:tt2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid574
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#date> ;
+  ns2:arguments (
+   ns0:t2
+   ns0:yeart2
+   ns0:montht2
+   ns0:dayt2
+ ) .
+
+_:genid580
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#subtract> ;
+  ns2:arguments (
+   ns0:val1
+   ns0:yeart2
+   ns0:yeart1
+ ) .
+
+_:genid585
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#multiply> ;
+  ns2:arguments (
+   ns0:val2
+   ns0:val1
+   12
+ ) .
+
+_:genid590
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#subtract> ;
+  ns2:arguments (
+   ns0:val3
+   ns0:montht2
+   ns0:montht1
+ ) .
+
+_:genid595
+  a ns2:BuiltinAtom ;
+  ns2:builtin <http://www.w3.org/2003/11/swrlb#add> ;
+  ns2:arguments (
+   ns0:val4
+   ns0:val2
+   ns0:val3
+ ) .
+
+_:genid600
+  a ns2:DatavaluedPropertyAtom ;
+  ns2:propertyPredicate ns0:nombreDeMois ;
+  ns2:argument1 ns0:pre2 ;
+  ns2:argument2 ns0:val4 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "stade a pour intervalle inetrvalle 1 et intervalle 1 a pour début t1 alors stade a pour début t1"^^xsd:string ;
+  rdfs:label "V"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid603
+   _:genid605
+   _:genid607
+   _:genid609
+ ) ;
+  ns2:head ( _:genid611 ) .
+
+_:genid603
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid605
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st .
+
+_:genid607
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st ;
+  ns2:argument2 ns0:i .
+
+_:genid609
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasBeginning ;
+  ns2:argument1 ns0:i ;
+  ns2:argument2 ns0:t1 .
+
+_:genid611
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasBeginning ;
+  ns2:argument1 ns0:st ;
+  ns2:argument2 ns0:t1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "stade a pour intervalle inetrvalle 1 et intervalle 1 a pour fin t2 alors stade a pour fin t2"^^xsd:string ;
+  rdfs:label "W"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid614
+   _:genid616
+   _:genid618
+   _:genid620
+ ) ;
+  ns2:head ( _:genid622 ) .
+
+_:genid614
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid616
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st .
+
+_:genid618
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st ;
+  ns2:argument2 ns0:i .
+
+_:genid620
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasEnd ;
+  ns2:argument1 ns0:i ;
+  ns2:argument2 ns0:t2 .
+
+_:genid622
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasEnd ;
+  ns2:argument1 ns0:st ;
+  ns2:argument2 ns0:t2 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "stade 1 a pour date t1 et stade 2 a pour date t2 et t2 aprés t1 alors stade 2 aprés stade 1"^^xsd:string ;
+  rdfs:label "Y"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid625
+   _:genid627
+   _:genid629
+   _:genid631
+   _:genid633
+   _:genid635
+ ) ;
+  ns2:head ( _:genid637 ) .
+
+_:genid625
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:t2 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid627
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st2 .
+
+_:genid629
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid631
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid633
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st1 .
+
+_:genid635
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid637
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aOrigine ;
+  ns2:argument1 ns0:st2 ;
+  ns2:argument2 ns0:st1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "stade 1 a pour date t1 et stade 2 a pour date t2 et t1 avant t2 alors stade 1 avant stade 2"^^xsd:string ;
+  rdfs:label "Z"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid640
+   _:genid642
+   _:genid644
+   _:genid646
+   _:genid648
+   _:genid650
+ ) ;
+  ns2:head ( _:genid652 ) .
+
+_:genid640
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st2 .
+
+_:genid642
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid644
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:st2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid646
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:before ;
+  ns2:argument1 ns0:t1 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid648
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourStade ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:st1 .
+
+_:genid650
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid652
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aEvolueVers ;
+  ns2:argument1 ns0:st1 ;
+  ns2:argument2 ns0:st2 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "si un traitement 1 a une une date t1 et un traitement 2 a une date t2 et date t1 avant date t2 alors traitement 1 avant traitement 2"^^xsd:string ;
+  rdfs:label "O"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid655
+   _:genid657
+   _:genid659
+   _:genid661
+   _:genid663
+   _:genid665
+ ) ;
+  ns2:head ( _:genid667 ) .
+
+_:genid655
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:trait1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid657
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:trait2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid659
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:after ;
+  ns2:argument1 ns0:t2 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid661
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourTraitement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:trait1 .
+
+_:genid663
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourTraitement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:trait2 .
+
+_:genid665
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid667
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aOrigine ;
+  ns2:argument1 ns0:trait2 ;
+  ns2:argument2 ns0:trait1 .
+
+[]
+  ns1:isRuleEnabled true ;
+  rdfs:comment "si un traitement 1 a une une date t1 et un traitement 2 a une date t2 et date t2 apres date t1 alors traitement 2 apres traitement 1"^^xsd:string ;
+  rdfs:label "P"^^xsd:string ;
+  a ns2:Imp ;
+  ns2:body (
+   _:genid670
+   _:genid672
+   _:genid674
+   _:genid676
+   _:genid678
+   _:genid680
+ ) ;
+  ns2:head ( _:genid682 ) .
+
+_:genid670
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:trait1 ;
+  ns2:argument2 ns0:t1 .
+
+_:genid672
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:hasTime ;
+  ns2:argument1 ns0:trait2 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid674
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourTraitement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:trait1 .
+
+_:genid676
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aPourTraitement ;
+  ns2:argument1 ns0:p ;
+  ns2:argument2 ns0:trait2 .
+
+_:genid678
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate time:before ;
+  ns2:argument1 ns0:t1 ;
+  ns2:argument2 ns0:t2 .
+
+_:genid680
+  a ns2:ClassAtom ;
+  ns2:classPredicate ns0:UPNPatient ;
+  ns2:argument1 ns0:p .
+
+_:genid682
+  a ns2:IndividualPropertyAtom ;
+  ns2:propertyPredicate ns0:aEvolueVers ;
+  ns2:argument1 ns0:trait1 ;
+  ns2:argument2 ns0:trait2 .
+
+
