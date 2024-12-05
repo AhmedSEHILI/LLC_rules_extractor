@@ -7,37 +7,188 @@ Using HeadCoverage as pruning metric with minimum threshold 0.01
 Using recursivity limit 3
 Lazy mining assistant that stops counting when the denominator gets too high
 Filtering on standard confidence with minimum threshold 0.1
-Filtering on PCA confidence with minimum threshold 0.1
-Constants in the arguments of relations are disabled
+Filtering on PCA confidence with minimum threshold 0.05
+Constants in the arguments of relations are enabled
 Lossless (query refinement) heuristics enabled
 MRT calls: 0
-Starting the mining phase... Using 16 threads
-Rule	Head Coverage	Std Confidence	PCA Confidence	Positive Examples	Body size	PCA Body size	Functional variable
+Starting the mining phase... Rule	Head Coverage	Std Confidence	PCA Confidence	Positive Examples	Body size	PCA Body size	Functional variable
+Using 16 threads
+?a  p9:argument2  p7:fp   => ?a  p2:type  p9:IndividualPropertyAtom	0.033653846	1	1	28	28	28	?a
+?a  p9:argument2  p7:LLC   => ?a  p2:type  p9:IndividualPropertyAtom	0.016826923	1	1	14	14	14	?a
+?a  p9:propertyPredicate  p3:hasTime   => ?a  p2:type  p9:IndividualPropertyAtom	0.026442308	1	1	22	22	22	?a
+?a  p9:propertyPredicate  p7:aPourFacteurPronostic   => ?a  p2:type  p9:IndividualPropertyAtom	0.016826923	1	1	14	14	14	?a
+?a  p6:subClassOf  p7:Monotherapie   => ?a  p2:type  p1:Class	0.012019231	1	1	10	10	10	?a
+?a  p6:subClassOf  p7:Traitement   => ?a  p2:type  p1:Class	0.010817308	1	1	9	9	9	?a
+?a  p6:subClassOf  p7:StatutCytogenetique   => ?a  p2:type  p1:Class	0.018028846	1	1	15	15	15	?a
+?a  p9:argument2  p7:t2   => ?a  p2:type  p9:IndividualPropertyAtom	0.016826923	0.933333333	0.933333333	14	15	15	?a
+?a  p9:propertyPredicate  p7:aPourMaladie   => ?a  p2:type  p9:IndividualPropertyAtom	0.018028846	1	1	15	15	15	?a
+?a  p9:argument2  p7:t1   => ?a  p2:type  p9:IndividualPropertyAtom	0.016826923	0.933333333	0.933333333	14	15	15	?a
+?a  p9:propertyPredicate  p7:aPourFacteurMauvaisPronostic   => ?a  p2:type  p9:IndividualPropertyAtom	0.010817308	1	1	9	9	9	?a
+?a  p9:argument1  p7:p   => ?a  p2:type  p9:IndividualPropertyAtom	0.078125	0.619047619	0.619047619	65	105	105	?a
+?a  p2:type  p9:ClassAtom   => ?a  p9:argument1  p7:p	0.162650602	1	1	27	27	27	?a
+?a  p9:argument2  "POS"   => ?a  p9:argument1  p7:p	0.030120482	1	1	5	5	5	?a
+?a  p9:argument2  p7:st   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:argument2  p7:pre2   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:argument2  p7:a   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:argument2  p7:fp   => ?a  p9:argument1  p7:p	0.168674699	1	1	28	28	28	?a
+?a  p9:argument2  p7:LLC   => ?a  p9:argument1  p7:p	0.084337349	1	1	14	14	14	?a
+?a  p2:type  p9:DatavaluedPropertyAtom   => ?a  p9:argument1  p7:p	0.078313253	0.565217391	0.565217391	13	23	23	?a
+?a  p9:argument2  "M"   => ?a  p9:argument1  p7:p	0.018072289	1	1	3	3	3	?a
+?a  p9:argument2  p7:pre1   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:argument2  p7:st2   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:argument2  p7:s   => ?a  p9:argument1  p7:p	0.018072289	1	1	3	3	3	?a
+?a  p9:propertyPredicate  p7:aPourTraitement   => ?a  p9:argument1  p7:p	0.024096386	1	1	4	4	4	?a
+?a  p9:argument2  p7:p2   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:propertyPredicate  p7:aPourSigneClinique   => ?a  p9:argument1  p7:p	0.024096386	1	1	4	4	4	?a
+?a  p9:propertyPredicate  p7:aPourFacteurBonPronostic   => ?a  p9:argument1  p7:p	0.030120482	1	1	5	5	5	?a
+?a  p9:propertyPredicate  p7:aPourFacteurPronostic   => ?a  p9:argument1  p7:p	0.084337349	1	1	14	14	14	?a
+?a  p9:propertyPredicate  p7:age   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p2:type  p9:IndividualPropertyAtom   => ?a  p9:argument1  p7:p	0.391566265	0.560344828	0.560344828	65	116	116	?a
+?a  p9:argument2  p7:trait2   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:classPredicate  p7:UPNPatient   => ?a  p9:argument1  p7:p	0.162650602	1	1	27	27	27	?a
+?a  p9:propertyPredicate  p7:CD38   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:propertyPredicate  p7:aPourPrelevement   => ?a  p9:argument1  p7:p	0.048192771	1	1	8	8	8	?a
+?a  p9:propertyPredicate  p7:sexe   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:argument2  p7:st1   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:argument2  p7:trait1   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:argument2  p7:p1   => ?a  p9:argument1  p7:p	0.012048193	0.666666667	0.666666667	2	3	3	?a
+?a  p9:propertyPredicate  p7:aPourStade   => ?a  p9:argument1  p7:p	0.036144578	1	1	6	6	6	?a
+?a  p9:propertyPredicate  p7:aPourMaladie   => ?a  p9:argument1  p7:p	0.090361446	1	1	15	15	15	?a
+?a  p9:propertyPredicate  p7:IGHV   => ?a  p9:argument1  p7:p	0.012048193	1	1	2	2	2	?a
+?a  p9:propertyPredicate  p7:aPourFacteurMauvaisPronostic   => ?a  p9:argument1  p7:p	0.054216867	1	1	9	9	9	?a
+?a  p2:first  p7:Fludarabine   => ?a  p2:rest  p2:nil	0.018617021	1	1	7	7	7	?a
+?a  p2:first  p7:Cyclophosphamide   => ?a  p2:rest  p2:nil	0.021276596	1	1	8	8	8	?a
+?a  p2:first  p7:Venetoclax   => ?a  p2:rest  p2:nil	0.018617021	1	1	7	7	7	?a
+?a  p2:first  p7:Idelalisib   => ?a  p2:rest  p2:nil	0.018617021	1	1	7	7	7	?a
+?a  p2:first  p7:Ibrutinib   => ?a  p2:rest  p2:nil	0.018617021	1	1	7	7	7	?a
+?a  p2:first  p7:Bendamustine   => ?a  p2:rest  p2:nil	0.018617021	1	1	7	7	7	?a
+?a  p2:first  p7:Rituximab   => ?a  p2:rest  p2:nil	0.02393617	1	1	9	9	9	?a
+?a  p2:type  p7:Monotherapie   => ?a  p2:type  p1:NamedIndividual	0.013221154	1	1	11	11	11	?a
+?a  p2:type  p7:PrelevementLymphocyte   => ?a  p2:type  p1:NamedIndividual	0.024038462	1	1	20	20	20	?a
+?a  p2:type  p3:Instant   => ?a  p2:type  p1:NamedIndividual	0.044471154	1	1	37	37	37	?a
+?a  p2:type  p7:Traitement   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
+?a  p2:type  p7:FacteurPronostic   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
+?a  p7:aPourMaladie  p7:LLC   => ?a  p2:type  p1:NamedIndividual	0.015625	1	1	13	13	13	?a
+p7:patient2  p7:aPourPrelevement  ?a   => ?a  p2:type  p1:NamedIndividual	0.028846154	1	1	24	24	24	?a
+?a  p2:type  p7:UPNPatient   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
+?a  p2:type  p7:PrelevementHemoglobine   => ?a  p2:type  p1:NamedIndividual	0.024038462	1	1	20	20	20	?a
+?a  p1:oneOf  ?d  ?d  p2:rest  p2:nil   => ?a  p2:type  p1:Class	0.042067308	1	1	35	35	35	?a
+?a  p1:oneOf  ?d  ?d  p2:first  p7:Alemtuzumab   => ?a  p2:type  p1:Class	0.010817308	1	1	9	9	9	?a
+?c  p2:first  ?a  ?c  p2:rest  p2:nil   => ?a  p2:type  p9:IndividualPropertyAtom	0.033653846	0.291666667	0.345679012	28	96	81	?a
+?c  p2:type  p1:DatatypeProperty  ?c  p6:domain  ?a   => ?a  p2:type  p1:Class	0.012019231	1	1	10	10	10	?a
+?c  p2:first  ?a  ?c  p2:rest  p2:nil   => ?a  p2:type  p1:Class	0.014423077	0.125	0.148148148	12	96	81	?a
+?d  p2:type  p9:Variable  ?a  p9:argument1  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.139423077	0.698795181	0.698795181	116	166	166	?a
+?c  p2:type  p1:ObjectProperty  ?c  p6:range  ?a   => ?a  p2:type  p1:Class	0.016826923	1	1	14	14	14	?a
+?c  p6:domain  p7:UPNPatient  ?c  p6:range  ?a   => ?a  p2:type  p1:Class	0.016826923	0.823529412	1	14	17	14	?a
+?d  p2:type  p1:Class  ?a  p9:argument2  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.018028846	1	1	15	15	15	?a
+p7:Ibrutinib  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+p7:Cyclophosphamide  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+p7:Venetoclax  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+p7:Chlorambucil  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+p7:Ofatumumab  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.024038462	1	1	20	20	20	?a
+p7:Rituximab  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.024038462	1	1	20	20	20	?a
+p7:Obinutuzumab  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.024038462	1	1	20	20	20	?a
+?d  p6:subClassOf  p7:MaladieHematologique  ?a  p9:argument2  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.018028846	1	1	15	15	15	?a
+?d  p2:type  p1:NamedIndividual  ?a  p9:argument2  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.018028846	1	1	15	15	15	?a
+p7:Fludarabine  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+p7:Bendamustine  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+?d  p2:type  p1:ObjectProperty  ?a  p9:propertyPredicate  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.096153846	1	1	80	80	80	?a
+p7:Idelalisib  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.03125	1	1	26	26	26	?a
+?d  p6:domain  p7:UPNPatient  ?a  p9:propertyPredicate  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.078125	0.833333333	0.833333333	65	78	78	?a
+p7:Alemtuzumab  p2:type  ?d  ?a  p6:subClassOf  ?d   => ?a  p2:type  p1:Class	0.024038462	1	1	20	20	20	?a
+?d  p2:type  p9:Variable  ?a  p9:argument2  ?d   => ?a  p2:type  p9:IndividualPropertyAtom	0.121394231	0.89380531	0.89380531	101	113	113	?a
 ?a  p1:disjointWith  ?f  ?f  p6:subClassOf  ?b   => ?a  p6:subClassOf  ?b	0.050847458	1	1	6	6	6	?a
+?b  p6:subClassOf  p7:MaladieHematologique  ?a  p9:propertyPredicate  p7:aPourMaladie   => ?a  p9:argument2  ?b	0.107913669	0.2	0.2	15	75	75	?a
+?c  p1:oneOf  ?a  ?c  p2:type  p1:Class   => ?a  p2:rest  p2:nil	0.093085106	0.648148148	0.648148148	35	54	54	?a
+?c  p1:withRestrictions  ?a  ?c  p2:type  p6:Datatype   => ?a  p2:rest  p2:nil	0.029255319	1	1	11	11	11	?a
+?c  p1:onDatatype  p5:float  ?c  p1:withRestrictions  ?a   => ?a  p2:rest  p2:nil	0.013297872	1	1	5	5	5	?a
+?c  p1:onDatatype  p5:integer  ?c  p1:withRestrictions  ?a   => ?a  p2:rest  p2:nil	0.015957447	1	1	6	6	6	?a
+?c  p2:first  p7:Chlorambucil  ?c  p2:rest  ?a   => ?a  p2:rest  p2:nil	0.021276596	1	1	8	8	8	?a
+?c  p2:first  p7:Ofatumumab  ?c  p2:rest  ?a   => ?a  p2:rest  p2:nil	0.02393617	1	1	9	9	9	?a
+?c  p2:type  p9:Imp  ?c  p9:head  ?a   => ?a  p2:rest  p2:nil	0.071808511	1	1	27	27	27	?a
+?c  p4:isRuleEnabled  "true"^^p8:boolean>  ?c  p9:head  ?a   => ?a  p2:rest  p2:nil	0.071808511	1	1	27	27	27	?a
+?d  p2:type  p1:ObjectProperty  ?a  p9:propertyPredicate  ?d   => ?a  p9:argument1  p7:p	0.391566265	0.8125	0.8125	65	80	80	?a
+?d  p2:type  p1:DatatypeProperty  ?a  p9:propertyPredicate  ?d   => ?a  p9:argument1  p7:p	0.078313253	0.619047619	0.619047619	13	21	21	?a
+?b  p6:range  p5:integer  ?a  p9:argument2  p7:ta2   => ?a  p9:propertyPredicate  ?b	0.014388489	0.125	0.125	2	16	16	?a
+?b  p6:range  p5:integer  ?a  p9:argument2  p7:a   => ?a  p9:propertyPredicate  ?b	0.014388489	0.125	0.125	2	16	16	?a
+?a  p2:first  ?d  ?d  p2:type  p7:Monotherapie   => ?a  p2:rest  p2:nil	0.138297872	0.597701149	0.597701149	52	87	87	?a
+?a  p2:first  ?d  ?d  p2:type  p7:Traitement   => ?a  p2:rest  p2:nil	0.138297872	0.597701149	0.597701149	52	87	87	?a
+?a  p2:first  ?d  ?d  p2:type  p7:Chimiotherapie   => ?a  p2:rest  p2:nil	0.058510638	0.733333333	0.733333333	22	30	30	?a
+?a  p2:first  ?d  ?d  p2:type  p7:InhibiteurProteineKinase   => ?a  p2:rest  p2:nil	0.055851064	1	1	21	21	21	?a
+?a  p2:first  ?d  ?d  p2:type  p1:NamedIndividual   => ?a  p2:rest  p2:nil	0.146276596	0.585106383	0.585106383	55	94	94	?a
+?a  p2:first  ?d  ?d  p2:type  p9:IndividualPropertyAtom   => ?a  p2:rest  p2:nil	0.074468085	0.24137931	0.24137931	28	116	116	?a
+?a  p2:first  ?d  ?d  p2:type  p9:ClassAtom   => ?a  p2:rest  p2:nil	0.058510638	0.814814815	0.814814815	22	27	27	?a
+?a  p2:first  ?d  ?d  p2:type  p9:Variable   => ?a  p2:rest  p2:nil	0.015957447	0.230769231	0.230769231	6	26	26	?a
+?a  p2:first  ?d  ?d  p2:type  p1:Class   => ?a  p2:rest  p2:nil	0.031914894	0.184615385	0.184615385	12	65	65	?a
+?a  p2:first  ?d  ?d  p9:argument1  p7:p   => ?a  p2:rest  p2:nil	0.10106383	0.361904762	0.361904762	38	105	105	?a
+?a  p2:first  ?d  ?d  p9:argument2  p7:fp   => ?a  p2:rest  p2:nil	0.037234043	0.5	0.5	14	28	28	?a
+?a  p2:first  ?d  ?d  p9:propertyPredicate  p7:aPourFacteurBonPronostic   => ?a  p2:rest  p2:nil	0.013297872	1	1	5	5	5	?a
+?a  p2:first  ?d  ?d  p9:propertyPredicate  p7:aPourFacteurMauvaisPronostic   => ?a  p2:rest  p2:nil	0.02393617	1	1	9	9	9	?a
+?a  p2:first  ?d  ?d  p9:classPredicate  p7:UPNPatient   => ?a  p2:rest  p2:nil	0.058510638	0.814814815	0.814814815	22	27	27	?a
+?a  p2:first  ?d  ?d  p5:maxExclusive  "100000"^^p8:integer>   => ?a  p2:rest  p2:nil	0.013297872	1	1	5	5	5	?a
+?a  p2:first  ?d  ?d  p5:maxExclusive  "10.0"^^p8:float>   => ?a  p2:rest  p2:nil	0.013297872	1	1	5	5	5	?a
+?c  p2:first  ?a  ?c  p2:rest  p2:nil   => ?a  p9:argument1  p7:p	0.228915663	0.395833333	0.716981132	38	96	53	?a
+?d  p2:type  p1:NamedIndividual  ?a  p9:argument2  ?d   => ?a  p9:argument1  p7:p	0.090361446	1	1	15	15	15	?a
+?d  p2:type  p9:Variable  ?a  p9:argument2  ?d   => ?a  p9:argument1  p7:p	0.313253012	0.460176991	0.460176991	52	113	113	?a
+?d  p2:type  p1:Class  ?a  p9:argument2  ?d   => ?a  p9:argument1  p7:p	0.090361446	1	1	15	15	15	?a
+?d  p6:subClassOf  p7:MaladieHematologique  ?a  p9:argument2  ?d   => ?a  p9:argument1  p7:p	0.090361446	1	1	15	15	15	?a
+?b  p2:type  p1:TransitiveProperty  ?a  p9:argument2  p7:obs2   => ?a  p9:propertyPredicate  ?b	0.014388489	0.133333333	0.133333333	2	15	15	?a
+?b  p2:type  p1:TransitiveProperty  ?a  p9:argument1  p7:obs1   => ?a  p9:propertyPredicate  ?b	0.014388489	0.111111111	0.111111111	2	18	18	?a
+?b  p6:domain  p7:PrelevementLymphocyte  ?a  p9:argument1  p7:pre2   => ?a  p9:propertyPredicate  ?b	0.014388489	0.166666667	0.166666667	2	12	12	?a
+?b  p6:domain  p7:PrelevementLymphocyte  ?a  p9:argument2  p7:lymph1   => ?a  p9:propertyPredicate  ?b	0.014388489	0.5	0.5	2	4	4	?a
+?d  p2:type  p3:Instant  ?a  p3:hasTime  ?d   => ?a  p2:type  p1:NamedIndividual	0.040865385	1	1	34	34	34	?a
+?c  p1:oneOf  ?a  ?c  p6:subClassOf  p7:Monotherapie   => ?a  p2:rest  p2:nil	0.013297872	0.714285714	0.714285714	5	7	7	?a
+?d  p6:domain  p7:UPNPatient  ?a  p9:propertyPredicate  ?d   => ?a  p9:argument1  p7:p	0.469879518	1	1	78	78	78	?a
+?d  p6:range  p5:string  ?a  p9:propertyPredicate  ?d   => ?a  p9:argument1  p7:p	0.06626506	1	1	11	11	11	?a
+?c  p1:oneOf  ?a  ?c  p6:subClassOf  p7:Traitement   => ?a  p2:rest  p2:nil	0.013297872	0.714285714	0.714285714	5	7	7	?a
+?d  p2:type  p7:FacteurPronostic  ?a  p7:aPourFacteurPronostic  ?d   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
 ?e  p1:disjointWith  ?a  ?e  p6:subClassOf  ?b   => ?a  p6:subClassOf  ?b	0.050847458	1	1	6	6	6	?a
-?f  p2:type  ?b  ?a  p7:aPourMaladie  ?f   => ?a  p2:type  ?b	0.016826923	0.333333333	0.333333333	14	42	42	?a
-?f  p1:oneOf  ?a  ?b  p2:type  ?f   => ?a  p2:first  ?b	0.018617021	0.636363636	0.636363636	7	11	11	?a
-?a  p1:equivalentClass  ?f  ?f  p2:type  ?b   => ?a  p2:type  ?b	0.010817308	0.6	0.6	9	15	15	?a
-?f  p2:type  ?b  ?a  p3:hasTime  ?f   => ?a  p2:type  ?b	0.044471154	0.5	0.5	37	74	74	?a
-?e  p2:type  ?b  ?e  p7:aPourFacteurPronostic  ?a   => ?a  p2:type  ?b	0.016826923	0.5	0.5	14	28	28	?a
-?f  p2:type  ?b  ?a  p3:before  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?c  p2:type  p3:Instant  ?c  p3:after  ?a   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
+?b  p6:range  p5:float  ?a  p9:argument2  p7:lymph1   => ?a  p9:propertyPredicate  ?b	0.014388489	0.166666667	0.166666667	2	12	12	?a
+?d  p3:after  ?a  ?a  p3:before  ?d   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
+?d  p2:type  p3:Instant  ?a  p3:before  ?d   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
 ?b  p2:type  ?f  ?a  p9:argument2  ?f   => ?a  p9:argument2  ?b	0.107913669	1	1	15	15	15	?a
-?e  p2:type  ?b  ?e  p3:after  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
-?e  p2:type  ?b  ?e  p3:hasTime  ?a   => ?a  p2:type  ?b	0.043269231	0.5	0.5	36	72	72	?a
-?e  p2:type  ?b  ?e  p7:aPourPrelevement  ?a   => ?a  p2:type  ?b	0.033653846	0.5	0.5	28	56	56	?a
+?a  p3:after  ?d  ?d  p3:before  ?a   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
+?d  p2:type  p1:Class  ?a  p7:aPourMaladie  ?d   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
+?d  p6:subClassOf  p7:MaladieHematologique  ?a  p7:aPourMaladie  ?d   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
+?c  p2:type  p3:Instant  ?c  p3:before  ?a   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
+?c  p2:first  ?a  ?c  p2:rest  p2:nil   => ?a  p2:type  p1:NamedIndividual	0.012019231	0.104166667	0.12345679	10	96	81	?a
+?a  p2:first  p7:Chlorambucil  ?b  p2:first  p7:Cyclophosphamide   => ?a  p2:rest  ?b	0.021276596	0.125	0.125	8	64	64	?a
+?a  p2:first  p7:Ofatumumab  ?b  p2:first  p7:Rituximab   => ?a  p2:rest  ?b	0.02393617	0.111111111	0.111111111	9	81	81	?a
+?c  p7:aPourFacteurPronostic  ?a  ?c  p7:aPourMaladie  p7:LLC   => ?a  p2:type  p1:NamedIndividual	0.015625	1	1	13	13	13	?a
+?c  p3:hasTime  ?a  p7:patient2  p7:aPourPrelevement  ?c   => ?a  p2:type  p1:NamedIndividual	0.022836538	1	1	19	19	19	?a
+?b  p6:subClassOf  p7:PrelevementNFS  p7:patient2  p7:aPourPrelevement  ?a   => ?a  p2:type  ?b	0.028846154	0.25	0.25	24	96	96	?a
+?c  p2:type  p7:PrelevementLymphocyte  ?c  p3:hasTime  ?a   => ?a  p2:type  p1:NamedIndividual	0.022836538	1	1	19	19	19	?a
+?c  p2:type  p7:UPNPatient  ?c  p7:aPourPrelevement  ?a   => ?a  p2:type  p1:NamedIndividual	0.033653846	1	1	28	28	28	?a
+?f  p2:type  ?b  ?a  p3:before  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
 ?f  p2:type  ?b  ?a  p7:aPourFacteurPronostic  ?f   => ?a  p2:type  ?b	0.016826923	0.5	0.5	14	28	28	?a
-?f  p2:type  ?b  ?a  p3:after  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?d  p2:type  p3:Instant  ?a  p3:after  ?d   => ?a  p2:type  p1:NamedIndividual	0.032451923	1	1	27	27	27	?a
+?c  p2:type  p7:UPNPatient  ?c  p7:aPourFacteurPronostic  ?a   => ?a  p2:type  p1:NamedIndividual	0.016826923	1	1	14	14	14	?a
 ?e  p1:equivalentClass  ?a  ?e  p2:type  ?b   => ?a  p2:type  ?b	0.010817308	0.6	0.6	9	15	15	?a
-?e  p2:type  ?b  ?e  p3:before  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
-?a  p2:type  ?e  ?e  p6:subClassOf  ?b   => ?a  p2:type  ?b	0.034855769	0.284313725	0.284313725	29	102	102	?a
+?e  p2:type  ?b  ?e  p7:aPourFacteurPronostic  ?a   => ?a  p2:type  ?b	0.016826923	0.5	0.5	14	28	28	?a
+?e  p2:type  ?b  ?e  p3:hasTime  ?a   => ?a  p2:type  ?b	0.043269231	0.5	0.5	36	72	72	?a
 ?e  p2:type  ?b  ?e  p6:subClassOf  ?a   => ?a  p2:type  ?b	0.042067308	0.777777778	0.795454545	35	45	44	?a
+?a  p2:type  ?e  ?e  p6:subClassOf  ?b   => ?a  p2:type  ?b	0.034855769	0.284313725	0.284313725	29	102	102	?a
+?a  p2:first  p7:Alemtuzumab  ?b  p2:first  p7:Obinutuzumab   => ?a  p2:rest  ?b	0.02393617	0.111111111	0.111111111	9	81	81	?a
+?a  p2:first  p7:Obinutuzumab  ?b  p2:first  p7:Ofatumumab   => ?a  p2:rest  ?b	0.02393617	0.111111111	0.111111111	9	81	81	?a
+?c  p7:aPourMaladie  p7:LLC  ?c  p7:aPourPrelevement  ?a   => ?a  p2:type  p1:NamedIndividual	0.033653846	1	1	28	28	28	?a
+?f  p2:type  ?b  ?a  p3:hasTime  ?f   => ?a  p2:type  ?b	0.044471154	0.5	0.5	37	74	74	?a
+?f  p2:type  ?b  ?a  p7:aPourMaladie  ?f   => ?a  p2:type  ?b	0.016826923	0.333333333	0.333333333	14	42	42	?a
+?f  p2:type  ?b  ?a  p3:after  ?f   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
 ?f  p2:type  ?b  ?a  p6:subClassOf  ?f   => ?a  p2:type  ?b	0.122596154	0.927272727	0.927272727	102	110	110	?a
-p6:http://www.w3.org/2000/01/rdf-schema#
-p1:http://www.w3.org/2002/07/owl#
+?e  p1:oneOf  ?a  ?b  p2:type  ?e   => ?a  p2:first  ?b	0.018617021	0.636363636	0.636363636	7	11	11	?a
+?a  p1:equivalentClass  ?f  ?f  p2:type  ?b   => ?a  p2:type  ?b	0.010817308	0.6	0.6	9	15	15	?a
+?e  p2:type  ?b  ?e  p3:before  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?e  p2:type  ?b  ?e  p3:after  ?a   => ?a  p2:type  ?b	0.064903846	1	1	54	54	54	?a
+?e  p2:type  ?b  ?e  p7:aPourPrelevement  ?a   => ?a  p2:type  ?b	0.033653846	0.5	0.5	28	56	56	?a
 p2:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+p9:http://www.w3.org/2003/11/swrl#
 p7:http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#
 p3:http://www.w3.org/2006/time#
-p9:http://www.w3.org/2003/11/swrl#
-Mining done in 0.224 s
-Total time 0.588 s
-19 rules mined.
+p1:http://www.w3.org/2002/07/owl#
+p6:http://www.w3.org/2000/01/rdf-schema#
+p5:http://www.w3.org/2001/XMLSchema#
+p4:http://swrl.stanford.edu/ontologies/3.3/swrla.owl#
+Mining done in 0.322 s
+Total time 0.509 s
+168 rules mined.
