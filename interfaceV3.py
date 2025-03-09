@@ -3,8 +3,9 @@ import os
 import subprocess
 import csv
 
+import pyparsing
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QGroupBox, QPushButton, QLabel, QCheckBox, QLineEdit, QTextEdit, QToolButton,
     QStackedWidget, QFileDialog, QMessageBox, QVBoxLayout, QScrollArea, QFormLayout
 )
@@ -30,12 +31,13 @@ def convert_owl_to_ttl(input_file, output_file):
         print(f"Erreur lors de la conversion OWL->TTL: {e}")
         return False
 
+
 # <-------------------------->
 # Fonction pour générer le graphe BFS
 # <-------------------------->
 def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", fig_width=10, fig_height=5):
     # Lit un fichier OWL (RDF/XML), construit un graphe BFS de gauche à droite et enregistre dans output_image
-    
+
     g = Graph()
     g.parse(owl_file, format="xml")
     print(f"[INFO] {len(g)} triplets chargés depuis {owl_file}.")
@@ -48,7 +50,7 @@ def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", f
     for c in g.subjects(RDF.type, RDFS.Class):
         if isinstance(c, URIRef):
             classes.add(c)
-    #print(f"Nombre de classes (URIRef) détectées : {len(classes)}")
+    # print(f"Nombre de classes (URIRef) détectées : {len(classes)}")
 
     # Construire un graphe orienté (parent->enfant)
     nx_graph = nx.DiGraph()
@@ -105,7 +107,8 @@ def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", f
 
     # Figure de taille fig_width x fig_height
     plt.figure(figsize=(fig_width, fig_height))
-    nx.draw(nx_graph, pos=pos, with_labels=False, node_size=100, node_color="#ccccff", arrowstyle="->", arrowsize=8, width=0.8)
+    nx.draw(nx_graph, pos=pos, with_labels=False, node_size=100, node_color="#ccccff", arrowstyle="->", arrowsize=8,
+            width=0.8)
     nx.draw_networkx_labels(nx_graph, pos, labels=labels, font_size=6)
 
     plt.axis('off')
@@ -113,7 +116,7 @@ def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", f
     plt.savefig(output_image, dpi=90)
     plt.close()
 
-    #print(f"Arbre généré dans {output_image}.")
+    # print(f"Arbre généré dans {output_image}.")
 
 
 # <-------------------------->
@@ -121,15 +124,15 @@ def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", f
 # <-------------------------->
 class RuleExtractionModel:
     def __init__(self):
-        self.ontologies = [] # Liste des chemins vers les ontologies chargées
-        self.regles = []     # Liste des règles extraites
-    
+        self.ontologies = []  # Liste des chemins vers les ontologies chargées
+        self.regles = []  # Liste des règles extraites
+
     def charger_ontologie(self, path):
         if os.path.exists(path):
             self.ontologies.append(path)
             return True
         return False
-    
+
     def extraire_regles(self):
         # Logique d'extraction de règles (simulation ici)
         regle = {
@@ -153,6 +156,7 @@ class RuleExtractionModel:
             print(f"Erreur lors de la sauvegarde : {e}")
             return False
 
+
 # <-------------------------->
 # Pages
 # <-------------------------->
@@ -170,6 +174,7 @@ class AccueilPage(QWidget):
         self.label_info.setStyleSheet("border: 2px solid red; color: black;")
         layout.addWidget(self.label_info)
         self.setLayout(layout)
+
 
 class GestionOntologiesPage(QWidget):
     # Page pour la gestion des ontologies (chargement, visualisation...)
@@ -225,6 +230,7 @@ class ExtractionReglesPage(QWidget):
         layout.addWidget(self.text_edit)
         self.setLayout(layout)
 
+
 class QualiteValidationPage(QWidget):
     # Page pour mesurer la qualité des règles et les valider
     def __init__(self, parent=None):
@@ -236,6 +242,7 @@ class QualiteValidationPage(QWidget):
         layout.addWidget(self.text_edit)
         self.setLayout(layout)
 
+
 class AnalyseDonneesPage(QWidget):
     # Page pour l'analyse et l'interrogation des données
     def __init__(self, parent=None):
@@ -243,9 +250,11 @@ class AnalyseDonneesPage(QWidget):
         layout = QVBoxLayout()
         self.label = QLabel("Page : Analyse et interrogation des données")
         self.text_edit = QTextEdit()
+        self.text_edit.setPlaceholderText("Veuillez entrer une requête SPARQL")
         layout.addWidget(self.label)
         layout.addWidget(self.text_edit)
         self.setLayout(layout)
+
 
 class ComparaisonPage(QWidget):
     # Page pour comparer des résultats d'extraction
@@ -258,6 +267,7 @@ class ComparaisonPage(QWidget):
         layout.addWidget(self.text_edit)
         self.setLayout(layout)
 
+
 # <-------------------------->
 # Vue
 # <-------------------------->
@@ -267,19 +277,19 @@ class RuleExtractionView(QMainWindow):
         super().__init__()
         self.setWindowTitle("Application d'extraction de règles de LLC")
         self.resize(2400, 800)
-        
+
         # Widget central pour QMainWindow
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
-        
+
         # Layout principal (horizontal) : colonne de gauche + zone centrale
         main_layout = QHBoxLayout(central_widget)
-        
+
         # <-------------------------->
         # 1) Colonne de gauche
         # <-------------------------->
         self.left_panel = QVBoxLayout()
-        
+
         # Groupe : Gestion des ontologies
         group_ontologies = QGroupBox("Gestion des ontologies")
         ontologies_layout = QVBoxLayout()
@@ -288,7 +298,7 @@ class RuleExtractionView(QMainWindow):
         ontologies_layout.addWidget(self.btn_charger_ontologie)
         ontologies_layout.addWidget(self.btn_visualiser_ontologie)
         group_ontologies.setLayout(ontologies_layout)
-        
+
         # Groupe : Extraction et gestion des règles
         group_regles = QGroupBox("Extraction et gestion des règles")
         regles_layout = QVBoxLayout()
@@ -301,7 +311,7 @@ class RuleExtractionView(QMainWindow):
         regles_layout.addWidget(self.btn_visualiser_regles)
         regles_layout.addWidget(self.btn_sauvegarder_regles)
         group_regles.setLayout(regles_layout)
-        
+
         # Groupe : Qualité et validation des règles
         group_qualite = QGroupBox("Qualité et validation des règles")
         qualite_layout = QVBoxLayout()
@@ -312,25 +322,29 @@ class RuleExtractionView(QMainWindow):
         qualite_layout.addWidget(self.btn_mesurer_qualite_regles)
         qualite_layout.addWidget(self.btn_valider_regle)
         group_qualite.setLayout(qualite_layout)
-        
+
         # Groupe : Analyse et interrogation des données
         group_analyse = QGroupBox("Analyse et interrogation des données")
         analyse_layout = QVBoxLayout()
         self.btn_interroger_donnees = QPushButton("Interroger les données")
         self.btn_tester_hypothese = QPushButton("Tester une hypothèse")
         self.btn_marquer_donnees = QPushButton("Marquer les données")
+        self.btn_executer_requete = QPushButton("Exécuter la requête")
+
         analyse_layout.addWidget(self.btn_interroger_donnees)
         analyse_layout.addWidget(self.btn_tester_hypothese)
         analyse_layout.addWidget(self.btn_marquer_donnees)
+        analyse_layout.addWidget(self.btn_executer_requete)
+
         group_analyse.setLayout(analyse_layout)
-        
+
         # Groupe : Comparaison
         group_comparaison = QGroupBox("Comparaison")
         comparaison_layout = QVBoxLayout()
         self.btn_comparer_resultats = QPushButton("Comparer des résultats d'extraction")
         comparaison_layout.addWidget(self.btn_comparer_resultats)
         group_comparaison.setLayout(comparaison_layout)
-        
+
         # Groupe : AMIE3
         group_amie3 = QGroupBox("AMIE3")
         amie3_layout = QVBoxLayout()
@@ -340,7 +354,7 @@ class RuleExtractionView(QMainWindow):
 
         self.btn_lancer_amie3 = QPushButton("Lancer AMIE3")
         amie3_layout.addWidget(self.btn_lancer_amie3)
-    
+
         group_amie3.setLayout(amie3_layout)
 
         self.btn_lancer_amie3_save = QPushButton("Lancer AMIE3 + Sauvegarder")
@@ -354,7 +368,7 @@ class RuleExtractionView(QMainWindow):
         self.left_panel.addWidget(group_comparaison)
         self.left_panel.addWidget(group_amie3)
         self.left_panel.addStretch()
-         
+
         # <-------------------------->
         # 2) Zone centrale
         # <-------------------------->
@@ -381,27 +395,27 @@ class RuleExtractionView(QMainWindow):
         tools_layout.addWidget(self.btn_reset_view)
         tools_layout.addStretch()
         tools_layout.addWidget(self.lineedit_recherche)
-        
+
         # QStackedWidget : pages
-        self.stacked_widget = QStackedWidget()      
-        self.page_accueil = AccueilPage()                  # index 0
-        self.page_gestion_onto = GestionOntologiesPage()    # index 1
-        self.page_extraction_regles = ExtractionReglesPage() # index 2
-        self.page_qualite = QualiteValidationPage()         # index 3
-        self.page_analyse = AnalyseDonneesPage()            # index 4
-        self.page_comparaison = ComparaisonPage()           # index 5
-        
-        self.stacked_widget.addWidget(self.page_accueil)          
-        self.stacked_widget.addWidget(self.page_gestion_onto)     
+        self.stacked_widget = QStackedWidget()
+        self.page_accueil = AccueilPage()  # index 0
+        self.page_gestion_onto = GestionOntologiesPage()  # index 1
+        self.page_extraction_regles = ExtractionReglesPage()  # index 2
+        self.page_qualite = QualiteValidationPage()  # index 3
+        self.page_analyse = AnalyseDonneesPage()  # index 4
+        self.page_comparaison = ComparaisonPage()  # index 5
+
+        self.stacked_widget.addWidget(self.page_accueil)
+        self.stacked_widget.addWidget(self.page_gestion_onto)
         self.stacked_widget.addWidget(self.page_extraction_regles)
-        self.stacked_widget.addWidget(self.page_qualite)          
-        self.stacked_widget.addWidget(self.page_analyse)          
-        self.stacked_widget.addWidget(self.page_comparaison)      
-        
+        self.stacked_widget.addWidget(self.page_qualite)
+        self.stacked_widget.addWidget(self.page_analyse)
+        self.stacked_widget.addWidget(self.page_comparaison)
+
         self.central_layout.addWidget(self.label_titre)
         self.central_layout.addLayout(tools_layout)
         self.central_layout.addWidget(self.stacked_widget)
-        
+
         # Assemblage du layout principal
         main_layout.addLayout(self.left_panel, 1)
         main_layout.addLayout(self.central_layout, 3)
@@ -415,7 +429,7 @@ class RuleExtractionController:
         self.model = model
         self.view = view
         self._connect_signals()
-    
+
     def _connect_signals(self):
         # Gestion ontologies
         self.view.btn_charger_ontologie.clicked.connect(self.do_charger_ontologie)
@@ -441,16 +455,18 @@ class RuleExtractionController:
         self.view.btn_interroger_donnees.clicked.connect(lambda: self.afficher_page(4))
         self.view.btn_tester_hypothese.clicked.connect(lambda: self.afficher_page(4))
         self.view.btn_marquer_donnees.clicked.connect(lambda: self.afficher_page(4))
+        self.view.btn_executer_requete.clicked.connect(self.executer_requete)
+        self.view.btn_executer_requete.setEnabled(False)
 
         # Comparaison
         self.view.btn_comparer_resultats.clicked.connect(lambda: self.afficher_page(5))
-        
+
         # Bouton AMIE3
         self.view.btn_lancer_amie3.clicked.connect(self.do_lancer_amie3)
 
         # Bouton Lancer AMIE3 + Sauvegarder
         self.view.btn_lancer_amie3_save.clicked.connect(self.do_lancer_amie3_avec_sauvegarde)
-        
+
         # Boutons de zoom
         self.view.btn_zoom_in.clicked.connect(self.zoom_in)
         self.view.btn_zoom_out.clicked.connect(self.zoom_out)
@@ -459,14 +475,14 @@ class RuleExtractionController:
     # Fonctions de gestion des ontologies
     def do_charger_ontologie(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self.view, "Charger une ontologie", "", 
+            self.view, "Charger une ontologie", "",
             "Fichiers OWL (*.owl);;Tous les fichiers (*)"
         )
         if file_path:
             if self.model.charger_ontologie(file_path):
                 self.view.page_gestion_onto.text_edit.append(f"Ontologie chargée : {file_path}")
-                QMessageBox.information(self.view, "Chargement", 
-                    f"L'ontologie a été chargée avec succès.\nChemin : {file_path}")
+                QMessageBox.information(self.view, "Chargement",
+                                        f"L'ontologie a été chargée avec succès.\nChemin : {file_path}")
             else:
                 QMessageBox.warning(self.view, "Erreur", "Le fichier sélectionné n'a pas pu être chargé.")
 
@@ -545,7 +561,7 @@ class RuleExtractionController:
             f"Body Size: {regle['body_size']}\n"
         )
         self.afficher_page(2)
-    
+
     def do_lister_regles(self):
         self.view.page_extraction_regles.text_edit.append("Liste des règles extraites :")
         if not self.model.regles:
@@ -554,7 +570,7 @@ class RuleExtractionController:
             for idx, regle in enumerate(self.model.regles, start=1):
                 self.view.page_extraction_regles.text_edit.append(f"{idx}. {regle['rule']}")
         self.afficher_page(2)
-    
+
     def do_visualiser_regles(self):
         self.view.page_extraction_regles.text_edit.append("Détails des règles extraites :")
         for regle in self.model.regles:
@@ -577,21 +593,22 @@ class RuleExtractionController:
         self.view.page_qualite.text_edit.append("Mesure de qualité pour la règle sélectionnée :")
         self.view.page_qualite.text_edit.append("Support : 0.65, Confiance : 0.80")
         self.afficher_page(3)
-    
+
     def do_mesurer_qualite_regles(self):
         self.view.page_qualite.text_edit.append("Mesure de qualité pour l'ensemble des règles :")
         self.view.page_qualite.text_edit.append("Moyenne Support : 0.60, Moyenne Confiance : 0.78")
         self.afficher_page(3)
-    
+
     def do_valider_regle(self):
         self.view.page_qualite.text_edit.append("La règle a été validée avec succès.")
         self.afficher_page(3)
 
-    # Fonction pour lancer AMIE3 
+    # Fonction pour lancer AMIE3
     def do_lancer_amie3(self):
         # Vérifier qu'une ontologie a été chargée
         if not self.model.ontologies:
-            self.view.page_extraction_regles.text_edit.append("Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
+            self.view.page_extraction_regles.text_edit.append(
+                "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
             self.afficher_page(2)
             return
 
@@ -638,10 +655,12 @@ class RuleExtractionController:
             self.view.page_extraction_regles.text_edit.append(f"Erreur lors du lancement d'AMIE3: {e}")
             self.afficher_page(2)
 
+        os.remove(ttl_path)
     # Fonction qui fait la meme chose que do_lancer_amie3, mais on enregistre la sortie stdout dans un fichier
     def do_lancer_amie3_avec_sauvegarde(self):
         if not self.model.ontologies:
-            self.view.page_extraction_regles.text_edit.append("Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
+            self.view.page_extraction_regles.text_edit.append(
+                "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
             self.afficher_page(2)
             return
 
@@ -650,28 +669,29 @@ class RuleExtractionController:
             self.view,
             "Enregistrer la sortie d'AMIE3",
             "",  # chemin par défaut
-            "Fichiers texte (*.txt);;Tous les fichiers (*)"
+            "Fichiers texte (*.txt);;Fichiers CSV (*.csv);;Tous les fichiers (*)"
         )
+
         if not output_file:  # si l'utilisateur annule
             return
 
         # Conversion OWL en TTL
         input_owl = self.model.ontologies[-1]
         ttl_path = os.path.join(os.getcwd(), "ontology.ttl")
-        
+
         self.view.page_extraction_regles.text_edit.append(f"Conversion de l'ontologie {input_owl} en Turtle...")
         if not convert_owl_to_ttl(input_owl, ttl_path):
             self.view.page_extraction_regles.text_edit.append("La conversion de l'ontologie en TTL a échoué.")
             self.afficher_page(2)
             return
-        
+
         # Construire la commande AMIE3
         jar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "amie3.jar")
         if not os.path.exists(jar_path):
             self.view.page_extraction_regles.text_edit.append("Fichier amie3.jar introuvable.")
             self.afficher_page(2)
             return
-        
+
         # Récupérer la liste d'arguments dynamiques
         amie_params = self.view.amie3_params_widget.build_amie3_params()
 
@@ -689,12 +709,16 @@ class RuleExtractionController:
                 universal_newlines=True
             )
             stdout, stderr = process.communicate(timeout=120)
-            
-            # Enregistrer la sortie stdout
-            with open(output_file, "w", encoding="utf-8") as f:
-                f.write(stdout)
 
+
+            if output_file.split('.')[-1] == 'csv' :
+                self.amie_to_csv(output_file,stdout)
+            else :
+            # Enregistrer la sortie stdout
+                with open(output_file, "w", encoding="utf-8") as f:
+                    f.write(stdout)
             # Afficher dans la text_edit
+            self.view.page_extraction_regles.text_edit.clear()
             self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
             self.view.page_extraction_regles.text_edit.append(stdout)
 
@@ -708,11 +732,14 @@ class RuleExtractionController:
             self.view.page_extraction_regles.text_edit.append(f"Erreur lors du lancement d'AMIE3: {e}")
             self.afficher_page(2)
 
-
     # Navigation entre pages
     def afficher_page(self, index):
+        if index != 4 :
+            self.view.btn_executer_requete.setEnabled(False)
+        else :
+            self.view.btn_executer_requete.setEnabled(True)
         self.view.stacked_widget.setCurrentIndex(index)
-    
+
     # Fonctions de zoom
     def zoom_in(self):
         current_page = self.view.stacked_widget.currentWidget()
@@ -730,7 +757,8 @@ class RuleExtractionController:
                 new_size = max(1, font.pointSize() - 1)
                 font.setPointSize(new_size)
                 child.setFont(font)
-    
+
+
     def reset_view(self):
         current_page = self.view.stacked_widget.currentWidget()
         if current_page:
@@ -738,6 +766,63 @@ class RuleExtractionController:
                 font = child.font()
                 font.setPointSize(10)
                 child.setFont(font)
+
+
+    def executer_requete(self):
+        print(self.view.page_analyse.text_edit.toPlainText())
+
+        if not self.model.ontologies:
+            self.view.page_analyse.text_edit.clear()
+            self.view.page_analyse.text_edit.append("Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
+            return
+
+        g = Graph()
+        g.parse(self.model.ontologies[-1])
+
+        try:
+            results = g.query(self.view.page_analyse.text_edit.toPlainText())
+        except pyparsing.exceptions.ParseException :
+            self.view.page_analyse.text_edit.clear()
+            self.view.page_analyse.text_edit.append("Erreur lors de la saisie de la requête")
+            return
+        self.afficher_resultats_requete(results)
+
+    def afficher_resultats_requete(self,results):
+        liste_variables = [x.toPython()[1:] for x in results.vars]
+        self.view.page_analyse.text_edit.clear()
+        self.view.page_analyse.text_edit.append('\t\t'.join([x.toPython() for x in results.vars]))
+        for row in results:
+            line = []
+            for var in liste_variables:
+                line += [row[var]]
+            self.view.page_analyse.text_edit.append('\t\t\t'.join(line)+'\n')
+
+    def amie_to_csv(self,file_path,amie_result):
+        index = 0
+        lines = amie_result.split('\n')
+
+        #Arriver jusqu'au colonnes
+        while not lines[index].startswith("Starting the mining phase...") :
+            index+=1
+
+        columns = lines[index +1].split('\t')
+
+        #On se place sur la première règle extraite
+        lines = lines[index + 2:]
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(';'.join(columns)+'\n')
+                for line in lines:
+                    if line.__contains__("=>"):
+                        f.write(';'.join(line.split('\t'))+'\n')
+                f.close()
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde : {e}")
+
+
+
+
+
 
 # <-------------------------->
 # Paramètres AMIE3
@@ -753,73 +838,74 @@ class Amie3ParamsWidget(QWidget):
         content_widget = QWidget()
         self.form_layout = QFormLayout(content_widget)
 
-        # Paramètres numériques ou textuels        
+        # Paramètres numériques ou textuels
 
-        self.lineedit_mins = QLineEdit("100")          # -mins
+        self.lineedit_mins = QLineEdit("100")  # -mins
         self.form_layout.addRow(QLabel("-mins (min-support)"), self.lineedit_mins)
 
-        self.lineedit_minis = QLineEdit("100")         # -minis
+        self.lineedit_minis = QLineEdit("100")  # -minis
         self.form_layout.addRow(QLabel("-minis (min-initial-support)"), self.lineedit_minis)
 
-        self.lineedit_minhc = QLineEdit("0.01")        # -minhc
+        self.lineedit_minhc = QLineEdit("0.01")  # -minhc
         self.form_layout.addRow(QLabel("-minhc (min-head-coverage)"), self.lineedit_minhc)
 
-        self.lineedit_pm = QLineEdit("headcoverage")   # -pm
+        self.lineedit_pm = QLineEdit("headcoverage")  # -pm
         self.form_layout.addRow(QLabel("-pm (pruning-metric)"), self.lineedit_pm)
 
-        self.lineedit_bexr = QLineEdit("")             # -bexr
+        self.lineedit_bexr = QLineEdit("")  # -bexr
         self.form_layout.addRow(QLabel("-bexr (body-excluded-relations)"), self.lineedit_bexr)
 
-        self.lineedit_hexr = QLineEdit("")             # -hexr
+        self.lineedit_hexr = QLineEdit("")  # -hexr
         self.form_layout.addRow(QLabel("-hexr (head-excluded-relations)"), self.lineedit_hexr)
 
-        self.lineedit_iexr = QLineEdit("")             # -iexr
+        self.lineedit_iexr = QLineEdit("")  # -iexr
         self.form_layout.addRow(QLabel("-iexr (instantiation-excluded-relations)"), self.lineedit_iexr)
 
-        self.lineedit_htr = QLineEdit("")              # -htr
+        self.lineedit_htr = QLineEdit("")  # -htr
         self.form_layout.addRow(QLabel("-htr (head-target-relations)"), self.lineedit_htr)
 
-        self.lineedit_btr = QLineEdit("")              # -btr
+        self.lineedit_btr = QLineEdit("")  # -btr
         self.form_layout.addRow(QLabel("-btr (body-target-relations)"), self.lineedit_btr)
 
-        self.lineedit_itr = QLineEdit("")              # -itr
+        self.lineedit_itr = QLineEdit("")  # -itr
         self.form_layout.addRow(QLabel("-itr (instantiation-target-relations)"), self.lineedit_itr)
 
-        self.lineedit_maxad = QLineEdit("3")           # -maxad
+        self.lineedit_maxad = QLineEdit("3")  # -maxad
         self.form_layout.addRow(QLabel("-maxad (max-depth)"), self.lineedit_maxad)
 
-        self.lineedit_minpca = QLineEdit("0.0")        # -minpca
+        self.lineedit_minpca = QLineEdit("0.0")  # -minpca
         self.form_layout.addRow(QLabel("-minpca (min-pca-confidence)"), self.lineedit_minpca)
 
-        self.lineedit_bias = QLineEdit("default")      # -bias
+        self.lineedit_bias = QLineEdit("default")  # -bias
         self.form_layout.addRow(QLabel("-bias (oneVar|default|lazy|...)"), self.lineedit_bias)
 
-        self.lineedit_rl = QLineEdit("")               # -rl (recursivity-limit)
+        self.lineedit_rl = QLineEdit("")  # -rl (recursivity-limit)
         self.form_layout.addRow(QLabel("-rl (recursivity-limit)"), self.lineedit_rl)
 
-        self.lineedit_nc = QLineEdit("8")              # -nc
+        self.lineedit_nc = QLineEdit("8")  # -nc
         self.form_layout.addRow(QLabel("-nc (n-threads)"), self.lineedit_nc)
 
-        self.lineedit_minc = QLineEdit("0.0")          # -minc
+        self.lineedit_minc = QLineEdit("0.0")  # -minc
         self.form_layout.addRow(QLabel("-minc (min-std-confidence)"), self.lineedit_minc)
 
-        self.lineedit_vo = QLineEdit("fun")            # -vo
+        self.lineedit_vo = QLineEdit("fun")  # -vo
         self.form_layout.addRow(QLabel("-vo (variableOrder)"), self.lineedit_vo)
 
-        self.lineedit_ef = QLineEdit("")               # -ef (extraFile)
+        self.lineedit_ef = QLineEdit("")  # -ef (extraFile)
         self.form_layout.addRow(QLabel("-ef (extraFile)"), self.lineedit_ef)
 
-        self.lineedit_d = QLineEdit("")                # -d (delimiter)
+        self.lineedit_d = QLineEdit("")  # -d (delimiter)
         self.form_layout.addRow(QLabel("-d (delimiter)"), self.lineedit_d)
-
 
         # Paramètres booléens (checkBox)
 
         self.checkbox_oute = QCheckBox("-oute (output-at-end)")
         self.form_layout.addRow(self.checkbox_oute)
 
+        # Garder cette option toujours activée pour faciliter la conversion en CSV
         self.checkbox_datalog = QCheckBox("-datalog (datalog-output)")
         self.form_layout.addRow(self.checkbox_datalog)
+        self.checkbox_datalog.setCheckState(2)
 
         self.checkbox_const = QCheckBox("-const (allow-constants)")
         self.form_layout.addRow(self.checkbox_const)
@@ -1036,13 +1122,14 @@ class Amie3ParamsWidget(QWidget):
 # <-------------------------->
 def main():
     app = QApplication(sys.argv)
-    
+
     model = RuleExtractionModel()
     view = RuleExtractionView()
     controller = RuleExtractionController(model, view)
-    
+
     view.show()
     sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()
