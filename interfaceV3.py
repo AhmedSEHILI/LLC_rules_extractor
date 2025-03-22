@@ -7,11 +7,12 @@ import pyparsing
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QGroupBox, QPushButton, QLabel, QCheckBox, QLineEdit, QTextEdit, QToolButton,
-    QStackedWidget, QFileDialog, QMessageBox, QVBoxLayout, QScrollArea, QFormLayout
+    QStackedWidget, QFileDialog, QMessageBox, QVBoxLayout, QScrollArea, QFormLayout, QTableWidget, QTableWidgetItem
 )
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont, QTextOption, QPixmap
 
+from RequeteSPARQLView import RequeteSPARQLView
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -225,9 +226,10 @@ class ExtractionReglesPage(QWidget):
         super().__init__(parent)
         layout = QVBoxLayout()
         self.label = QLabel("Page : Extraction et gestion des règles")
-        self.text_edit = QTextEdit()
+        #self.text_edit = QTextEdit()
+        self.table_resultats = QTableWidget()
         layout.addWidget(self.label)
-        layout.addWidget(self.text_edit)
+        layout.addWidget(self.table_resultats)
         self.setLayout(layout)
 
 
@@ -249,10 +251,9 @@ class AnalyseDonneesPage(QWidget):
         super().__init__(parent)
         layout = QVBoxLayout()
         self.label = QLabel("Page : Analyse et interrogation des données")
-        self.text_edit = QTextEdit()
-        self.text_edit.setPlaceholderText("Veuillez entrer une requête SPARQL")
+        self.table = QTableWidget()
         layout.addWidget(self.label)
-        layout.addWidget(self.text_edit)
+        layout.addWidget(self.table)
         self.setLayout(layout)
 
 
@@ -324,17 +325,16 @@ class RuleExtractionView(QMainWindow):
         group_qualite.setLayout(qualite_layout)
 
         # Groupe : Analyse et interrogation des données
+        self.fenetre_requete = RequeteSPARQLView()
         group_analyse = QGroupBox("Analyse et interrogation des données")
         analyse_layout = QVBoxLayout()
         self.btn_interroger_donnees = QPushButton("Interroger les données")
         self.btn_tester_hypothese = QPushButton("Tester une hypothèse")
         self.btn_marquer_donnees = QPushButton("Marquer les données")
-        self.btn_executer_requete = QPushButton("Exécuter la requête")
 
         analyse_layout.addWidget(self.btn_interroger_donnees)
         analyse_layout.addWidget(self.btn_tester_hypothese)
         analyse_layout.addWidget(self.btn_marquer_donnees)
-        analyse_layout.addWidget(self.btn_executer_requete)
 
         group_analyse.setLayout(analyse_layout)
 
@@ -452,17 +452,16 @@ class RuleExtractionController:
         self.view.btn_valider_regle.clicked.connect(self.do_valider_regle)
 
         # Analyse des données
-        self.view.btn_interroger_donnees.clicked.connect(lambda: self.afficher_page(4))
+        self.view.btn_interroger_donnees.clicked.connect(lambda: self.view.fenetre_requete.show())
         self.view.btn_tester_hypothese.clicked.connect(lambda: self.afficher_page(4))
         self.view.btn_marquer_donnees.clicked.connect(lambda: self.afficher_page(4))
-        self.view.btn_executer_requete.clicked.connect(self.executer_requete)
-        self.view.btn_executer_requete.setEnabled(False)
+        self.view.fenetre_requete.btn_executer_requete.clicked.connect(self.executer_requete)
 
         # Comparaison
         self.view.btn_comparer_resultats.clicked.connect(lambda: self.afficher_page(5))
 
         # Bouton AMIE3
-        self.view.btn_lancer_amie3.clicked.connect(self.do_lancer_amie3)
+        self.view.btn_lancer_amie3.clicked.connect(self.extraire_regles_amie3)
 
         # Bouton Lancer AMIE3 + Sauvegarder
         self.view.btn_lancer_amie3_save.clicked.connect(self.do_lancer_amie3_avec_sauvegarde)
@@ -604,11 +603,17 @@ class RuleExtractionController:
         self.afficher_page(3)
 
     # Fonction pour lancer AMIE3
+    def extraire_regles_amie3(self):
+        resultat = self.do_lancer_amie3()
+        if not resultat is None:
+            self.afficher_resultats_amie3(resultat)
+            self.afficher_page(2)
+        return
+
     def do_lancer_amie3(self):
         # Vérifier qu'une ontologie a été chargée
         if not self.model.ontologies:
-            self.view.page_extraction_regles.text_edit.append(
-                "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
+            QMessageBox.warning(self.view, "Erreur", "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
             self.afficher_page(2)
             return
 
@@ -618,9 +623,9 @@ class RuleExtractionController:
         ttl_path = os.path.join(os.getcwd(), "ontology.ttl")
 
         # Conversion en TTL
-        self.view.page_extraction_regles.text_edit.append(f"Conversion de l'ontologie {input_owl} en Turtle...")
+        QMessageBox.warning(self.view, "En cours","Conversion de l'ontologie {input_owl} en Turtle...")
         if not convert_owl_to_ttl(input_owl, ttl_path):
-            self.view.page_extraction_regles.text_edit.append("La conversion de l'ontologie en TTL a échoué.")
+            QMessageBox.warning(self.view, "Erreur","La conversion de l'ontologie en TTL a échoué.")
             self.afficher_page(2)
             return
 
@@ -630,36 +635,36 @@ class RuleExtractionController:
         # Déterminer le chemin du fichier amie3.jar (dans le même répertoire que ce script)
         jar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "amie3.jar")
         if not os.path.exists(jar_path):
-            self.view.page_extraction_regles.text_edit.append("Fichier amie3.jar introuvable.")
+            QMessageBox.warning(self.view, "Erreur","Fichier amie3.jar introuvable.")
             self.afficher_page(2)
             return
 
         # Construire la commande
         command = ["java", "-jar", jar_path] + amie_params + [ttl_path]
 
-        self.view.page_extraction_regles.text_edit.append("Commande AMIE3 : " + " ".join(command))
+        #self.view.page_extraction_regles.text_edit.append("Commande AMIE3 : " + " ".join(command))
 
         try:
             process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
             stdout, stderr = process.communicate(timeout=120)
             output = stdout
 
-            self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
-            self.view.page_extraction_regles.text_edit.append(output)
-            self.afficher_page(2)
+            #self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
+            #self.view.page_extraction_regles.text_edit.append(output)
+            return output
         except subprocess.TimeoutExpired:
             process.kill()
-            self.view.page_extraction_regles.text_edit.append("L'exécution d'AMIE3 a dépassé le temps imparti.")
+            QMessageBox.warning(self.view, "Erreur","L'exécution d'AMIE3 a dépassé le temps imparti.")
             self.afficher_page(2)
         except Exception as e:
-            self.view.page_extraction_regles.text_edit.append(f"Erreur lors du lancement d'AMIE3: {e}")
+            QMessageBox.warning(self.view, "Erreur","Erreur lors du lancement d'AMIE3: {e}")
             self.afficher_page(2)
 
         os.remove(ttl_path)
     # Fonction qui fait la meme chose que do_lancer_amie3, mais on enregistre la sortie stdout dans un fichier
     def do_lancer_amie3_avec_sauvegarde(self):
         if not self.model.ontologies:
-            self.view.page_extraction_regles.text_edit.append(
+            QMessageBox.warning(self.view, "Erreur",
                 "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
             self.afficher_page(2)
             return
@@ -675,69 +680,30 @@ class RuleExtractionController:
         if not output_file:  # si l'utilisateur annule
             return
 
-        # Conversion OWL en TTL
-        input_owl = self.model.ontologies[-1]
-        ttl_path = os.path.join(os.getcwd(), "ontology.ttl")
-
-        self.view.page_extraction_regles.text_edit.append(f"Conversion de l'ontologie {input_owl} en Turtle...")
-        if not convert_owl_to_ttl(input_owl, ttl_path):
-            self.view.page_extraction_regles.text_edit.append("La conversion de l'ontologie en TTL a échoué.")
-            self.afficher_page(2)
-            return
-
-        # Construire la commande AMIE3
-        jar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "amie3.jar")
-        if not os.path.exists(jar_path):
-            self.view.page_extraction_regles.text_edit.append("Fichier amie3.jar introuvable.")
-            self.afficher_page(2)
-            return
-
-        # Récupérer la liste d'arguments dynamiques
-        amie_params = self.view.amie3_params_widget.build_amie3_params()
-
-        command = ["java", "-jar", jar_path] + amie_params + [ttl_path]
-
-        self.view.page_extraction_regles.text_edit.append("Lancement d'AMIE3 avec : " + " ".join(command))
-
-        # Lancer la commande et écrire la sortie dans le fichier
-        try:
-            process = subprocess.Popen(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                cwd=os.getcwd(),
-                universal_newlines=True
-            )
-            stdout, stderr = process.communicate(timeout=120)
+        # Execution d'AMIE3
+        resultat = self.do_lancer_amie3()
 
 
-            if output_file.split('.')[-1] == 'csv' :
-                self.amie_to_csv(output_file,stdout)
-            else :
-            # Enregistrer la sortie stdout
-                with open(output_file, "w", encoding="utf-8") as f:
-                    f.write(stdout)
+
+        if output_file.split('.')[-1] == 'csv' :
+            self.amie_to_csv(output_file,resultat)
+        else :
+        # Enregistrer la sortie stdout
+            with open(output_file, "w", encoding="utf-8") as f:
+                f.write(resultat)
+
+        self.afficher_resultats_amie3(resultat)
             # Afficher dans la text_edit
-            self.view.page_extraction_regles.text_edit.clear()
-            self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
-            self.view.page_extraction_regles.text_edit.append(stdout)
+            #self.view.page_extraction_regles.text_edit.clear()
+            #self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
+            #self.view.page_extraction_regles.text_edit.append(stdout)
+        self.afficher_page(2)
 
-            self.afficher_page(2)
 
-        except subprocess.TimeoutExpired:
-            process.kill()
-            self.view.page_extraction_regles.text_edit.append("L'exécution d'AMIE3 a dépassé le temps imparti.")
-            self.afficher_page(2)
-        except Exception as e:
-            self.view.page_extraction_regles.text_edit.append(f"Erreur lors du lancement d'AMIE3: {e}")
-            self.afficher_page(2)
 
     # Navigation entre pages
     def afficher_page(self, index):
-        if index != 4 :
-            self.view.btn_executer_requete.setEnabled(False)
-        else :
-            self.view.btn_executer_requete.setEnabled(True)
+
         self.view.stacked_widget.setCurrentIndex(index)
 
     # Fonctions de zoom
@@ -769,33 +735,39 @@ class RuleExtractionController:
 
 
     def executer_requete(self):
-        print(self.view.page_analyse.text_edit.toPlainText())
-
+        print('Controller',self.view.fenetre_requete.champ_saisie.toPlainText())
+        self.view.fenetre_requete.close()
+        self.afficher_page(4)
         if not self.model.ontologies:
-            self.view.page_analyse.text_edit.clear()
-            self.view.page_analyse.text_edit.append("Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
+            QMessageBox.warning(self.view, "Erreur", "Aucune ontologie chargée. Veuillez charger une ontologie d'abord.")
             return
 
         g = Graph()
         g.parse(self.model.ontologies[-1])
 
         try:
-            results = g.query(self.view.page_analyse.text_edit.toPlainText())
+            results = g.query(self.view.fenetre_requete.champ_saisie.toPlainText())
         except pyparsing.exceptions.ParseException :
-            self.view.page_analyse.text_edit.clear()
-            self.view.page_analyse.text_edit.append("Erreur lors de la saisie de la requête")
+            QMessageBox.warning(self.view, "Erreur", "Erreur lors de la saisie de la requête")
             return
         self.afficher_resultats_requete(results)
 
     def afficher_resultats_requete(self,results):
+
         liste_variables = [x.toPython()[1:] for x in results.vars]
-        self.view.page_analyse.text_edit.clear()
-        self.view.page_analyse.text_edit.append('\t\t'.join([x.toPython() for x in results.vars]))
+        self.view.page_analyse.table.clear()
+        self.view.page_analyse.table.setColumnCount(len(liste_variables))
+        self.view.page_analyse.table.setRowCount(len(results))
+        self.view.page_analyse.table.setHorizontalHeaderLabels([x.toPython() for x in results.vars])
+        index_ligne = 0
+        index_colonne = 0
         for row in results:
-            line = []
-            for var in liste_variables:
-                line += [row[var]]
-            self.view.page_analyse.text_edit.append('\t\t\t'.join(line)+'\n')
+            for var in liste_variables :
+                self.view.page_analyse.table.setItem(index_ligne, index_colonne, QTableWidgetItem(row[var]))
+                index_colonne+=1
+            index_ligne+=1
+            index_colonne = 0
+
 
     def amie_to_csv(self,file_path,amie_result):
         index = 0
@@ -819,9 +791,34 @@ class RuleExtractionController:
         except Exception as e:
             print(f"Erreur lors de la sauvegarde : {e}")
 
+    def afficher_resultats_amie3(self, amie_result):
+        index = 0
+        lines = amie_result.split('\n')
 
+        # Arriver jusqu'au colonnes
+        while not lines[index].startswith("Starting the mining phase..."):
+            index += 1
 
+        columns = lines[index + 1].split('\t')
 
+        # On se place sur la première règle extraite
+        lines = lines[index + 2:]
+
+        self.view.page_extraction_regles.table_resultats.clear()
+        self.view.page_extraction_regles.table_resultats.setColumnCount(len(columns))
+        self.view.page_extraction_regles.table_resultats.setHorizontalHeaderLabels(columns)
+        regles = []
+        for line in lines:
+            if line.__contains__("=>"):
+                regles += [line.split('\t')]
+
+        self.view.page_extraction_regles.table_resultats.setRowCount(len(regles))
+
+        index_ligne = 0
+        for regle in regles:
+            for index in range(len(regle)) :
+                self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index, QTableWidgetItem(regle[index]))
+            index_ligne += 1
 
 
 # <-------------------------->
