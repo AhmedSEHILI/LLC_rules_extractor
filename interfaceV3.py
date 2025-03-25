@@ -796,13 +796,12 @@ class RuleExtractionController:
         lines = amie_result.split('\n')
 
         # Arriver jusqu'au colonnes
-        while not lines[index].startswith("Starting the mining phase..."):
+        while not lines[index].__contains__("=>"):
             index += 1
 
-        columns = lines[index + 1].split('\t')
-
+        columns = ['Rule','Head Coverage','Std Confidence','PCA Confidence','Positive Examples','Body size','PCA Body size','Functional variable']
         # On se place sur la première règle extraite
-        lines = lines[index + 2:]
+        lines = lines[index:]
 
         self.view.page_extraction_regles.table_resultats.clear()
         self.view.page_extraction_regles.table_resultats.setColumnCount(len(columns))
