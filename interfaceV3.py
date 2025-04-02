@@ -1,3 +1,4 @@
+import re
 import sys
 import os
 import subprocess
@@ -13,7 +14,9 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont, QTextOption, QPixmap
 
 from RequeteSPARQLView import RequeteSPARQLView
-from rdflib import Graph, URIRef, RDF, RDFS, OWL
+from RuleTestview import RuleTestView
+from rdflib import Graph, URIRef, RDF, RDFS, OWL, BNode
+from RuleSetTestView import  RuleSetTestView
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -127,6 +130,8 @@ class RuleExtractionModel:
     def __init__(self):
         self.ontologies = []  # Liste des chemins vers les ontologies chargées
         self.regles = []  # Liste des règles extraites
+        self.onto_classes = {}
+        self.onto_properties = {}
 
     def charger_ontologie(self, path):
         if os.path.exists(path):
@@ -156,6 +161,22 @@ class RuleExtractionModel:
         except Exception as e:
             print(f"Erreur lors de la sauvegarde : {e}")
             return False
+
+    def charger_classes_et_proprietes(self):
+        g = Graph()
+        g.parse(self.ontologies[-1])
+
+
+
+        #Liste des predicats
+        for prop in list(g.predicates()):
+            self.onto_properties[str(prop).split('#')[-1]] = str(prop)
+
+
+        # Liste des classes
+        for subj, pred, obj in g:
+            if str(obj) == 'http://www.w3.org/2002/07/owl#Class' and type(subj) != BNode :
+                self.onto_classes[str(subj).split('#')[-1]] = str(subj)
 
 
 # <-------------------------->
@@ -239,9 +260,9 @@ class QualiteValidationPage(QWidget):
         super().__init__(parent)
         layout = QVBoxLayout()
         self.label = QLabel("Page : Qualité et validation des règles")
-        self.text_edit = QTextEdit()
+        self.table = QTableWidget()
         layout.addWidget(self.label)
-        layout.addWidget(self.text_edit)
+        layout.addWidget(self.table)
         self.setLayout(layout)
 
 
@@ -316,6 +337,10 @@ class RuleExtractionView(QMainWindow):
         # Groupe : Qualité et validation des règles
         group_qualite = QGroupBox("Qualité et validation des règles")
         qualite_layout = QVBoxLayout()
+
+        self.fenetre_saisie_regle = RuleTestView()
+        self.fenetre_saisie_ens_regles = RuleSetTestView()
+
         self.btn_mesurer_qualite_regle = QPushButton("Mesurer la qualité d'une règle")
         self.btn_mesurer_qualite_regles = QPushButton("Mesurer la qualité d'un ensemble de règles")
         self.btn_valider_regle = QPushButton("Valider une règle extraite")
@@ -447,9 +472,16 @@ class RuleExtractionController:
         self.view.btn_sauvegarder_regles.clicked.connect(self.do_sauvegarder_regles)
 
         # Qualité / Validation
-        self.view.btn_mesurer_qualite_regle.clicked.connect(self.do_mesurer_qualite_regle)
-        self.view.btn_mesurer_qualite_regles.clicked.connect(self.do_mesurer_qualite_regles)
+        self.view.btn_mesurer_qualite_regle.clicked.connect(lambda: self.view.fenetre_saisie_regle.show())
+        self.view.fenetre_saisie_regle.btn_valider_saisie.clicked.connect(lambda: self.do_mesurer_qualite_regle())
+        self.view.fenetre_saisie_regle.btn_aide_proprietes.clicked.connect(self.afficher_proprietes)
+        self.view.fenetre_saisie_regle.btn_aide_classes.clicked.connect(lambda: self.afficher_classes())
+
+
+        self.view.btn_mesurer_qualite_regles.clicked.connect(self.view.fenetre_saisie_ens_regles.show)
+        self.view.fenetre_saisie_ens_regles.btn_mesurer_regles.clicked.connect(self.do_mesurer_qualite_regles)
         self.view.btn_valider_regle.clicked.connect(self.do_valider_regle)
+
 
         # Analyse des données
         self.view.btn_interroger_donnees.clicked.connect(lambda: self.view.fenetre_requete.show())
@@ -482,6 +514,8 @@ class RuleExtractionController:
                 self.view.page_gestion_onto.text_edit.append(f"Ontologie chargée : {file_path}")
                 QMessageBox.information(self.view, "Chargement",
                                         f"L'ontologie a été chargée avec succès.\nChemin : {file_path}")
+
+                self.model.charger_classes_et_proprietes()
             else:
                 QMessageBox.warning(self.view, "Erreur", "Le fichier sélectionné n'a pas pu être chargé.")
 
@@ -589,14 +623,141 @@ class RuleExtractionController:
 
     # Fonctions de qualité et validation (simulées)
     def do_mesurer_qualite_regle(self):
-        self.view.page_qualite.text_edit.append("Mesure de qualité pour la règle sélectionnée :")
-        self.view.page_qualite.text_edit.append("Support : 0.65, Confiance : 0.80")
+        # self.view.page_qualite.text_edit.append("Mesure de qualité pour la règle sélectionnée :")
+        # self.view.page_qualite.text_edit.append("Support : 0.65, Confiance : 0.80")
+
+        regle = self.view.fenetre_saisie_regle.champ_saisie.text()
+        result = self.mesurer_regle(regle)
+        self.afficher_resultats_mesure_regle(result)
         self.afficher_page(3)
 
+    def mesurer_regle(self,regle):
+        body, head = regle.split('->')
+        head = head[1:]
+        # Extraction des variables de la règle entière
+        variables = set(re.findall('\\' + "?" + "[a-zA-Z0-9_]+", regle))
+
+        # Extraction des variables de la partie gauche de la règle
+        variables_body = set(re.findall('\\' + "?" + "[a-zA-Z0-9_]+", body))
+        # Extraction des variables de la partie droite de la règle
+        variables_head = set(re.findall('\\' + "?" + "[a-zA-Z0-9_]+", head))
+
+        # Conversion partie gauche de la règle en requête SPARQL
+
+        body_parts = [x.rstrip(' ') for x in body.split('$')]
+        filters = []
+
+        # Si y'a des filtres SPARQL a gauche de la regle
+        check_filter = [True if part.startswith("FILTER(") else False for part in body_parts]
+        nb_filters = 0
+        if any(check_filter):
+            for atome in body_parts:
+                if atome.startswith("FILTER("):
+                    nb_filters += 1
+                    filters += re.findall(r'\(([^\)]+)\)', atome)[-1].split(',')
+
+            if nb_filters > 1:
+                print('Erreur :  Trop de filtres')
+                QMessageBox.warning(self.view, "Erreur",
+                                    "Trop de filtres. Un seul atome doit representer les filtres")
+            # RETIRER Les filtres
+            body_parts = [body_parts[index] for index, value in enumerate(check_filter) if not value]
+
+        body_to_sparql = []
+
+        for atome in body_parts:
+            # Propriété
+            prop = re.findall(r'\w+\(', atome)[-1][:-1]
+
+            # Contenu des parentheses
+            elts = re.findall(r'\(([^\)]+)\)', atome)[0].split(',')
+            if len(elts) == 1:
+                body_to_sparql.append(elts[0] + ' a ' + '<' + self.model.onto_classes[prop] + '>')
+            elif len(elts) == 2:
+                body_to_sparql.append(elts[0] + ' ' + '<' + self.model.onto_properties[prop] + '>' + ' ' + elts[1])
+            else:
+                QMessageBox.warning(self.view, "Erreur",
+                                    "Contrainte de triplet no respectée dans la partie gauche de la règle")
+
+        body_query = '.\n'.join(body_to_sparql) + '.'
+
+        if len(filters) > 0:
+            body_query += ' ' + '\nFILTER( ' + ' '.join(filters) + ' )'
+        # Conversion partie droite de la règle en requête SPARQL
+        head_query = " "
+
+        prop_head = re.findall(r'\w+\(', head)[-1][:-1]
+        # Contenu des parentheses
+        elts = re.findall(r'\(([^\)]+)\)', head)[0].split(',')
+
+        if len(elts) == 1:
+            head_query = elts[0] + ' a ' + '<' + self.model.onto_classes[prop_head] + '>' + '.'
+
+        elif len(elts) == 2:
+            head_query = elts[0] + ' ' + '<' + self.model.onto_properties[prop_head] + '>' + ' ' + elts[1] + '.'
+        else:
+            QMessageBox.warning(self.view, "Erreur",
+                                "Contrainte de triplet no respectée dans la partie droite de la règle")
+
+        # Requête SPARQL pour la partie gauche de la règle
+        body_full_query = "SELECT DISTINCT " + ' '.join(variables_body) + "\nWHERE{\n" + body_query + "\n}"
+        # Requête SPARQL pour la partie droite de la règle
+        head_full_query = "SELECT DISTINCT " + ' '.join(variables_head) + "\nWHERE{\n" + head_query + "\n}"
+
+        # Requête SPARQL pour la règle entière
+        rule_full_query = "SELECT DISTINCT " + ' '.join(
+            variables) + "\nWHERE{\n" + head_query + '\n' + body_query + "\n}"
+
+        g = Graph()
+        g.parse(self.model.ontologies[-1])
+
+        # print(body_full_query)
+        # print(head_full_query)
+        # print(rule_full_query)
+
+        query_body = g.query(body_full_query)
+        query_head = g.query(head_full_query)
+        rule_query = g.query(rule_full_query)
+
+        confiance = len(rule_query) / len(query_body)
+        support = len(rule_query)
+        lift = len(rule_query) / (len(query_body) * len(query_head))
+
+        return {'Regle' : ' '.join(body_parts)+' => '+ head , 'Confiance' : confiance , 'Support' : support, 'Lift' : lift }
+
+    def afficher_resultats_mesure_regle(self,result):
+
+        self.view.page_qualite.table.clear()
+        self.view.page_qualite.table.setColumnCount(len(result.keys()))
+        self.view.page_qualite.table.setRowCount(1)
+        self.view.page_qualite.table.setHorizontalHeaderLabels(result.keys())
+        index_colonne = 0
+        for colonne in result.keys():
+            self.view.page_qualite.table.setItem(0, index_colonne, QTableWidgetItem(str(result[colonne])))
+            index_colonne += 1
+
+
     def do_mesurer_qualite_regles(self):
-        self.view.page_qualite.text_edit.append("Mesure de qualité pour l'ensemble des règles :")
-        self.view.page_qualite.text_edit.append("Moyenne Support : 0.60, Moyenne Confiance : 0.78")
+        regles = self.view.fenetre_saisie_ens_regles.champ_saisie.toPlainText().split('\n')
+        self.view.fenetre_saisie_ens_regles.close()
+        results = []
+        for regle in regles :
+            results.append(self.mesurer_regle(regle))
+
+        self.view.page_qualite.table.clear()
+
+        self.view.page_qualite.table.setColumnCount(len(results[0].keys()))
+        self.view.page_qualite.table.setHorizontalHeaderLabels(results[0].keys())
+        self.view.page_qualite.table.setRowCount(len(results))
+
+        self.afficher_resultats_mesure_regles(results)
         self.afficher_page(3)
+
+    def afficher_resultats_mesure_regles(self,results):
+        for index_ligne,result in enumerate(results):
+            for index_colonne,colonne in enumerate(result.keys()) :
+                self.view.page_qualite.table.setItem(index_ligne, index_colonne, QTableWidgetItem(str(result[colonne])))
+
 
     def do_valider_regle(self):
         self.view.page_qualite.text_edit.append("La règle a été validée avec succès.")
@@ -735,7 +896,6 @@ class RuleExtractionController:
 
 
     def executer_requete(self):
-        print('Controller',self.view.fenetre_requete.champ_saisie.toPlainText())
         self.view.fenetre_requete.close()
         self.afficher_page(4)
         if not self.model.ontologies:
@@ -818,6 +978,24 @@ class RuleExtractionController:
             for index in range(len(regle)) :
                 self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index, QTableWidgetItem(regle[index]))
             index_ligne += 1
+
+    def afficher_classes(self):
+
+        if self.model.ontologies:
+            self.view.fenetre_saisie_regle.box_classes.setDetailedText('\n'.join(self.model.onto_classes.keys()))
+            self.view.fenetre_saisie_regle.box_classes.show()
+        else:
+            QMessageBox.information(self.view, "Information", "Aucune ontologie n'a été chargée.")
+
+
+
+    def afficher_proprietes(self):
+
+        if self.model.ontologies:
+            self.view.fenetre_saisie_regle.box_properties.setDetailedText('\n'.join(self.model.onto_properties.keys()))
+            self.view.fenetre_saisie_regle.box_properties.show()
+        else:
+            QMessageBox.information(self.view, "Information", "Aucune ontologie n'a été chargée.")
 
 
 # <-------------------------->

@@ -16,14 +16,14 @@ from rdflib import Graph, URIRef, RDF, RDFS, OWL
 import networkx as nx
 import matplotlib.pyplot as plt
 
-# Feneter pour les requetes SPARQL
+# Feneter pour la mesure de qualité d'un ensemble de règles
 
-class RequeteSPARQLView(QMainWindow):
+class RuleSetTestView(QMainWindow):
     def __init__(self,mere=None):
         super().__init__()
         self.resize(1200, 800)
         self.mere = mere
-        self.setWindowTitle("Requếte SPARQL")
+        self.setWindowTitle("Zone Saisie Règles")
 
 
 
@@ -34,14 +34,14 @@ class RequeteSPARQLView(QMainWindow):
         #Champ de saisie
         saisie_layout = QHBoxLayout()
         self.champ_saisie = QTextEdit()
-        self.champ_saisie.setPlaceholderText("Veuillez entrer une requête SPARQL")
+        self.champ_saisie.setPlaceholderText("Saisissez vos règles séparées par un saut de ligne !!!")
 
         saisie_layout.addWidget(self.champ_saisie)
 
         #Boutons
         buttons_layout = QVBoxLayout()
-        self.btn_executer_requete = QPushButton("Exécuter la requête")
-        buttons_layout.addWidget(self.btn_executer_requete)
+        self.btn_mesurer_regles = QPushButton("Mesurer les règles")
+        buttons_layout.addWidget(self.btn_mesurer_regles)
 
         self.btn_nettoyer = QPushButton("Effacer")
         buttons_layout.addWidget(self.btn_nettoyer)
