@@ -192,6 +192,7 @@ class RuleExtractionModel:
     def __init__(self):
         self.ontologies = []  # Liste des chemins vers les ontologies chargées
         self.regles = []  # Liste des règles extraites
+        self.regles_validees = []  # Liste des règles validées
         self.onto_classes = {}
         self.onto_properties = {}
 
@@ -215,10 +216,14 @@ class RuleExtractionModel:
         return regle
 
     def sauvegarder_regles(self, file_path):
+        columns = ['Rule', 'Head Coverage', 'Std Confidence', 'PCA Confidence', 'Positive Examples', 'Body size',
+                   'PCA Body size', 'Functional variable', '']
         try:
             with open(file_path, "w", encoding="utf-8") as f:
-                for regle in self.regles:
-                    f.write(f"{regle}\n")
+                f.write(';'.join(columns) + '\n')
+                for line in self.regles_validees:
+                    f.write(';'.join(line) + '\n')
+                f.close()
             return True
         except Exception as e:
             print(f"Erreur lors de la sauvegarde : {e}")
@@ -389,14 +394,26 @@ class RuleExtractionView(QMainWindow):
         # Groupe : Extraction et gestion des règles
         group_regles = QGroupBox("Extraction et gestion des règles")
         regles_layout = QVBoxLayout()
-        self.btn_extraire_regles = QPushButton("Extraire un ensemble de règles")
+        # self.btn_extraire_regles = QPushButton("Extraire un ensemble de règles")
         self.btn_lister_regles = QPushButton("Lister les règles")
         self.btn_visualiser_regles = QPushButton("Visualiser les règles")
-        self.btn_sauvegarder_regles = QPushButton("Sauvegarder les règles extraites")
-        regles_layout.addWidget(self.btn_extraire_regles)
+        self.btn_afficher_regles_validees = QPushButton("Afficher les règles validées")
+        self.btn_valider_regle = QPushButton("Valider une règle extraite")
+        self.btn_sauver_regle = QPushButton("Sauvegarder règles extraites")
+        self.btn_supp_regle = QPushButton("Supprimer règles validées")
+        self.btn_valider_regle.setEnabled(False)
+        self.btn_sauver_regle.setEnabled(False)
+        self.btn_supp_regle.setEnabled(False)
+        self.btn_afficher_regles_validees.setEnabled(False)
+
+        # regles_layout.addWidget(self.btn_extraire_regles)
         regles_layout.addWidget(self.btn_lister_regles)
         regles_layout.addWidget(self.btn_visualiser_regles)
-        regles_layout.addWidget(self.btn_sauvegarder_regles)
+        regles_layout.addWidget(self.btn_valider_regle)
+        regles_layout.addWidget(self.btn_afficher_regles_validees)
+        regles_layout.addWidget(self.btn_sauver_regle)
+        regles_layout.addWidget(self.btn_supp_regle)
+
         group_regles.setLayout(regles_layout)
 
         # Groupe : Qualité et validation des règles
@@ -408,10 +425,10 @@ class RuleExtractionView(QMainWindow):
 
         self.btn_mesurer_qualite_regle = QPushButton("Mesurer la qualité d'une règle")
         self.btn_mesurer_qualite_regles = QPushButton("Mesurer la qualité d'un ensemble de règles")
-        self.btn_valider_regle = QPushButton("Valider une règle extraite")
+        #self.btn_valider_regle = QPushButton("Valider une règle extraite")
         qualite_layout.addWidget(self.btn_mesurer_qualite_regle)
         qualite_layout.addWidget(self.btn_mesurer_qualite_regles)
-        qualite_layout.addWidget(self.btn_valider_regle)
+        #qualite_layout.addWidget(self.btn_valider_regle)
         group_qualite.setLayout(qualite_layout)
 
         # Groupe : Analyse et interrogation des données
@@ -530,17 +547,17 @@ class RuleExtractionController:
         
 
         # Extraction des règles
-        self.view.btn_extraire_regles.clicked.connect(self.do_extraire_regles)
         self.view.btn_lister_regles.clicked.connect(self.do_lister_regles)
         self.view.btn_visualiser_regles.clicked.connect(self.do_visualiser_regles)
-        self.view.btn_sauvegarder_regles.clicked.connect(self.do_sauvegarder_regles)
+        self.view.btn_afficher_regles_validees.clicked.connect(self.do_lister_regles_validees)
+        self.view.btn_sauver_regle.clicked.connect(self.do_sauvegarder_regles)
+        self.view.btn_supp_regle.clicked.connect(self.do_supprimer_regles_valides)
 
         # Qualité / Validation
         self.view.btn_mesurer_qualite_regle.clicked.connect(lambda: self.view.fenetre_saisie_regle.show())
         self.view.fenetre_saisie_regle.btn_valider_saisie.clicked.connect(lambda: self.do_mesurer_qualite_regle())
         self.view.fenetre_saisie_regle.btn_aide_proprietes.clicked.connect(self.afficher_proprietes)
         self.view.fenetre_saisie_regle.btn_aide_classes.clicked.connect(lambda: self.afficher_classes())
-
 
         self.view.btn_mesurer_qualite_regles.clicked.connect(self.view.fenetre_saisie_ens_regles.show)
         self.view.fenetre_saisie_ens_regles.btn_mesurer_regles.clicked.connect(self.do_mesurer_qualite_regles)
@@ -631,13 +648,56 @@ class RuleExtractionController:
         self.afficher_page(2)
 
     def do_lister_regles(self):
-        self.view.page_extraction_regles.text_edit.append("Liste des règles extraites :")
-        if not self.model.regles:
-            self.view.page_extraction_regles.text_edit.append("Aucune règle extraite.")
-        else:
-            for idx, regle in enumerate(self.model.regles, start=1):
-                self.view.page_extraction_regles.text_edit.append(f"{idx}. {regle['rule']}")
-        self.afficher_page(2)
+        if len(self.model.regles) != 0:
+            self.view.btn_valider_regle.setEnabled(True)
+            columns = ['Rule', 'Head Coverage', 'Std Confidence', 'PCA Confidence', 'Positive Examples', 'Body size',
+                       'PCA Body size', 'Functional variable', '']
+            self.view.page_extraction_regles.table_resultats.clear()
+            self.view.page_extraction_regles.table_resultats.setColumnCount(len(columns))
+            self.view.page_extraction_regles.table_resultats.setRowCount(len(self.model.regles))
+            self.view.page_extraction_regles.table_resultats.setHorizontalHeaderLabels(columns)
+
+            for index_ligne, regle in enumerate(self.model.regles):
+                for index_colonne, colonne in enumerate(regle):
+                    self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index_colonne,
+                                                                             QTableWidgetItem(colonne))
+                checkbox = QTableWidgetItem("Valider")
+                checkbox.setCheckState(0)
+                self.view.page_extraction_regles.table_resultats.setItem(index_ligne, len(columns) - 1, checkbox)
+
+            self.view.page_extraction_regles.table_resultats.setHorizontalHeaderItem(len(columns) - 1,
+                                                                                     QTableWidgetItem(''))
+            self.view.btn_supp_regle.setEnabled(False)
+
+            self.afficher_page(2)
+
+
+    def do_lister_regles_validees(self):
+        if len(self.model.regles_validees) != 0 :
+            columns = ['Rule', 'Head Coverage', 'Std Confidence', 'PCA Confidence', 'Positive Examples', 'Body size',
+                       'PCA Body size', 'Functional variable','']
+            self.view.page_extraction_regles.table_resultats.clear()
+            self.view.page_extraction_regles.table_resultats.setColumnCount(len(columns))
+            self.view.page_extraction_regles.table_resultats.setRowCount(len(self.model.regles_validees))
+
+            self.view.page_extraction_regles.table_resultats.setHorizontalHeaderLabels(columns)
+
+            for index_ligne,regle in enumerate(self.model.regles_validees):
+                for index_colonne,colonne in enumerate(regle):
+                    self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index_colonne,
+                                                                             QTableWidgetItem(colonne))
+                    checkbox = QTableWidgetItem("Supprimer")
+                    checkbox.setCheckState(0)
+                    self.view.page_extraction_regles.table_resultats.setItem(index_ligne, len(columns) - 1, checkbox)
+
+
+            self.view.page_extraction_regles.table_resultats.setHorizontalHeaderItem(len(columns) - 1,                                                                       QTableWidgetItem(''))
+            self.view.btn_sauver_regle.setEnabled(True)
+            self.view.btn_supp_regle.setEnabled(True)
+
+
+            self.afficher_page(2)
+
 
     def do_visualiser_regles(self):
         self.view.page_extraction_regles.text_edit.append("Détails des règles extraites :")
@@ -645,9 +705,10 @@ class RuleExtractionController:
             self.view.page_extraction_regles.text_edit.append(str(regle))
         self.afficher_page(2)
 
+
     def do_sauvegarder_regles(self):
         file_path, _ = QFileDialog.getSaveFileName(
-            self.view, "Sauvegarder les règles extraites", "", "Text Files (*.txt);;Tous les fichiers (*)"
+            self.view, "Sauvegarder les règles validees", "", "CSV (*.csv)"
         )
         if file_path:
             if self.model.sauvegarder_regles(file_path):
@@ -680,8 +741,11 @@ class RuleExtractionController:
         # Conversion partie gauche de la règle en requête SPARQL
 
         body_parts = [x.rstrip(' ') for x in body.split('$')]
+        if len(head.split('$')) != 1:
+            QMessageBox.warning(self.view, "Erreur",
+                                "Une seule conclusion dans la partie droite de la règle")
+            return
         filters = []
-
         # Si y'a des filtres SPARQL a gauche de la regle
         check_filter = [True if part.startswith("FILTER(") else False for part in body_parts]
         nb_filters = 0
@@ -695,6 +759,7 @@ class RuleExtractionController:
                 print('Erreur :  Trop de filtres')
                 QMessageBox.warning(self.view, "Erreur",
                                     "Trop de filtres. Un seul atome doit representer les filtres")
+                return
             # RETIRER Les filtres
             body_parts = [body_parts[index] for index, value in enumerate(check_filter) if not value]
 
@@ -713,11 +778,12 @@ class RuleExtractionController:
             else:
                 QMessageBox.warning(self.view, "Erreur",
                                     "Contrainte de triplet no respectée dans la partie gauche de la règle")
+                return
 
         body_query = '.\n'.join(body_to_sparql) + '.'
 
         if len(filters) > 0:
-            body_query += ' ' + '\nFILTER( ' + ' '.join(filters) + ' )'
+            body_query += ' ' + '\nFILTER( ' + ' '.join(filters) + ' ).'
         # Conversion partie droite de la règle en requête SPARQL
         head_query = " "
 
@@ -733,6 +799,7 @@ class RuleExtractionController:
         else:
             QMessageBox.warning(self.view, "Erreur",
                                 "Contrainte de triplet no respectée dans la partie droite de la règle")
+            return
 
         # Requête SPARQL pour la partie gauche de la règle
         body_full_query = "SELECT DISTINCT " + ' '.join(variables_body) + "\nWHERE{\n" + body_query + "\n}"
@@ -746,7 +813,7 @@ class RuleExtractionController:
         g = Graph()
         g.parse(self.model.ontologies[-1])
 
-        # print(body_full_query)
+        print(body_full_query)
         # print(head_full_query)
         # print(rule_full_query)
 
@@ -754,11 +821,19 @@ class RuleExtractionController:
         query_head = g.query(head_full_query)
         rule_query = g.query(rule_full_query)
 
-        confiance = len(rule_query) / len(query_body)
+        try:
+            confiance = len(rule_query) / len(query_body)
+        except ZeroDivisionError:
+            confiance = 0
         support = len(rule_query)
-        lift = len(rule_query) / (len(query_body) * len(query_head))
+        try:
+            lift = len(rule_query) / (len(query_body) * len(query_head))
+        except ZeroDivisionError:
+            lift = 0
+        instance_pos = len(rule_query)
 
-        return {'Regle' : ' '.join(body_parts)+' => '+ head , 'Confiance' : confiance , 'Support' : support, 'Lift' : lift }
+        return {'Regle': ' '.join(body_parts) + ' => ' + head, 'Confiance': confiance, 'Support': support, 'Lift': lift,
+                'Instances positives': instance_pos}
 
     def afficher_resultats_mesure_regle(self,result):
 
@@ -795,9 +870,53 @@ class RuleExtractionController:
 
 
     def do_valider_regle(self):
-        self.view.page_qualite.text_edit.append("La règle a été validée avec succès.")
-        self.afficher_page(3)
+        index_validees = []
+        for index in range(self.view.page_extraction_regles.table_resultats.rowCount()):
+            if self.view.page_extraction_regles.table_resultats.item(index,
+                                                                     self.view.page_extraction_regles.table_resultats.columnCount() - 1).checkState() != 0:
+                ligne = []
+                for index2 in range(self.view.page_extraction_regles.table_resultats.columnCount() - 1):
+                    ligne.append(self.view.page_extraction_regles.table_resultats.item(index, index2).text())
+                self.model.regles_validees.append(ligne)
+                index_validees.append(index)
+        if len(index_validees) == 0:
+            QMessageBox.warning(self.view, "Erreur", "Aucune règle a été selectionnée")
+            return
 
+        self.model.regles = [regle for index, regle in enumerate(self.model.regles) if index not in index_validees]
+        self.do_lister_regles()
+        self.view.btn_valider_regle.setEnabled(False)
+        self.view.btn_afficher_regles_validees.setEnabled(True)
+
+
+    def do_supprimer_regles_valides(self):
+        index_a_supprimer = []
+        for index in range(self.view.page_extraction_regles.table_resultats.rowCount()):
+            if self.view.page_extraction_regles.table_resultats.item(index,
+                                                                     self.view.page_extraction_regles.table_resultats.columnCount() - 1).checkState() != 0:
+                for index2 in range(self.view.page_extraction_regles.table_resultats.columnCount() - 1):
+                    index_a_supprimer.append(index)
+        if len(index_a_supprimer) == 0:
+            QMessageBox.warning(self.view, "Erreur", "Aucune règle a été selectionnée")
+            return
+
+        a_rajouter = [regle for index, regle in enumerate(self.model.regles_validees) if index in index_a_supprimer]
+        self.model.regles_validees = [regle for index, regle in enumerate(self.model.regles_validees) if index not in index_a_supprimer]
+        self.do_lister_regles()
+
+        self.model.regles += a_rajouter
+
+        if len(self.model.regles_validees) == 0 :
+            self.view.btn_supp_regle.setEnabled(False)
+            self.view.btn_sauver_regle.setEnabled(False)
+            self.view.btn_afficher_regles_validees.setEnabled(False)
+
+
+            QMessageBox.warning(self.view, "Message",
+                                "Toutes les règles validées ont été supprimées")
+            self.do_lister_regles()
+        else:
+            self.do_lister_regles_validees()
     # Fonction pour lancer AMIE3
     def extraire_regles_amie3(self):
         resultat = self.do_lancer_amie3()
@@ -806,10 +925,11 @@ class RuleExtractionController:
             self.afficher_page(2)
         return
 
-    
+
 
     def do_comparer_resultats(self):
         # Lancer AMIE3 automatiquement
+
         output = self.do_lancer_amie3()
         if output:
             self.afficher_page(5)
@@ -1058,6 +1178,7 @@ class RuleExtractionController:
 
         index_ligne = 0
         for regle in regles:
+            self.model.regles.append(regle)
             for index in range(len(regle)) :
                 self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index, QTableWidgetItem(regle[index]))
             index_ligne += 1
