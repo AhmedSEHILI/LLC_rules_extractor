@@ -229,6 +229,20 @@ class RuleExtractionModel:
             print(f"Erreur lors de la sauvegarde : {e}")
             return False
 
+    def sauvegarder_regles_extraites(self,file_path) :
+        columns = ['Rule', 'Head Coverage', 'Std Confidence', 'PCA Confidence', 'Positive Examples', 'Body size',
+                   'PCA Body size', 'Functional variable', '']
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(';'.join(columns) + '\n')
+                for line in (self.regles_validees + self.regles):
+                    f.write(';'.join(line) + '\n')
+                f.close()
+            return True
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde : {e}")
+            return False
+
     def charger_classes_et_proprietes(self):
         g = Graph()
         g.parse(self.ontologies[-1])
@@ -399,20 +413,24 @@ class RuleExtractionView(QMainWindow):
         self.btn_visualiser_regles = QPushButton("Visualiser les règles")
         self.btn_afficher_regles_validees = QPushButton("Afficher les règles validées")
         self.btn_valider_regle = QPushButton("Valider une règle extraite")
-        self.btn_sauver_regle = QPushButton("Sauvegarder règles extraites")
+        self.btn_sauver_regle = QPushButton("Sauvegarder règles validées")
         self.btn_supp_regle = QPushButton("Supprimer règles validées")
+        self.btn_sauver_regles = QPushButton("Sauvegarder règles extraites")
+
         self.btn_valider_regle.setEnabled(False)
         self.btn_sauver_regle.setEnabled(False)
         self.btn_supp_regle.setEnabled(False)
         self.btn_afficher_regles_validees.setEnabled(False)
-
+        self.btn_sauver_regles.setEnabled(False)
         # regles_layout.addWidget(self.btn_extraire_regles)
         regles_layout.addWidget(self.btn_lister_regles)
         regles_layout.addWidget(self.btn_visualiser_regles)
+
         regles_layout.addWidget(self.btn_valider_regle)
         regles_layout.addWidget(self.btn_afficher_regles_validees)
         regles_layout.addWidget(self.btn_sauver_regle)
         regles_layout.addWidget(self.btn_supp_regle)
+        regles_layout.addWidget(self.btn_sauver_regles)
 
         group_regles.setLayout(regles_layout)
 
@@ -552,6 +570,7 @@ class RuleExtractionController:
         self.view.btn_afficher_regles_validees.clicked.connect(self.do_lister_regles_validees)
         self.view.btn_sauver_regle.clicked.connect(self.do_sauvegarder_regles)
         self.view.btn_supp_regle.clicked.connect(self.do_supprimer_regles_valides)
+        self.view.btn_sauver_regles.clicked.connect(self.sauvegarder_regles_extraites_fichier)
 
         # Qualité / Validation
         self.view.btn_mesurer_qualite_regle.clicked.connect(lambda: self.view.fenetre_saisie_regle.show())
@@ -717,6 +736,17 @@ class RuleExtractionController:
                 QMessageBox.warning(self.view, "Erreur", "Une erreur est survenue lors de la sauvegarde.")
         self.afficher_page(2)
 
+    def sauvegarder_regles_extraites_fichier(self):
+        file_path, _ = QFileDialog.getSaveFileName(
+            self.view, "Sauvegarder les règles validees", "", "CSV (*.csv)"
+        )
+        if file_path:
+            if self.model.sauvegarder_regles_extraites(file_path):
+                QMessageBox.information(self.view, "Sauvegarde", "Les règles ont été sauvegardées avec succès.")
+            else:
+                QMessageBox.warning(self.view, "Erreur", "Une erreur est survenue lors de la sauvegarde.")
+        self.afficher_page(2)
+
     # Fonctions de qualité et validation (simulées)
     def do_mesurer_qualite_regle(self):
         # self.view.page_qualite.text_edit.append("Mesure de qualité pour la règle sélectionnée :")
@@ -813,7 +843,7 @@ class RuleExtractionController:
         g = Graph()
         g.parse(self.model.ontologies[-1])
 
-        print(body_full_query)
+        #print(body_full_query)
         # print(head_full_query)
         # print(rule_full_query)
 
@@ -921,7 +951,9 @@ class RuleExtractionController:
     def extraire_regles_amie3(self):
         resultat = self.do_lancer_amie3()
         if not resultat is None:
+            self.sauvegarder_regles_amie3(resultat)
             self.afficher_resultats_amie3(resultat)
+            self.view.btn_sauver_regles.setEnabled(True)
             self.afficher_page(2)
         return
 
@@ -929,12 +961,20 @@ class RuleExtractionController:
 
     def do_comparer_resultats(self):
         # Lancer AMIE3 automatiquement
+        if len(self.model.regles + self.model.regles_validees) == 0:
+            output = self.do_lancer_amie3()
+            if output:
+                self.afficher_page(5)
+                self.afficher_resultats_amie3_dans_table(output, self.view.page_comparaison.table_amie)
+        else:
+            self.view.page_comparaison.table_amie.clear()
+            self.view.page_comparaison.table_amie.setColumnCount(1)
+            self.view.page_comparaison.table_amie.setRowCount(len(self.model.regles + self.model.regles_validees))
+            self.view.page_comparaison.table_amie.setHorizontalHeaderLabels(["Règle AMIE3"])
 
-        output = self.do_lancer_amie3()
-        if output:
+            for i, ligne in enumerate(self.model.regles + self.model.regles_validees):
+                self.view.page_comparaison.table_amie.setItem(i, 0, QTableWidgetItem(ligne[0]))
             self.afficher_page(5)
-            self.afficher_resultats_amie3_dans_table(output, self.view.page_comparaison.table_amie)
-
 
     def afficher_resultats_amie3_dans_table(self, amie_result, table_widget):
         lines = amie_result.split('\n')
@@ -1025,6 +1065,7 @@ class RuleExtractionController:
             self.afficher_page(2)
 
         os.remove(ttl_path)
+
     # Fonction qui fait la meme chose que do_lancer_amie3, mais on enregistre la sortie stdout dans un fichier
     def do_lancer_amie3_avec_sauvegarde(self):
         if not self.model.ontologies:
@@ -1178,7 +1219,7 @@ class RuleExtractionController:
 
         index_ligne = 0
         for regle in regles:
-            self.model.regles.append(regle)
+            #self.model.regles.append(regle)
             for index in range(len(regle)) :
                 self.view.page_extraction_regles.table_resultats.setItem(index_ligne, index, QTableWidgetItem(regle[index]))
             index_ligne += 1
@@ -1200,6 +1241,19 @@ class RuleExtractionController:
             self.view.fenetre_saisie_regle.box_properties.show()
         else:
             QMessageBox.information(self.view, "Information", "Aucune ontologie n'a été chargée.")
+
+    def sauvegarder_regles_amie3(self, resultat):
+        index = 0
+        lines = resultat.split('\n')
+        # Arriver à ma premiere règle
+        while not lines[index].__contains__("=>"):
+            index += 1
+
+        lines = lines[index:]
+        for line in lines:
+            if line.__contains__("=>"):
+                self.model.regles.append(line.split('\t'))
+
 
 
 # <-------------------------->
