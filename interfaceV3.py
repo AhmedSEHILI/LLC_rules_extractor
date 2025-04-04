@@ -164,8 +164,8 @@ class FenetreGraphe(QWidget):
     def update_pixmap(self):
         if self.pixmap:
             scaled = self.pixmap.scaled(
-                self.pixmap.width() * self.current_scale,
-                self.pixmap.height() * self.current_scale,
+                int(self.pixmap.width() * self.current_scale),
+                int(self.pixmap.height() * self.current_scale),
                 Qt.KeepAspectRatio,
                 Qt.SmoothTransformation
             )
