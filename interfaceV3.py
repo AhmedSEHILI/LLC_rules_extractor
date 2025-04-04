@@ -326,15 +326,33 @@ class AnalyseDonneesPage(QWidget):
 
 
 class ComparaisonPage(QWidget):
-    # Page pour comparer des résultats d'extraction
     def __init__(self, parent=None):
         super().__init__(parent)
-        layout = QVBoxLayout()
-        self.label = QLabel("Page : Comparaison des résultats")
-        self.text_edit = QTextEdit()
-        layout.addWidget(self.label)
-        layout.addWidget(self.text_edit)
+        layout = QHBoxLayout()
+
+        # Partie gauche : chargement d'un fichier
+        self.left_panel = QVBoxLayout()
+        self.label_gauche = QLabel("Règles chargées depuis un fichier :")
+        self.btn_charger_fichier = QPushButton("Charger un fichier de règles")
+        self.table_fichier = QTableWidget()
+
+        self.left_panel.addWidget(self.label_gauche)
+        self.left_panel.addWidget(self.btn_charger_fichier)
+        self.left_panel.addWidget(self.table_fichier)
+
+        # Partie droite : résultats AMIE3
+        self.right_panel = QVBoxLayout()
+        self.label_droite = QLabel("Règles générées par AMIE3 :")
+        self.table_amie = QTableWidget()
+
+        self.right_panel.addWidget(self.label_droite)
+        self.right_panel.addWidget(self.table_amie)
+
+        layout.addLayout(self.left_panel)
+        layout.addLayout(self.right_panel)
         self.setLayout(layout)
+
+
 
 
 # <-------------------------->
@@ -536,7 +554,10 @@ class RuleExtractionController:
         self.view.fenetre_requete.btn_executer_requete.clicked.connect(self.executer_requete)
 
         # Comparaison
-        self.view.btn_comparer_resultats.clicked.connect(lambda: self.afficher_page(5))
+        #self.view.btn_comparer_resultats.clicked.connect(lambda: self.afficher_page(5))
+        self.view.btn_comparer_resultats.clicked.connect(self.do_comparer_resultats)
+        self.view.page_comparaison.btn_charger_fichier.clicked.connect(self.charger_fichier_regles)
+
 
         # Bouton AMIE3
         self.view.btn_lancer_amie3.clicked.connect(self.extraire_regles_amie3)
@@ -784,6 +805,54 @@ class RuleExtractionController:
             self.afficher_resultats_amie3(resultat)
             self.afficher_page(2)
         return
+
+    
+
+    def do_comparer_resultats(self):
+        # Lancer AMIE3 automatiquement
+        output = self.do_lancer_amie3()
+        if output:
+            self.afficher_page(5)
+            self.afficher_resultats_amie3_dans_table(output, self.view.page_comparaison.table_amie)
+
+
+    def afficher_resultats_amie3_dans_table(self, amie_result, table_widget):
+        lines = amie_result.split('\n')
+        index = 0
+        while index < len(lines) and not lines[index].__contains__("=>"):
+            index += 1
+
+        regles = [l.split('\t')[0] for l in lines[index:] if "=>" in l]
+
+        # Affichage dans la table
+        table_widget.clear()
+        table_widget.setColumnCount(1)
+        table_widget.setRowCount(len(regles))
+        table_widget.setHorizontalHeaderLabels(["Règle AMIE3"])
+
+        for i, regle in enumerate(regles):
+            table_widget.setItem(i, 0, QTableWidgetItem(regle))
+
+
+
+    def charger_fichier_regles(self):
+        file_path, _ = QFileDialog.getOpenFileName(
+            self.view, "Charger un fichier de règles", "", "Text files (*.txt *.csv);;All files (*)"
+        )
+        if file_path:
+            with open(file_path, encoding="utf-8") as f:
+                lines = [line.strip() for line in f if line.strip()]
+
+            self.view.page_comparaison.table_fichier.clear()
+            self.view.page_comparaison.table_fichier.setRowCount(len(lines))
+            self.view.page_comparaison.table_fichier.setColumnCount(1)
+            self.view.page_comparaison.table_fichier.setHorizontalHeaderLabels(["Règle chargée"])
+
+            for i, line in enumerate(lines):
+                self.view.page_comparaison.table_fichier.setItem(i, 0, QTableWidgetItem(line))
+
+
+
 
     def do_lancer_amie3(self):
         # Vérifier qu'une ontologie a été chargée
