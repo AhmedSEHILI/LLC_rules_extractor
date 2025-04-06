@@ -1,11 +1,3 @@
-"""
-Fichier principal de l'application.
-
-Ce module initialise l'application, crée les instances du modèle, de la vue
-et du contrôleur pour l'extraction de règles à partir d'une ontologie.
-Il lance ensuite l'interface graphique de l'application.
-"""
-
 import sys
 from PyQt5.QtWidgets import QApplication
 

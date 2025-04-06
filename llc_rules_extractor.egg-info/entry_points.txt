@@ -1,0 +1,3 @@
+[console_scripts]
+llc-launch = app.main:main
+

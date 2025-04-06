@@ -1,0 +1,5 @@
+PyQt5
+matplotlib
+networkx
+pyparsing
+rdflib
