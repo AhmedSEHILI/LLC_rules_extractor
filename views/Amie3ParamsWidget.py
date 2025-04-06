@@ -1,11 +1,21 @@
-# <-------------------------->
-# Paramètres AMIE3
-# <-------------------------->
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QScrollArea, QFormLayout, QLineEdit, QLabel, QCheckBox
 
 
 class Amie3ParamsWidget(QWidget):
+    """
+    Widget graphique permettant de configurer les paramètres d'exécution de AMIE3.
+
+    Il regroupe des champs de saisie textuelle pour les options numériques et des cases à cocher
+    pour les options, et construit la liste des arguments à fournir à AMIE3.
+    """
+
     def __init__(self, parent=None):
+        """
+        Initialise tous les éléments nécessaires à la configuration d'AMIE3.
+
+        Args:
+            parent (QWidget, optional): Le widget parent. Par défaut None.
+        """
         super().__init__(parent)
 
         main_layout = QVBoxLayout(self)
@@ -15,71 +25,66 @@ class Amie3ParamsWidget(QWidget):
         content_widget = QWidget()
         self.form_layout = QFormLayout(content_widget)
 
-        # Paramètres numériques ou textuels
-
-        self.lineedit_mins = QLineEdit("100")  # -mins
+        self.lineedit_mins = QLineEdit("100")
         self.form_layout.addRow(QLabel("-mins (min-support)"), self.lineedit_mins)
 
-        self.lineedit_minis = QLineEdit("100")  # -minis
+        self.lineedit_minis = QLineEdit("100")
         self.form_layout.addRow(QLabel("-minis (min-initial-support)"), self.lineedit_minis)
 
-        self.lineedit_minhc = QLineEdit("0.01")  # -minhc
+        self.lineedit_minhc = QLineEdit("0.01")
         self.form_layout.addRow(QLabel("-minhc (min-head-coverage)"), self.lineedit_minhc)
 
-        self.lineedit_pm = QLineEdit("headcoverage")  # -pm
+        self.lineedit_pm = QLineEdit("headcoverage")
         self.form_layout.addRow(QLabel("-pm (pruning-metric)"), self.lineedit_pm)
 
-        self.lineedit_bexr = QLineEdit("")  # -bexr
+        self.lineedit_bexr = QLineEdit("")
         self.form_layout.addRow(QLabel("-bexr (body-excluded-relations)"), self.lineedit_bexr)
 
-        self.lineedit_hexr = QLineEdit("")  # -hexr
+        self.lineedit_hexr = QLineEdit("")
         self.form_layout.addRow(QLabel("-hexr (head-excluded-relations)"), self.lineedit_hexr)
 
-        self.lineedit_iexr = QLineEdit("")  # -iexr
+        self.lineedit_iexr = QLineEdit("")
         self.form_layout.addRow(QLabel("-iexr (instantiation-excluded-relations)"), self.lineedit_iexr)
 
-        self.lineedit_htr = QLineEdit("")  # -htr
+        self.lineedit_htr = QLineEdit("")
         self.form_layout.addRow(QLabel("-htr (head-target-relations)"), self.lineedit_htr)
 
-        self.lineedit_btr = QLineEdit("")  # -btr
+        self.lineedit_btr = QLineEdit("")
         self.form_layout.addRow(QLabel("-btr (body-target-relations)"), self.lineedit_btr)
 
-        self.lineedit_itr = QLineEdit("")  # -itr
+        self.lineedit_itr = QLineEdit("")
         self.form_layout.addRow(QLabel("-itr (instantiation-target-relations)"), self.lineedit_itr)
 
-        self.lineedit_maxad = QLineEdit("3")  # -maxad
+        self.lineedit_maxad = QLineEdit("3")
         self.form_layout.addRow(QLabel("-maxad (max-depth)"), self.lineedit_maxad)
 
-        self.lineedit_minpca = QLineEdit("0.0")  # -minpca
+        self.lineedit_minpca = QLineEdit("0.0")
         self.form_layout.addRow(QLabel("-minpca (min-pca-confidence)"), self.lineedit_minpca)
 
-        self.lineedit_bias = QLineEdit("default")  # -bias
+        self.lineedit_bias = QLineEdit("default")
         self.form_layout.addRow(QLabel("-bias (oneVar|default|lazy|...)"), self.lineedit_bias)
 
-        self.lineedit_rl = QLineEdit("")  # -rl (recursivity-limit)
+        self.lineedit_rl = QLineEdit("")
         self.form_layout.addRow(QLabel("-rl (recursivity-limit)"), self.lineedit_rl)
 
-        self.lineedit_nc = QLineEdit("8")  # -nc
+        self.lineedit_nc = QLineEdit("8")
         self.form_layout.addRow(QLabel("-nc (n-threads)"), self.lineedit_nc)
 
-        self.lineedit_minc = QLineEdit("0.0")  # -minc
+        self.lineedit_minc = QLineEdit("0.0")
         self.form_layout.addRow(QLabel("-minc (min-std-confidence)"), self.lineedit_minc)
 
-        self.lineedit_vo = QLineEdit("fun")  # -vo
+        self.lineedit_vo = QLineEdit("fun")
         self.form_layout.addRow(QLabel("-vo (variableOrder)"), self.lineedit_vo)
 
-        self.lineedit_ef = QLineEdit("")  # -ef (extraFile)
+        self.lineedit_ef = QLineEdit("")
         self.form_layout.addRow(QLabel("-ef (extraFile)"), self.lineedit_ef)
 
-        self.lineedit_d = QLineEdit("")  # -d (delimiter)
+        self.lineedit_d = QLineEdit("")
         self.form_layout.addRow(QLabel("-d (delimiter)"), self.lineedit_d)
-
-        # Paramètres booléens (checkBox)
 
         self.checkbox_oute = QCheckBox("-oute (output-at-end)")
         self.form_layout.addRow(self.checkbox_oute)
 
-        # Garder cette option toujours activée pour faciliter la conversion en CSV
         self.checkbox_datalog = QCheckBox("-datalog (datalog-output)")
         self.form_layout.addRow(self.checkbox_datalog)
         self.checkbox_datalog.setCheckState(2)
@@ -141,154 +146,56 @@ class Amie3ParamsWidget(QWidget):
         self.checkbox_mlg = QCheckBox("-mlg (multilingual)")
         self.form_layout.addRow(self.checkbox_mlg)
 
-        # Scroll
         content_widget.setLayout(self.form_layout)
         scroll_area.setWidget(content_widget)
         main_layout.addWidget(scroll_area)
         self.setLayout(main_layout)
 
-    # Fonction qui construit la liste d'arguments AMIE3
     def build_amie3_params(self):
+        """
+        Construit et retourne la liste des paramètres AMIE3 à partir des champs de saisie
+        et des options sélectionnées par l'utilisateur.
+
+        Returns:
+            list: Une liste de chaînes représentant les arguments en ligne de commande à passer à AMIE3.
+        """
         params = []
 
-        # -mins
-        if self.lineedit_mins.text().strip():
-            params += ["-mins", self.lineedit_mins.text().strip()]
+        def add_param(flag, widget):
+            if widget.text().strip():
+                params.extend([flag, widget.text().strip()])
 
-        # -minis
-        if self.lineedit_minis.text().strip():
-            params += ["-minis", self.lineedit_minis.text().strip()]
+        add_param("-mins", self.lineedit_mins)
+        add_param("-minis", self.lineedit_minis)
+        add_param("-minhc", self.lineedit_minhc)
+        add_param("-pm", self.lineedit_pm)
+        add_param("-bexr", self.lineedit_bexr)
+        add_param("-hexr", self.lineedit_hexr)
+        add_param("-iexr", self.lineedit_iexr)
+        add_param("-htr", self.lineedit_htr)
+        add_param("-btr", self.lineedit_btr)
+        add_param("-itr", self.lineedit_itr)
+        add_param("-maxad", self.lineedit_maxad)
+        add_param("-minpca", self.lineedit_minpca)
+        add_param("-bias", self.lineedit_bias)
+        add_param("-rl", self.lineedit_rl)
+        add_param("-nc", self.lineedit_nc)
+        add_param("-minc", self.lineedit_minc)
+        add_param("-vo", self.lineedit_vo)
+        add_param("-ef", self.lineedit_ef)
+        add_param("-d", self.lineedit_d)
 
-        # -minhc
-        if self.lineedit_minhc.text().strip():
-            params += ["-minhc", self.lineedit_minhc.text().strip()]
-
-        # -pm
-        if self.lineedit_pm.text().strip():
-            params += ["-pm", self.lineedit_pm.text().strip()]
-
-        # -bexr
-        if self.lineedit_bexr.text().strip():
-            params += ["-bexr", self.lineedit_bexr.text().strip()]
-
-        # -hexr
-        if self.lineedit_hexr.text().strip():
-            params += ["-hexr", self.lineedit_hexr.text().strip()]
-
-        # -iexr
-        if self.lineedit_iexr.text().strip():
-            params += ["-iexr", self.lineedit_iexr.text().strip()]
-
-        # -htr
-        if self.lineedit_htr.text().strip():
-            params += ["-htr", self.lineedit_htr.text().strip()]
-
-        # -btr
-        if self.lineedit_btr.text().strip():
-            params += ["-btr", self.lineedit_btr.text().strip()]
-
-        # -itr
-        if self.lineedit_itr.text().strip():
-            params += ["-itr", self.lineedit_itr.text().strip()]
-
-        # -maxad
-        if self.lineedit_maxad.text().strip():
-            params += ["-maxad", self.lineedit_maxad.text().strip()]
-
-        # -minpca
-        if self.lineedit_minpca.text().strip():
-            params += ["-minpca", self.lineedit_minpca.text().strip()]
-
-        # -bias
-        if self.lineedit_bias.text().strip():
-            params += ["-bias", self.lineedit_bias.text().strip()]
-
-        # -rl
-        if self.lineedit_rl.text().strip():
-            params += ["-rl", self.lineedit_rl.text().strip()]
-
-        # -nc
-        if self.lineedit_nc.text().strip():
-            params += ["-nc", self.lineedit_nc.text().strip()]
-
-        # -minc
-        if self.lineedit_minc.text().strip():
-            params += ["-minc", self.lineedit_minc.text().strip()]
-
-        # -vo
-        if self.lineedit_vo.text().strip():
-            params += ["-vo", self.lineedit_vo.text().strip()]
-
-        # -ef
-        if self.lineedit_ef.text().strip():
-            params += ["-ef", self.lineedit_ef.text().strip()]
-
-        # -d
-        if self.lineedit_d.text().strip():
-            params += ["-d", self.lineedit_d.text().strip()]
-
-        # ----- Lecture des checkboxes -----
-        if self.checkbox_oute.isChecked():
-            params.append("-oute")
-
-        if self.checkbox_datalog.isChecked():
-            params.append("-datalog")
-
-        if self.checkbox_const.isChecked():
-            params.append("-const")
-
-        if self.checkbox_fconst.isChecked():
-            params.append("-fconst")
-
-        if self.checkbox_caos.isChecked():
-            params.append("-caos")
-
-        if self.checkbox_optimcb.isChecked():
-            params.append("-optimcb")
-
-        if self.checkbox_optimfh.isChecked():
-            params.append("-optimfh")
-
-        if self.checkbox_verbose.isChecked():
-            params.append("-verbose")
-
-        if self.checkbox_auta.isChecked():
-            params.append("-auta")
-
-        if self.checkbox_deml.isChecked():
-            params.append("-deml")
-
-        if self.checkbox_dqrw.isChecked():
-            params.append("-dqrw")
-
-        if self.checkbox_dpr.isChecked():
-            params.append("-dpr")
-
-        if self.checkbox_oout.isChecked():
-            params.append("-oout")
-
-        if self.checkbox_full.isChecked():
-            params.append("-full")
-
-        if self.checkbox_noHeuristics.isChecked():
-            params.append("-noHeuristics")
-
-        if self.checkbox_noKbRewrite.isChecked():
-            params.append("-noKbRewrite")
-
-        if self.checkbox_noKbExistsDetection.isChecked():
-            params.append("-noKbExistsDetection")
-
-        if self.checkbox_noSkyline.isChecked():
-            params.append("-noSkyline")
-
-        if self.checkbox_ostd.isChecked():
-            params.append("-ostd")
-
-        if self.checkbox_optimai.isChecked():
-            params.append("-optimai")
-
-        if self.checkbox_mlg.isChecked():
-            params.append("-mlg")
+        for checkbox in [
+            self.checkbox_oute, self.checkbox_datalog, self.checkbox_const,
+            self.checkbox_fconst, self.checkbox_caos, self.checkbox_optimcb,
+            self.checkbox_optimfh, self.checkbox_verbose, self.checkbox_auta,
+            self.checkbox_deml, self.checkbox_dqrw, self.checkbox_dpr,
+            self.checkbox_oout, self.checkbox_full, self.checkbox_noHeuristics,
+            self.checkbox_noKbRewrite, self.checkbox_noKbExistsDetection,
+            self.checkbox_noSkyline, self.checkbox_ostd, self.checkbox_optimai,
+            self.checkbox_mlg
+        ]:
+            if checkbox.isChecked():
+                params.append(checkbox.text().split()[0])
 
         return params

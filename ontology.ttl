@@ -1,0 +1,2775 @@
+@prefix : <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+swrla:isRuleEnabled a owl:AnnotationProperty .
+
+:ATM a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:BIRC3 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:BR a owl:Class ;
+    rdfs:comment """Rituximab Bendamustine(analogue des purines et alkylant)
+
+appelé aussi RB""" ;
+    rdfs:subClassOf :Polytherapie ;
+    owl:disjointWith :FCR .
+
+:BTK a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:FBXW7 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:LigneTraitement a owl:DatatypeProperty ;
+    rdfs:domain :Traitement ;
+    rdfs:range xsd:integer .
+
+:NOTCH1 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:NomTraitement a owl:DatatypeProperty ;
+    rdfs:domain :Traitement ;
+    rdfs:range xsd:string .
+
+:PLCG2 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:POT1 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:PathologieInfectieuseBacterienne a owl:Class ;
+    rdfs:subClassOf :MaladieInfectieuse ;
+    owl:disjointWith :PathologieInfectieuseVirale .
+
+:RPS15 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:SF3B1 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:UPNPatientBP a owl:Class ;
+    rdfs:subClassOf :UPNPatient ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :aPourFacteurPronostic ;
+            owl:someValuesFrom :FacteurBonPronostic ] .
+
+:UPNPatientMP a owl:Class ;
+    rdfs:subClassOf :UPNPatient ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :aPourFacteurPronostic ;
+            owl:someValuesFrom :FacteurMauvaisPronostic ] .
+
+:XPO1 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:aPourComorbidite a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Maladie .
+
+:aPourComplication a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Maladie .
+
+:aPourEtat a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Etat .
+
+:aPourFacteurDeRisque a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :FacteurDeRisque ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+:aPourFormeDeLLC a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient .
+
+:aPourRegimeNutritionnel a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :RegimeNutritionnel .
+
+:aPourSigne a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Signe .
+
+:aPourSigneParaclinique a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :SigneParaclinique .
+
+:aPourStatutCytogenetique a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :StatutCytogenetique .
+
+:agriculteur a owl:NamedIndividual .
+
+:antecedentFamiliaux a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:coiffeur a owl:NamedIndividual .
+
+:durationStadeP1iii a owl:NamedIndividual,
+        time:Duration .
+
+:etatPatient a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:groupeEthniqueGenetique a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:localisationSigneClinique a owl:DatatypeProperty ;
+    rdfs:domain :Signe,
+        :SigneClinique ;
+    rdfs:range xsd:string .
+
+:nombreAdenopathie a owl:DatatypeProperty ;
+    rdfs:domain :AdenopathieSuperficielle ;
+    rdfs:range xsd:integer .
+
+:pHbP2e a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2f a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2g a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2h a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2i a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2j a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2k a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2l a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2m a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2n a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2o a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2p a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2q a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2r a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2s a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:pHbP2t a :PrelevementHemoglobine,
+        owl:NamedIndividual .
+
+:patient1 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp1 ;
+    :aPourMaladie :LLC ;
+    :aPourPrelevement :prelevementMTS1,
+        :prelevementMTS2,
+        :prelevementNFS1,
+        :prelevementNFS2 ;
+    :aPourSigneClinique :adenopathie1,
+        :adenopathie2 ;
+    :aPourStade :StadeP1i,
+        :StadeP1ii,
+        :StadeP1iii ;
+    :aPourTraitement :traitement1,
+        :traitement2 ;
+    :sexe "F" .
+
+:patient10 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp10 ;
+    :aPourMaladie :LLC ;
+    :chromosome11q "POS" .
+
+:patient11 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp11 ;
+    :aPourMaladie :LLC ;
+    :chromosome13q "POS" .
+
+:patient12 a :UPNPatient,
+        owl:NamedIndividual ;
+    :Zap70 "POS" ;
+    :aPourFacteurPronostic :fPp12 ;
+    :aPourMaladie :LLC .
+
+:patient13 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp13 ;
+    :aPourMaladie :LLC ;
+    :chromosome17p "POS" .
+
+:patient14 a :UPNPatient,
+        owl:NamedIndividual ;
+    :TP53 "M" ;
+    :aPourFacteurPronostic :fPp14 ;
+    :aPourMaladie :LLC .
+
+:patient2 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp2 ;
+    :aPourMaladie :LLC ;
+    :aPourPrelevement :pHbP2a,
+        :pHbP2b,
+        :pHbP2c,
+        :pHbP2d,
+        :pLymphoP2a,
+        :pLymphoP2b,
+        :pLymphoP2c,
+        :pLymphoP2d,
+        :pLymphoP2e,
+        :pLymphoP2f,
+        :pLymphoP2g,
+        :pLymphoP2h,
+        :pLymphoP2i,
+        :pLymphoP2j,
+        :pLymphoP2k,
+        :pLymphoP2l,
+        :pLymphoP2m,
+        :pLymphoP2n,
+        :pLymphoP2o,
+        :pLymphoP2p,
+        :pLymphoP2q,
+        :pLymphoP2r,
+        :pLymphoP2s,
+        :pLymphoP2t ;
+    :aPourTraitement :traitement3 ;
+    :sexe "M" .
+
+:patient3 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp3 ;
+    :aPourMaladie :LLC ;
+    :age 78 .
+
+:patient4 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp4 ;
+    :aPourMaladie :LLC ;
+    :age 60 .
+
+:patient5 a :UPNPatient,
+        owl:NamedIndividual ;
+    :aPourFacteurPronostic :fPp5 ;
+    :aPourMaladie :SDRichter .
+
+:patient6 a :UPNPatient,
+        owl:NamedIndividual ;
+    :IGHV "M" ;
+    :aPourFacteurPronostic :fPp6 ;
+    :aPourMaladie :LLC .
+
+:patient7 a :UPNPatient,
+        owl:NamedIndividual ;
+    :IGHV "NM" ;
+    :aPourFacteurPronostic :fPp7 ;
+    :aPourMaladie :LLC .
+
+:patient8 a :UPNPatient,
+        owl:NamedIndividual ;
+    :CD38 "POS" ;
+    :aPourFacteurPronostic :fPp8 ;
+    :aPourMaladie :LLC .
+
+:patient9 a :UPNPatient,
+        owl:NamedIndividual ;
+    :CD38 "NEG" ;
+    :aPourFacteurPronostic :fPp9 ;
+    :aPourMaladie :LLC .
+
+:poids a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:float .
+
+:polynucleaireNeutrophile a owl:DatatypeProperty ;
+    rdfs:domain :PrelevementPolynucleaireNeutrophile ;
+    rdfs:range xsd:float .
+
+:profession a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:reponseTraitement a owl:DatatypeProperty ;
+    rdfs:comment """Une évaluation de la réponse thérapeutique, c’est-à-dire de la façon dont la LLC a réagi aux traitements, est réalisée lorsque les traitements s’achèvent.
+
+Pour cela, les examens réalisés initialement sont de nouveau prescrits. Un hémogramme est effectué afin de contrôler la quantité de lymphocytes présents dans le sang. Un examen clinique est réalisé afin de vérifier la présence ou non d’aires lymphoïdes palpables et éventuellement un scanner afin de vérifier l’évolution des sites de maladie, repérés au moment du diagnostic.
+
+La meilleure réponse dans la plupart des cas est la rémission complète, c’est-à-dire la disparition complète de tous les signes de la maladie. La rémission complète permet de vivre normalement avec un suivi régulier. Dans le cas d’une maladie chronique comme la LLC, on ne parle généralement pas de guérison.
+
+
+On distingue 
+-PR:  réponse partielle
+-CR: réponse complète""" ;
+    rdfs:domain :Traitement ;
+    rdfs:range xsd:string .
+
+:stadePatient a owl:DatatypeProperty ;
+    rdfs:domain :Stade ;
+    rdfs:range xsd:string .
+
+:statutPatient a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:tailleSigneClinique a owl:DatatypeProperty ;
+    rdfs:domain :Signe,
+        :SigneClinique ;
+    rdfs:range xsd:float .
+
+:trisomieChromosome12 a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+:typeTraitement a owl:DatatypeProperty ;
+    rdfs:domain :Traitement ;
+    rdfs:range xsd:string .
+
+:valeurStatut a owl:DatatypeProperty ;
+    rdfs:domain :StatutCytogenetique ;
+    rdfs:range xsd:string .
+
+xsd:date a rdfs:Datatype .
+
+<http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto> a owl:Ontology ;
+    owl:imports time:2016 ;
+    owl:versionIRI <http://www.semanticweb.org/despres/ontologies/2023/LLC_Onto> ;
+    owl:versionInfo "V1" .
+
+:AHAI a owl:Class ;
+    rdfs:comment "Un trouble dans lequel les anticorps sont dirigés contre les globules rouges, causant une anémie de gravité variable" ;
+    rdfs:subClassOf :MaladieAutoImmune .
+
+:AdenopathieProfonde a owl:Class ;
+    rdfs:comment """Les ganglions profonds ne sont pas accessibles à l'examen clinique, mais seront détectés en imagerie médicale.
+
+Ganglions médiastinaux : 
+para-trachéaux, inter-trachéo-bronchiques, inter-bronchiques
+
+Ganglions abdomino-pelviens : 
+mésentériques, aortico-mésentériques, lombaires, iliaques, pelviens, retro-cruraux.""" ;
+    rdfs:subClassOf :SigneParaclinique .
+
+:CGH a owl:Class ;
+    rdfs:comment "L'hybridation génomique comparative ( CGH micro-arrays) peuvent être employées" ;
+    rdfs:subClassOf :TechniqueCytogenetique .
+
+:CytometrieDeFlux a owl:Class ;
+    rdfs:subClassOf :TechniqueCytogenetique .
+
+:FCR a owl:Class ;
+    rdfs:comment """Administration par voie intraveineuse de 3 médicaments : le rituximab, le fludarabine et le cyclophosphamide
+
+Appelé aussi RFC
+
+Le FCR est considéré comme le traitement de première et de seconde ligne chez les patients en bon état général car des études ont récemment montré sa plus grande efficacité et sa relative bonne tolérance, en dehors de sa myélotoxicité (toxicité pour les cellules de la moelle osseuse).
+Les événements indésirables pouvant amener à un arrêt de traitement sont, principalement, hématologiques (neutropénie, thrombopénie) ; et une augmentation du risque d'infections.""" ;
+    rdfs:subClassOf :Polytherapie .
+
+:FISH a owl:Class ;
+    rdfs:comment "Hybridation in situ avec sonde fluorescente (FISH)",
+        "L'hybridation in situ en fluorescence (FISH) est un test génétique moléculaire qui permet d'identifier les anomalies chromosomiques et d'autres changements génétiques dans les cellules cancéreuses, ou blastes. On utilise des sondes d'ADN spéciales marquées par des colorants fluorescents. La FISH permet de différencier les leucémies qui se ressemblent mais dont les anomalies génétiques diffèrent et qui pourraient donc devoir être traitées différemment." ;
+    rdfs:subClassOf :TechniqueCytogenetique .
+
+:FacteurAgentAllergeneEtInfectieux a owl:Class ;
+    rdfs:comment "Des études ont évoqué la possibilité d'une association entre la LLC et certains virus, comme le virus d'Epstein-Barr et les virus lymphotropiques T humains (HTLV-1 et HTLV-2)." ;
+    rdfs:subClassOf :FacteurDeRisque .
+
+:FacteurEnvironnemental a owl:Class ;
+    rdfs:subClassOf :FacteurDeRisque .
+
+:FacteurNutritionnel a owl:Class ;
+    rdfs:subClassOf :FacteurDeRisque .
+
+:Hepatomegalie a owl:Class ;
+    rdfs:comment """Une hépatomégalie est une augmentation du volume du foie. Elle peut être localisée à un segment ou un lobe du foie ou bien être diffuse. Elle peut être homogène ou hétérogène à la palpation.
+Elle est définit par une augmentation du volume du foie supérieur à 12 cm. La taille se mesure par la projection sur la ligne médio-claviculaire de la flèche hépatique (distance entre la limite supérieure de la matité hépatique et le bord inférieur du foie)""" ;
+    rdfs:subClassOf :SigneClinique .
+
+:LLCAtypique a owl:Class ;
+    rdfs:subClassOf :MaladieHematologique ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue 3 ;
+            owl:onProperty :scoreMatutes ] .
+
+:LLCMixte a owl:Class ;
+    rdfs:subClassOf :MaladieHematologique .
+
+:LLCTypique a owl:Class ;
+    rdfs:subClassOf :MaladieHematologique ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :scoreMatutes ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ( [ xsd:minExclusive 3 ] ) ] ] .
+
+:Obesite a owl:Class ;
+    rdfs:comment """Certaines études ont démontré que l’embonpoint et l’obésité peuvent faire augmenter votre risque de LLC. 
+L'augmentation du risque de la leucémie chez les obèses peut aussi être du à des troubles de la fonction immunitaire et une inflammation chronique chez ces patients.
+L'obésité  est généralement définie par l'indice de masse corporelle (IMC), qui est calculé en divisant le poids d'une personne en kilogrammes par le carré de sa taille en mètres. Un IMC supérieur à 30 est considéré comme obèse.""" ;
+    rdfs:subClassOf :FacteurDeRisque .
+
+:PTI a owl:Class ;
+    rdfs:comment "Un trouble de la coagulation dans lequel les anticorps sont dirigés contre les plaquettes, ce qui provoque des épisodes hémorragiques" ;
+    rdfs:subClassOf :MaladieAutoImmune .
+
+:PathologieInfectieuseVirale a owl:Class ;
+    rdfs:subClassOf :MaladieInfectieuse .
+
+:PrelevementPlaquette a owl:Class ;
+    rdfs:subClassOf :PrelevementNFS .
+
+:QMPSF a owl:Class ;
+    rdfs:comment "La PCR multiplex de courts fragments fluorescents (QMPSF - Quantitative Multiplex PCR of Shorts Fluorescents Fragments )" ;
+    rdfs:subClassOf :TechniqueCytogenetique .
+
+:RegimeMediterraneen a owl:Class ;
+    rdfs:subClassOf :RegimeNutritionnel .
+
+:RegimeNeutre a owl:Class ;
+    rdfs:subClassOf :RegimeNutritionnel .
+
+:RegimeWestern a owl:Class ;
+    rdfs:subClassOf :RegimeNutritionnel .
+
+:SignesGeneraux a owl:Class ;
+    rdfs:comment """-Une fièvre isolée , prolongée de plus de 7 jours, non expliquée par une cause infectieuse
+-Des sueurs abondantes , surtout si elles sont nocturnes
+-Un amaigrissement récent important significatif (> 5 kg)
+-Un état de fatigue anormal
+-Une infection, en particulier un zona, des poussées répétitives d’herpès, une pneumonie."""@fr ;
+    rdfs:subClassOf :SigneClinique .
+
+:Splenomegalie a owl:Class ;
+    rdfs:comment """La splénomégalie est une augmentation anormale du volume de la rate. La rate, située sous le diaphragme, dans la partie supérieure gauche de l'abdomen, est un organe faisant partie du système immunitaire.
+La splénomégalie est parfois volumineuse et peut atteindre la fosse iliaque gauche. La mesure du débord costal s’effectue sur la ligne médio-claviculaire, en centimètres ; on réalise un calque du débord costal.
+La palpation peut être difficile ou impossible en cas d’obésité""" ;
+    rdfs:subClassOf :SigneClinique .
+
+:StadeP1i a :Stade,
+        owl:NamedIndividual ;
+    :stadePatient "A"^^xsd:string ;
+    time:hasDuration :durationStadeP1i ;
+    time:hasTime :intervalP1i .
+
+:StadeP1ii a :Stade,
+        owl:NamedIndividual ;
+    :stadePatient "B"^^xsd:string ;
+    time:hasDuration :durationStadeP1ii ;
+    time:hasTime :intervalP1ii .
+
+:StadeP1iii a :Stade,
+        owl:NamedIndividual ;
+    :stadePatient "C"^^xsd:string ;
+    time:hasTime :intervalP1iii .
+
+:StatutATM a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutBIRC3 a owl:Class ;
+    rdfs:comment "" ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutBTK a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutCD38 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutChromosome11 a owl:Class ;
+    rdfs:subClassOf :StatutChromosome .
+
+:StatutChromosome12 a owl:Class ;
+    rdfs:subClassOf :StatutChromosome .
+
+:StatutChromosome13 a owl:Class ;
+    rdfs:subClassOf :StatutChromosome .
+
+:StatutChromosome17 a owl:Class ;
+    rdfs:subClassOf :StatutChromosome .
+
+:StatutFBXW7 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutIGHV a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique ;
+    owl:versionInfo """Il existe deux sous-types de LLC, selon le degré de mutations des gènes des immunoglobulines IgVH.
+
+La présence ou l'abscence de mutations des gènes des chaînes lourdes des immunoglobulines est un marqueyr de l'évolution de la LLC""" .
+
+:StatutNOTCH1 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutPLCG2 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutPOT1 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutRPS15 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutSF3B1 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutTP53 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutXPO1 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:StatutZap70 a owl:Class ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:SyndromeEvans a owl:Class ;
+    rdfs:comment "Il s’agit d’une maladie auto-immune rare caractérisée par l’association simultanée ou décalée dans le temps d’une AHAI et d’un PTI. Autrement dit, le patient a une importante carence de globules rouges et de plaquettes." ;
+    rdfs:subClassOf :MaladieAutoImmune .
+
+:TP53 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:Zap70 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:adenopathie1 a :AdenopathieSuperficielle,
+        owl:NamedIndividual ;
+    :aPourObservation :obsAdenopathie1a,
+        :obsAdenopathie1b,
+        :obsAdenopathie1c,
+        :obsAdenopathie1d ;
+    :localisationSigneClinique "axillaire" .
+
+:adenopathie2 a :AdenopathieSuperficielle,
+        owl:NamedIndividual ;
+    :aPourObservation :obsAdenopathie2a,
+        :obsAdenopathie2b,
+        :obsAdenopathie2c ;
+    :localisationSigneClinique "inguinale" .
+
+:chromosome11q a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:chromosome13q a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:chromosome17p a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:dateStadeP1i a owl:NamedIndividual,
+        time:Instant ;
+    time:inXSDDate "2015-04-12"^^xsd:date .
+
+:dateTraitement3 a owl:NamedIndividual,
+        time:Instant ;
+    time:inXSDDate "2016-06-01"^^xsd:date .
+
+:dayt1 a swrl:Variable .
+
+:dayt2 a swrl:Variable .
+
+:dedoublementLymphocytaireValeurLymphocyte a owl:DatatypeProperty ;
+    rdfs:domain :PrelevementLymphocyte ;
+    rdfs:range xsd:float .
+
+:durationStadeP1i a owl:NamedIndividual,
+        time:Duration ;
+    time:numericDuration 26.0 .
+
+:durationStadeP1ii a owl:NamedIndividual,
+        time:Duration ;
+    time:numericDuration 17.0 .
+
+:evolueVersLaTaille a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+:fPp1 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp10 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp11 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp12 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp13 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp14 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp2 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp3 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp4 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp5 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp6 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp7 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp8 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:fPp9 a :FacteurPronostic,
+        owl:NamedIndividual .
+
+:indolent a :Etat,
+        owl:NamedIndividual .
+
+:obsAdenopathie1a a :Observation,
+        owl:NamedIndividual ;
+    :taille 4 ;
+    time:hasTime :dateAdenopathie1a .
+
+:obsAdenopathie1b a :Observation,
+        owl:NamedIndividual ;
+    :taille 5 ;
+    time:hasTime :dateAdenopathie1b .
+
+:obsAdenopathie1c a :Observation,
+        owl:NamedIndividual ;
+    :taille 7 ;
+    time:hasTime :dateAdenopathie1c .
+
+:obsAdenopathie1d a :Observation,
+        owl:NamedIndividual ;
+    :taille 11 ;
+    time:hasTime :dateAdenopathie1d .
+
+:obsAdenopathie2a a :Observation,
+        owl:NamedIndividual ;
+    :taille 5 ;
+    time:hasTime :dateAdenopathie2a .
+
+:obsAdenopathie2b a :Observation,
+        owl:NamedIndividual ;
+    :taille 6 ;
+    time:hasTime :dateAdenopathie2b .
+
+:obsAdenopathie2c a :Observation,
+        owl:NamedIndividual ;
+    :taille 12 ;
+    time:hasTime :dateAdenopathie2c .
+
+:pHbP2a a :PrelevementHemoglobine,
+        owl:NamedIndividual ;
+    :hemoglobine "11.6"^^xsd:float ;
+    rdfs:comment "Prélèvement hémoglobine patient 1 à la date t1" .
+
+:pHbP2b a :PrelevementHemoglobine,
+        owl:NamedIndividual ;
+    :hemoglobine "11.7"^^xsd:float .
+
+:pHbP2c a :PrelevementHemoglobine,
+        owl:NamedIndividual ;
+    :hemoglobine "11.8"^^xsd:float .
+
+:pHbP2d a :PrelevementHemoglobine,
+        owl:NamedIndividual ;
+    :hemoglobine "11.5"^^xsd:float .
+
+:pLymphoP2a a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "16.24"^^xsd:float ;
+    time:hasTime :dateNFSp2a .
+
+:pLymphoP2b a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "16.38"^^xsd:float ;
+    time:hasTime :dateNFSp2b .
+
+:pLymphoP2c a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "24.57"^^xsd:float ;
+    time:hasTime :dateNFSp2c .
+
+:pLymphoP2d a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "25.17"^^xsd:float ;
+    time:hasTime :dateNFSp2d .
+
+:pLymphoP2e a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "27.76"^^xsd:float ;
+    time:hasTime :dateNFSp2e .
+
+:pLymphoP2f a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "41.86"^^xsd:float ;
+    time:hasTime :dateNFSp2e .
+
+:pLymphoP2g a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "66.59"^^xsd:float ;
+    time:hasTime :dateNFSp2g .
+
+:pLymphoP2h a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "87.98"^^xsd:float ;
+    time:hasTime :dateNFSp2h .
+
+:pLymphoP2i a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "96.14"^^xsd:float ;
+    time:hasTime :dateNFSp2i .
+
+:pLymphoP2j a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "102.87"^^xsd:float ;
+    time:hasTime :dateNFSp2j .
+
+:pLymphoP2k a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "69.55"^^xsd:float ;
+    time:hasTime :dateNFSp2k .
+
+:pLymphoP2l a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "23.64"^^xsd:float ;
+    time:hasTime :dateNFSp2l .
+
+:pLymphoP2m a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "2.97"^^xsd:float ;
+    time:hasTime :dateNFSp2m .
+
+:pLymphoP2n a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "2.63"^^xsd:float ;
+    time:hasTime :dateNFSp2n .
+
+:pLymphoP2o a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "0.81"^^xsd:float ;
+    time:hasTime :dateNFSp2o .
+
+:pLymphoP2p a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "1.55"^^xsd:float ;
+    time:hasTime :dateNFSp2p .
+
+:pLymphoP2q a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "1.14"^^xsd:float ;
+    time:hasTime :dateNFSp2q .
+
+:pLymphoP2r a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "1.95"^^xsd:float ;
+    time:hasTime :dateNFSp2r .
+
+:pLymphoP2s a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "1.61"^^xsd:float ;
+    time:hasTime :dateNFSp2s .
+
+:pLymphoP2t a :PrelevementLymphocyte,
+        owl:NamedIndividual ;
+    :lymphocyte "1.5"^^xsd:float ;
+    time:hasTime :dateNFSp2t .
+
+:precede a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    owl:inverseOf :suivi .
+
+:prelevementMTS1 a :PrelevementMTS,
+        owl:NamedIndividual ;
+    time:hasTime :datePrelevementMTS1 .
+
+:prelevementMTS2 a :PrelevementMTS,
+        owl:NamedIndividual ;
+    time:hasTime :datePrelevementMTS2 .
+
+:prelevementNFS1 a :PrelevementNFS,
+        owl:NamedIndividual ;
+    time:hasTime :datePrelevementNFS1 .
+
+:prelevementNFS2 a :PrelevementNFS,
+        owl:NamedIndividual ;
+    time:hasTime :datePrelevementNFS2 .
+
+:progressif a :Etat,
+        owl:NamedIndividual .
+
+:s0 a swrl:Variable .
+
+:s1 a swrl:Variable .
+
+:stadeA a :Stade,
+        owl:NamedIndividual .
+
+:stadeB a :Stade,
+        owl:NamedIndividual .
+
+:stadeC a :Stade,
+        owl:NamedIndividual .
+
+:ta1 a swrl:Variable .
+
+:traitement1 a :Traitement,
+        owl:NamedIndividual ;
+    time:hasTime :dateTraitement1 .
+
+:traitement2 a :Traitement,
+        owl:NamedIndividual ;
+    time:hasTime :dateTraitement2 .
+
+:traitement3 a :Traitement,
+        owl:NamedIndividual ;
+    time:hasTime :dateTraitement3 .
+
+:AgentAlkylantEtAnalogueDePurine a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Bendamustine ) ],
+        :Chimiotherapie ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Bendamustine ) ] .
+
+:AnalogueDePurine a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Fludarabine ) ],
+        :Chimiotherapie ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Fludarabine ) ] .
+
+:CD38 a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:FacteurBonPronostic a owl:Class ;
+    rdfs:comment """Un facteur de bon pronostic est un élément ou une caractéristique qui indique que l'évolution d'une maladie ou d'un état de santé sera favorable.
+les facteurs de bon pronostic sont souvent utilisés pour aider à prédire l'issue d'une maladie ou d'un traitement. Ces facteurs peuvent être liés à la maladie elle-même (par exemple, la taille ou la localisation d'une tumeur), aux caractéristiques du patient (par exemple, l'âge ou l'état de santé général) ou aux réponses aux traitements précédents.""" ;
+    rdfs:subClassOf :FacteurPronostic ;
+    owl:disjointWith :FacteurMauvaisPronostic .
+
+:HbBasse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hemoglobine ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:float ;
+                    owl:withRestrictions ( [ xsd:maxExclusive "10.0"^^xsd:float ] ) ] ],
+        :SigneParaclinique ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :hemoglobine ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:float ;
+                    owl:withRestrictions ( [ xsd:maxExclusive "10.0"^^xsd:float ] ) ] ] .
+
+:IGHV a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:InhibiteurBCL2 a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Venetoclax ) ],
+        :InhibiteurProteineKinase ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Venetoclax ) ] .
+
+:InhibiteurPI3KinaseDelta a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Idelalisib ) ],
+        :InhibiteurProteineKinase ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Idelalisib ) ] .
+
+:InhibiteurTyrosineKinaseDeBruton a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Ibrutinib ) ],
+        :InhibiteurProteineKinase ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Ibrutinib ) ] .
+
+:PlaquetteBasse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :plaquette ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ( [ xsd:maxExclusive 100000 ] ) ] ],
+        :SigneParaclinique ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :plaquette ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ( [ xsd:maxExclusive 100000 ] ) ] ] .
+
+:PrelevementMTS a owl:Class ;
+    rdfs:subClassOf :Prelevement ;
+    owl:disjointWith :PrelevementNFS .
+
+:PrelevementPolynucleaireNeutrophile a owl:Class ;
+    rdfs:subClassOf :PrelevementNFS .
+
+:age a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:integer .
+
+:dateAdenopathie1a a owl:NamedIndividual,
+        time:Instant ;
+    time:before :dateAdenopathie1b ;
+    time:inXSDDate "2014-08-01"^^xsd:date .
+
+:dateAdenopathie1d a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateAdenopathie1c ;
+    time:inXSDDate "2015-05-12"^^xsd:date .
+
+:dateAdenopathie2a a owl:NamedIndividual,
+        time:Instant ;
+    time:before :dateAdenopathie2b ;
+    time:inXSDDate "2016-01-12"^^xsd:date .
+
+:dateAdenopathie2c a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateAdenopathie2b ;
+    time:inXSDDate "2016-09-13"^^xsd:date .
+
+:dateNFSp2a a owl:NamedIndividual,
+        time:Instant ;
+    time:before :dateNFSp2b ;
+    time:inXSDDate "2014-01-08"^^xsd:date .
+
+:dateNFSp2f a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2e ;
+    time:before :dateNFSp2g ;
+    time:inXSDDate "2015-01-07"^^xsd:date .
+
+:dateNFSp2t a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2s ;
+    time:inXSDDate "2019-10-23"^^xsd:date .
+
+:datePrelevementMTS1 a owl:NamedIndividual,
+        time:Instant ;
+    time:before :datePrelevementMTS2 ;
+    time:inXSDDate "2012-02-02"^^xsd:date .
+
+:datePrelevementMTS2 a owl:NamedIndividual,
+        time:Instant ;
+    time:after :datePrelevementMTS1 ;
+    time:inXSDDate "2012-07-05"^^xsd:date .
+
+:datePrelevementNFS1 a owl:NamedIndividual,
+        time:Instant ;
+    time:before :datePrelevementNFS2 ;
+    time:inXSDDate "2012-01-29"^^xsd:date .
+
+:datePrelevementNFS2 a owl:NamedIndividual,
+        time:Instant ;
+    time:after :datePrelevementNFS1 ;
+    time:inXSDDate "2012-07-02"^^xsd:date .
+
+:dateStadeP1ii a owl:NamedIndividual,
+        time:Instant ;
+    time:inXSDDate "2017-05-09"^^xsd:date .
+
+:dateStadeP1iii a owl:NamedIndividual,
+        time:Instant ;
+    time:inXSDDate "2018-09-11"^^xsd:date .
+
+:dateTraitement1 a owl:NamedIndividual,
+        time:Instant ;
+    time:before :dateTraitement2 ;
+    time:inXSDDate "2015-09-01"^^xsd:date .
+
+:dateTraitement2 a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateTraitement1 ;
+    time:inXSDDate "2018-10-02"^^xsd:date .
+
+:intervalP1i a owl:NamedIndividual,
+        time:ProperInterval ;
+    time:hasBeginning :dateStadeP1i ;
+    time:hasEnd :dateStadeP1ii ;
+    time:intervalBefore :intervalP1ii .
+
+:intervalP1iii a owl:NamedIndividual,
+        time:ProperInterval ;
+    time:hasBeginning :dateStadeP1iii ;
+    time:intervalAfter :intervalP1ii .
+
+:lymph2 a swrl:Variable .
+
+:lymphocyte a owl:DatatypeProperty ;
+    rdfs:domain :PrelevementLymphocyte ;
+    rdfs:range xsd:float .
+
+:montht1 a swrl:Variable .
+
+:montht2 a swrl:Variable .
+
+:nb a swrl:Variable .
+
+:nombreDeMois a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+:ratio a swrl:Variable .
+
+:scoreMatutes a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+:sexe a owl:DatatypeProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range xsd:string .
+
+:suivi a owl:ObjectProperty .
+
+:ta2 a swrl:Variable .
+
+:taille a owl:DatatypeProperty ;
+    rdfs:domain :Observation ;
+    rdfs:range xsd:integer .
+
+:val1 a swrl:Variable .
+
+:val2 a swrl:Variable .
+
+:val3 a swrl:Variable .
+
+:val4 a swrl:Variable .
+
+:yeart1 a swrl:Variable .
+
+:yeart2 a swrl:Variable .
+
+:AgentAlkylant a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Chlorambucil :Cyclophosphamide ) ],
+        :Chimiotherapie ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Chlorambucil :Cyclophosphamide ) ] .
+
+:FacteurMauvaisPronostic a owl:Class ;
+    rdfs:comment """Un facteur de mauvais pronostic est un élément ou une caractéristique qui indique que l'évolution d'une maladie ou d'un état de santé sera défavorable.
+Les facteurs de mauvais pronostic sont souvent utilisés pour aider à prédire l'issue d'une maladie ou d'un traitement. Ces facteurs peuvent être liés à la maladie elle-même (par exemple, la taille ou la localisation d'une tumeur), aux caractéristiques du patient (par exemple, l'âge ou l'état de santé général) ou aux réponses aux traitements précédents""" ;
+    rdfs:subClassOf :FacteurPronostic .
+
+:MaladieInfectieuse a owl:Class ;
+    rdfs:comment """Elles sont fréquentes et représentent la première cause de morbidité et de mortalité.
+Elles peuvent survenir à tout moment de l’évolution de la LLC mais elles sont plus fréquentes quand la maladie est avancée ou en cours de traitement.
+Les infections sont le plus souvent "banales" et affectent principalement les voies respiratoires. Elles peuvent être virales ou, plus souvent, bactériennes.
+L’immunodépression, conséquence de la maladie, est à la fois humorale et se caractérise par un déficit sérique en immunoglobulines et cellulaire (altération fonctionnelle des lymphocytes, présentation altérée de l’antigène, mauvaise réponse aux stimuli antigéniques, modification de la répartition des lymphocytes T)."""@fr ;
+    rdfs:subClassOf :Maladie .
+
+:Polytherapie a owl:Class ;
+    rdfs:subClassOf :Traitement .
+
+:dateAdenopathie1b a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateAdenopathie1a ;
+    time:before :dateAdenopathie1c ;
+    time:inXSDDate "2014-12-03"^^xsd:date .
+
+:dateAdenopathie1c a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateAdenopathie1b ;
+    time:before :dateAdenopathie1d ;
+    time:inXSDDate "2015-02-09"^^xsd:date .
+
+:dateAdenopathie2b a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateAdenopathie2a ;
+    time:before :dateAdenopathie2c ;
+    time:inXSDDate "2016-05-01"^^xsd:date .
+
+:dateNFSp2b a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2a ;
+    time:before :dateNFSp2c ;
+    time:inXSDDate "2014-02-18"^^xsd:date .
+
+:dateNFSp2c a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2b ;
+    time:before :dateNFSp2d ;
+    time:inXSDDate "2014-03-18"^^xsd:date .
+
+:dateNFSp2d a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2c ;
+    time:before :dateNFSp2e ;
+    time:inXSDDate "2014-07-09"^^xsd:date .
+
+:dateNFSp2g a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2f ;
+    time:before :dateNFSp2h ;
+    time:inXSDDate "2015-08-11"^^xsd:date .
+
+:dateNFSp2h a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2g ;
+    time:before :dateNFSp2i ;
+    time:inXSDDate "2015-08-18"^^xsd:date .
+
+:dateNFSp2i a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2h ;
+    time:before :dateNFSp2j ;
+    time:inXSDDate "2015-09-10"^^xsd:date .
+
+:dateNFSp2j a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2i ;
+    time:before :dateNFSp2k ;
+    time:inXSDDate "2015-10-06"^^xsd:date .
+
+:dateNFSp2k a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2j ;
+    time:before :dateNFSp2l ;
+    time:inXSDDate "2015-11-03"^^xsd:date .
+
+:dateNFSp2l a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2k ;
+    time:before :dateNFSp2m ;
+    time:inXSDDate "2016-02-02"^^xsd:date .
+
+:dateNFSp2m a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2l ;
+    time:before :dateNFSp2n ;
+    time:inXSDDate "2016-10-10"^^xsd:date .
+
+:dateNFSp2n a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2m ;
+    time:before :dateNFSp2o ;
+    time:inXSDDate "2016-11-15"^^xsd:date .
+
+:dateNFSp2o a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2n ;
+    time:before :dateNFSp2p ;
+    time:inXSDDate "2017-02-07"^^xsd:date .
+
+:dateNFSp2p a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2o ;
+    time:before :dateNFSp2q ;
+    time:inXSDDate "2017-04-04"^^xsd:date .
+
+:dateNFSp2q a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2p ;
+    time:before :dateNFSp2r ;
+    time:inXSDDate "2017-07-26"^^xsd:date .
+
+:dateNFSp2r a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2q ;
+    time:before :dateNFSp2s ;
+    time:inXSDDate "2017-09-19"^^xsd:date .
+
+:dateNFSp2s a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2r ;
+    time:before :dateNFSp2t ;
+    time:inXSDDate "2017-12-14"^^xsd:date .
+
+:intervalP1ii a owl:NamedIndividual,
+        time:ProperInterval ;
+    time:hasBeginning :dateStadeP1ii ;
+    time:hasEnd :dateStadeP1iii ;
+    time:intervalAfter :intervalP1i ;
+    time:intervalBefore :intervalP1iii .
+
+:lymph1 a swrl:Variable .
+
+:AdenopathieSuperficielle a owl:Class ;
+    rdfs:comment """Augmentation, douloureuse ou non, de la taille d'un ganglion qui devient dur et, parfois, enflammé. Une adénopathie peut être provoquée par une infection ou par la migration de cellules cancéreuses.
+Elle peut être découverte par le patient lui-même (adénopathies superficielles), par le médecin lors de la consultation
+
+Les ganglions superficiels sont accessibles à l'examen clinique.
+
+-Ganglions cervicaux : 
+retro- et sous-maxillaires mentonniers, carotidiens (ou jugulaires), sus-claviculaires, occipitaux.
+
+-Ganglions des membres et ceintures :
+axillaires, épitrochléens (au niveau du coude), inguinaux, rétro-poplités (dans le creux du genou)"""@fr ;
+    rdfs:subClassOf :SigneClinique .
+
+:Etat a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :indolent :progressif ) ] .
+
+:MaladieAutoImmune a owl:Class ;
+    rdfs:comment """Il s'agit, souvent, d'une anémie hémolytique auto-immune, dans 5 à 10 % des cas. On peut aussi observer un purpura thrombopénique immun. Lorsque ces anomalies sont associées, les spécialistes parlent alors de syndrome d’Evans.
+Plus rarement une érythroblastopénie (diminution des précurseurs des globules rouges qui se traduit par une anémie par défaut de production). ou une neutropénie sont observées."""@fr ;
+    rdfs:subClassOf :Maladie .
+
+:Prelevement a owl:Class .
+
+:SDRichter a :SDRichter,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:subClassOf :MaladieHematologique .
+
+:a a swrl:Variable .
+
+:aEvolueVers a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    owl:inverseOf :aOrigine .
+
+:aOrigine a owl:ObjectProperty,
+        owl:TransitiveProperty .
+
+:aPourSigneClinique a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :SigneClinique .
+
+:aPourTraitement a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Traitement .
+
+:dateNFSp2e a owl:NamedIndividual,
+        time:Instant ;
+    time:after :dateNFSp2d ;
+    time:before :dateNFSp2f ;
+    time:inXSDDate "2014-10-08"^^xsd:date .
+
+:i a swrl:Variable .
+
+:AnticorpsMonoclonaux a owl:Class ;
+    rdfs:comment """Les anticorps sont des protéines fabriquées par le système de défense de l’organisme (système immunitaire). Leur rôle est de repérer et de neutraliser certaines substances étrangères comme les virus, les bactéries ainsi que les cellules anormales ou cancéreuses. Pour les neutraliser, l’anticorps se fixe sur une molécule, l’antigène présent sur la surface de la substance étrangère ou de la cellule anormale ou cancéreuse, et permet son élimination par le système immunitaire.
+
+Les anticorps monoclonaux sont des anticorps produits en laboratoire, à partir d’un clone de cellule (plusieurs cellules identiques, d’où le terme monoclonal). Grâce à la recherche médicale, des anticorps monoclonaux « anticancer » ont pu être fabriqués. Ces anticorps ont la capacité de bloquer certains mécanismes spécifiques des cellules cancéreuses ou de repérer la cellule cancéreuse elle-même pour qu’elle soit détruite
+
+Appelée aussi immunothérapie""" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ],
+        :Monotherapie ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ] .
+
+:RegimeNutritionnel a owl:Class .
+
+:StatutChromosome a owl:Class ;
+    rdfs:comment """Des aberrations chromosomiques peuvent être primitives ou secondaires.
+Les aberrations secondaires apparaissent lors de l’évolution de la maladie""" ;
+    rdfs:subClassOf :StatutCytogenetique .
+
+:TechniqueCytogenetique a owl:Class .
+
+:aPourFacteurBonPronostic a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :FacteurBonPronostic .
+
+:hemoglobine a owl:DatatypeProperty ;
+    rdfs:range xsd:float .
+
+:plaquette a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+:pre1 a swrl:Variable .
+
+:tt1 a swrl:Variable .
+
+:tt2 a swrl:Variable .
+
+:FacteurDeRisque a owl:Class ;
+    rdfs:comment """Elément qui peut favoriser le développement d'un cancer ou sa rechute. Par exemple, le tabac est un facteur de risque des cancers du poumon, de la vessie, du pancréas.
+Un facteur de risque est un élément augmentant la probabilité de développer une maladie. Le facteur de risque peut être inné (entre 5 % et 10 % des cancers auraient ainsi une cause héréditaire) ou réversible, c'est-à-dire qu'il peut être supprimé ou diminué en stoppant l'exposition à ce facteur. L'association d'un facteur de risque à une maladie résulte de recherches épidémiologiques montrant la probabilité d'incidence dans une population en fonction de ce facteur.""" ;
+    owl:versionInfo "" .
+
+:MaladieHematologique a owl:Class ;
+    rdfs:subClassOf :Maladie .
+
+:aPourObservation a owl:ObjectProperty .
+
+:aPourStade a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Stade .
+
+:p1 a swrl:Variable .
+
+:p2 a swrl:Variable .
+
+:st a swrl:Variable .
+
+:st1 a swrl:Variable .
+
+:st2 a swrl:Variable .
+
+:trait1 a swrl:Variable .
+
+:trait2 a swrl:Variable .
+
+:Bendamustine a [ a owl:Class ;
+            owl:oneOf ( :Bendamustine ) ],
+        :AgentAlkylantEtAnalogueDePurine,
+        :Chimiotherapie,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Fludarabine a [ a owl:Class ;
+            owl:oneOf ( :Fludarabine ) ],
+        :AnalogueDePurine,
+        :Chimiotherapie,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Ibrutinib a [ a owl:Class ;
+            owl:oneOf ( :Ibrutinib ) ],
+        :InhibiteurProteineKinase,
+        :InhibiteurTyrosineKinaseDeBruton,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Idelalisib a [ a owl:Class ;
+            owl:oneOf ( :Idelalisib ) ],
+        :InhibiteurPI3KinaseDelta,
+        :InhibiteurProteineKinase,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Maladie a owl:Class .
+
+:PrelevementNFS a owl:Class ;
+    rdfs:comment "Numération de la formule sanguine (NFS) ou hémogramme est l'analyse quantitative (numération) et qualitative (formule) des éléments figurés du sang : hématies (globules rouges ou érythrocytes), thrombocytes (plaquettes) et  leucocytes (globules blancs) avec leur répartition en diverses catégories (neutrophiles, monocytes, basophiles, lymphocytes)" ;
+    rdfs:subClassOf :Prelevement .
+
+:SigneClinique a owl:Class ;
+    rdfs:comment """Toute preuve objective d'une maladie est un signe.
+Un signe clinique est un fait médical ou une caractéristique liée à une réponse physique, détecté par un médecin, une infirmière ou un appareil médical lors de l'examen d'un patient. Ils peuvent souvent être mesurés, et cette mesure peut être essentielle pour diagnostiquer un problème médical.
+Parfois, un patient peut ne pas remarquer un signe et celui-ci peut ne pas sembler pertinent. Cependant, entre les mains d'un professionnel de la santé qui sait en quoi ce signe est lié au reste du corps, le même signe peut être la clé du traitement d'un problème médical sous-jacent.""",
+        ""@fr ;
+    rdfs:subClassOf :Signe ;
+    owl:disjointWith :SigneParaclinique .
+
+:SigneParaclinique a owl:Class ;
+    rdfs:comment "Un signe paraclinique est une donnée objective pouvant être démontrée par un examen paraclinique indiquant la présence ou l'absence probable d'une maladie." ;
+    rdfs:subClassOf :Signe .
+
+:Venetoclax a [ a owl:Class ;
+            owl:oneOf ( :Venetoclax ) ],
+        :InhibiteurBCL2,
+        :InhibiteurProteineKinase,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Chlorambucil a [ a owl:Class ;
+            owl:oneOf ( :Chlorambucil :Cyclophosphamide ) ],
+        :AgentAlkylant,
+        :Chimiotherapie,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Cyclophosphamide a [ a owl:Class ;
+            owl:oneOf ( :Chlorambucil :Cyclophosphamide ) ],
+        :AgentAlkylant,
+        :Chimiotherapie,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Signe a owl:Class .
+
+:aPourPrelevement a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Prelevement .
+
+:pre2 a swrl:Variable .
+
+:s a swrl:Variable .
+
+:Alemtuzumab a [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ],
+        :AnticorpsMonoclonaux,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:InhibiteurProteineKinase a owl:Class ;
+    rdfs:comment "C'est des composés qui agissent en bloquant des enzymes connues sous le nom de protéine kinase, qui sont impliquées dans la croissance et le développement des cellules. En bloquant ces protéines kinases, les inhibiteurs contribuent à limiter la division et le développement des cellules cancéreuses" ;
+    rdfs:subClassOf :Monotherapie .
+
+:Obinutuzumab a [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ],
+        :AnticorpsMonoclonaux,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Observation a owl:Class .
+
+:Ofatumumab a [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ],
+        :AnticorpsMonoclonaux,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Rituximab a [ a owl:Class ;
+            owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) ],
+        :AnticorpsMonoclonaux,
+        :Monotherapie,
+        :Traitement,
+        owl:NamedIndividual .
+
+:Stade a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( :stadeA :stadeB :stadeC ) ] .
+
+:aPourFacteurMauvaisPronostic a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :FacteurMauvaisPronostic .
+
+:obs2 a swrl:Variable .
+
+:Chimiotherapie a owl:Class ;
+    rdfs:comment """C’est un traitement systémique parce qu'il intéresse le corps tout entier. Les médicaments circulent dans le sang pour atteindre les cellules cancéreuses dans le corps tout entier. Ils peuvent être administrés par voie intraveineuse ou par voie orale.
+Ces médicaments ont pour but de détruire les cellules cancéreuses. La particularité de ces drogues est qu'elles sont toxiques sur toutes les cellules capables de se diviser. Les chimiothérapies bloquent la prolifération des cellules cancéreuses tout comme des autres, en empêchant la synthèse d'ADN indispensable à la duplication des cellules et en détruisant les fibres de la trame cellulaire (qui structurent la cellule).""" ;
+    rdfs:subClassOf :Monotherapie .
+
+:obs1 a swrl:Variable .
+
+:aPourMaladie a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :Maladie .
+
+:aPourFacteurPronostic a owl:ObjectProperty ;
+    rdfs:domain :UPNPatient ;
+    rdfs:range :FacteurPronostic .
+
+:FacteurPronostic a owl:Class ;
+    rdfs:comment """Un facteur pronostique :
+C’est l’aspect du cancer ou une caractéristique de la personne que le médecin prend en considération lorsqu'il fait un pronostic.""" ;
+    rdfs:subClassOf owl:Thing .
+
+:StatutCytogenetique a owl:Class ;
+    rdfs:comment """La présence d’anomalies génétiques est très fréquente et on estime qu'elles sont présentent dans près de 80 % des cas.
+Leur recherche est maintenant systématique car l'identification du type de mutations présente un intérêt pronostique et thérapeutique.
+
+L’hétérogénéité biologique de la LLC (état d’hypermutation des gènes des chaînes lourdes des immunoglobulines, présence d’aberrations génomiques spécifiques et/ou de mutations récurrentes dans les oncogènes et les gènes suppresseurs de tumeurs) détermine la variabilité des manifestations cliniques mais aussi et surtout l’évolution et la résistance aux différents traitement""" .
+
+:t1 a swrl:Variable .
+
+:t2 a swrl:Variable .
+
+:Monotherapie a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:disjointWith :Polytherapie .
+
+:PrelevementHemoglobine a owl:Class ;
+    rdfs:subClassOf :PrelevementNFS .
+
+:PrelevementLymphocyte a owl:Class ;
+    rdfs:subClassOf :PrelevementNFS .
+
+:fp a swrl:Variable .
+
+:LLC a :LLC,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:subClassOf :MaladieHematologique .
+
+:Traitement a owl:Class .
+
+time:Instant a owl:Class .
+
+:UPNPatient a owl:Class .
+
+:p a swrl:Variable .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Fludarabine ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :LLC :LLCAtypique :LLCMixte :LLCTypique :SDRichter ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Ibrutinib ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :AgentAlkylant ;
+    owl:oneOf ( :Chlorambucil :Cyclophosphamide ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Bendamustine ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Chimiotherapie ;
+    owl:oneOf ( :Fludarabine ) .
+
+[] a swrl:Imp ;
+    rdfs:label "U"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "signe clinique 1 a pour taille ta 1 est signe clinique 2 a pour taille tai2 etsigne clinique 1 est avant signe clinique 2 alors signe clinique 1 evolue vers la ta2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :s1 ;
+                    swrl:propertyPredicate :aPourSigneClinique ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :s ;
+                            swrl:propertyPredicate :aPourSigneClinique ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :s ;
+                                    swrl:argument2 :obs1 ;
+                                    swrl:propertyPredicate :aPourObservation ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :s ;
+                                            swrl:argument2 :obs2 ;
+                                            swrl:propertyPredicate :aPourObservation ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :obs1 ;
+                                                    swrl:argument2 :obs2 ;
+                                                    swrl:propertyPredicate :aEvolueVers ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                            swrl:argument1 :obs1 ;
+                                                            swrl:argument2 :ta1 ;
+                                                            swrl:propertyPredicate :taille ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                                    swrl:argument1 :obs2 ;
+                                                                    swrl:argument2 :ta2 ;
+                                                                    swrl:propertyPredicate :taille ] ;
+                                                            rdf:rest [ a swrl:AtomList ;
+                                                                    rdf:first [ a swrl:ClassAtom ;
+                                                                            swrl:argument1 :p ;
+                                                                            swrl:classPredicate :UPNPatient ] ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 :obs1 ;
+                    swrl:argument2 :ta2 ;
+                    swrl:propertyPredicate :evolueVersLaTaille ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "D"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "age sup 75 alors bon pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :a ;
+                    swrl:propertyPredicate :age ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:BuiltinAtom ;
+                            swrl:arguments [ a rdf:List ;
+                                    rdf:first :a ;
+                                    rdf:rest [ a rdf:List ;
+                                            rdf:first 75 ;
+                                            rdf:rest () ] ] ;
+                            swrl:builtin swrlb:lessThan ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:classPredicate :UPNPatient ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :fp ;
+                                            swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p ;
+                                                    swrl:argument2 :LLC ;
+                                                    swrl:propertyPredicate :aPourMaladie ] ;
+                                            rdf:rest () ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurBonPronostic ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "P"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "si un traitement 1 a une une date t1 et un traitement 2 a une date t2 et date t2 apres date t1 alors traitement 2 apres traitement 1"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :trait1 ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:hasTime ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :trait2 ;
+                            swrl:argument2 :t2 ;
+                            swrl:propertyPredicate time:hasTime ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :trait1 ;
+                                    swrl:propertyPredicate :aPourTraitement ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :trait2 ;
+                                            swrl:propertyPredicate :aPourTraitement ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :t1 ;
+                                                    swrl:argument2 :t2 ;
+                                                    swrl:propertyPredicate time:before ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :trait1 ;
+                    swrl:argument2 :trait2 ;
+                    swrl:propertyPredicate :aEvolueVers ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "O"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "si un traitement 1 a une une date t1 et un traitement 2 a une date t2 et date t1 avant date t2 alors traitement 1 avant traitement 2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :trait1 ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:hasTime ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :trait2 ;
+                            swrl:argument2 :t2 ;
+                            swrl:propertyPredicate time:hasTime ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :t2 ;
+                                    swrl:argument2 :t1 ;
+                                    swrl:propertyPredicate time:after ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :trait1 ;
+                                            swrl:propertyPredicate :aPourTraitement ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p ;
+                                                    swrl:argument2 :trait2 ;
+                                                    swrl:propertyPredicate :aPourTraitement ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :trait2 ;
+                    swrl:argument2 :trait1 ;
+                    swrl:propertyPredicate :aOrigine ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "Z"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "stade 1 a pour date t1 et stade 2 a pour date t2 et t1 avant t2 alors stade 1 avant stade 2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :st2 ;
+                    swrl:propertyPredicate :aPourStade ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :st1 ;
+                            swrl:argument2 :t1 ;
+                            swrl:propertyPredicate time:hasTime ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :st2 ;
+                                    swrl:argument2 :t2 ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :t1 ;
+                                            swrl:argument2 :t2 ;
+                                            swrl:propertyPredicate time:before ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p ;
+                                                    swrl:argument2 :st1 ;
+                                                    swrl:propertyPredicate :aPourStade ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :st1 ;
+                    swrl:argument2 :st2 ;
+                    swrl:propertyPredicate :aEvolueVers ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "L"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "deletion 17p  pos et LLC alors pronostic defavorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "POS"^^xsd:string ;
+                            swrl:propertyPredicate :chromosome17p ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :RegimeMediterraneen :RegimeNeutre :RegimeWestern ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :FacteurAgentAllergeneEtInfectieux :FacteurEnvironnemental :FacteurNutritionnel :Obesite ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurPI3KinaseDelta ;
+    owl:oneOf ( :Idelalisib ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Chlorambucil :Cyclophosphamide ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :AnalogueDePurine ;
+    owl:oneOf ( :Fludarabine ) .
+
+[] a swrl:Imp ;
+    rdfs:label "G"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "IGHV non muté et LLC alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "NM"^^xsd:string ;
+                            swrl:propertyPredicate :IGHV ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Venetoclax ) .
+
+[] a swrl:Imp ;
+    rdfs:label "E"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "SD de Richter et LLC alors pronostic defavorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :SDRichter ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :fp ;
+                            swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:classPredicate :UPNPatient ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "R"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "si prelevement 1 a pour date t1 et prelevement 2 a pour date t2 et t1 apres t2 alors prelevement 2 apres prelevement 1"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :t2 ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:after ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :p2 ;
+                            swrl:propertyPredicate :aPourPrelevement ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :p1 ;
+                                    swrl:propertyPredicate :aPourPrelevement ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p1 ;
+                                            swrl:argument2 :t1 ;
+                                            swrl:propertyPredicate time:hasTime ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p2 ;
+                                                    swrl:argument2 :t2 ;
+                                                    swrl:propertyPredicate time:hasTime ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p2 ;
+                    swrl:argument2 :p1 ;
+                    swrl:propertyPredicate :precede ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "B"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "Sexe masculin  et LLC alors pronostic defavorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "M"^^xsd:string ;
+                            swrl:propertyPredicate :sexe ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Ibrutinib ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :StatutChromosome11 :StatutChromosome12 :StatutChromosome13 :StatutChromosome17 ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Etat :FacteurDeRisque :FacteurPronostic :Maladie :Observation :Prelevement :RegimeNutritionnel :Signe :Stade :StatutCytogenetique :TechniqueCytogenetique :Traitement :UPNPatient ) .
+
+[] a swrl:Imp ;
+    rdfs:label "K"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "deletion chromosome 13q pos et LLC alors pronostic favorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "POS"^^xsd:string ;
+                            swrl:propertyPredicate :chromosome13q ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurBonPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :AHAI :PTI :SyndromeEvans ) .
+
+[] a swrl:Imp ;
+    rdfs:label "C"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "age sup 75 alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :a ;
+                    swrl:propertyPredicate :age ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:BuiltinAtom ;
+                            swrl:arguments [ a rdf:List ;
+                                    rdf:first :a ;
+                                    rdf:rest [ a rdf:List ;
+                                            rdf:first 75 ;
+                                            rdf:rest () ] ] ;
+                            swrl:builtin swrlb:greaterThanOrEqual ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:classPredicate :UPNPatient ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :fp ;
+                                            swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p ;
+                                                    swrl:argument2 :LLC ;
+                                                    swrl:propertyPredicate :aPourMaladie ] ;
+                                            rdf:rest () ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "signe clinique 1 a pour date t1 et signe clinique 2 a pour date t2 et date t2 aprés date t1 alors signe clinique 2 aprés signe clinique 1"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :t2 ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:after ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :s ;
+                            swrl:propertyPredicate :aPourSigneClinique ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :s ;
+                                    swrl:argument2 :obs1 ;
+                                    swrl:propertyPredicate :aPourObservation ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :s0 ;
+                                            swrl:argument2 :obs2 ;
+                                            swrl:propertyPredicate :aPourObservation ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :obs1 ;
+                                                    swrl:argument2 :t1 ;
+                                                    swrl:propertyPredicate time:hasTime ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 :obs2 ;
+                                                            swrl:argument2 :t2 ;
+                                                            swrl:propertyPredicate time:hasTime ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:ClassAtom ;
+                                                                    swrl:argument1 :p ;
+                                                                    swrl:classPredicate :UPNPatient ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :obs2 ;
+                    swrl:argument2 :obs1 ;
+                    swrl:propertyPredicate :aOrigine ] ;
+            rdf:rest () ] .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :PlaquetteBasse ;
+    owl:onProperty :plaquette ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:integer ;
+            owl:withRestrictions ( [ xsd:maxExclusive 100000 ] ) ] .
+
+[] a swrl:Imp ;
+    rdfs:label "F"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "IGHV muté et LLC alors bon pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "M"^^xsd:string ;
+                            swrl:propertyPredicate :IGHV ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurBonPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Idelalisib ) .
+
+[] a swrl:Imp ;
+    rdfs:label "V"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "stade a pour intervalle inetrvalle 1 et intervalle 1 a pour début t1 alors stade a pour début t1"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :p ;
+                    swrl:classPredicate :UPNPatient ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :st ;
+                            swrl:propertyPredicate :aPourStade ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :st ;
+                                    swrl:argument2 :i ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :i ;
+                                            swrl:argument2 :t1 ;
+                                            swrl:propertyPredicate time:hasBeginning ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :st ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:hasBeginning ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "xx"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment ""^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :pre1 ;
+                    swrl:propertyPredicate :aPourPrelevement ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:BuiltinAtom ;
+                            swrl:arguments [ a rdf:List ;
+                                    rdf:first :ratio ;
+                                    rdf:rest [ a rdf:List ;
+                                            rdf:first 2 ;
+                                            rdf:rest () ] ] ;
+                            swrl:builtin swrlb:greaterThanOrEqual ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :pre1 ;
+                                    swrl:argument2 :tt1 ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :pre2 ;
+                                            swrl:propertyPredicate :aPourPrelevement ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :pre2 ;
+                                                    swrl:argument2 :tt2 ;
+                                                    swrl:propertyPredicate time:hasTime ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                            swrl:argument1 :pre2 ;
+                                                            swrl:argument2 :nb ;
+                                                            swrl:propertyPredicate :nombreDeMois ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                                    swrl:arguments ( :ratio :lymph2 :lymph1 ) ;
+                                                                    swrl:builtin swrlb:divide ] ;
+                                                            rdf:rest [ a swrl:AtomList ;
+                                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                                            swrl:argument1 :tt2 ;
+                                                                            swrl:argument2 :tt1 ;
+                                                                            swrl:propertyPredicate time:after ] ;
+                                                                    rdf:rest [ a swrl:AtomList ;
+                                                                            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                                                    swrl:argument1 :pre1 ;
+                                                                                    swrl:argument2 :lymph1 ;
+                                                                                    swrl:propertyPredicate :lymphocyte ] ;
+                                                                            rdf:rest [ a swrl:AtomList ;
+                                                                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                                                            swrl:argument1 :pre2 ;
+                                                                                            swrl:argument2 :lymph2 ;
+                                                                                            swrl:propertyPredicate :lymphocyte ] ;
+                                                                                    rdf:rest [ a swrl:AtomList ;
+                                                                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                                                                    swrl:arguments [ a rdf:List ;
+                                                                                                            rdf:first :nb ;
+                                                                                                            rdf:rest [ a rdf:List ;
+                                                                                                                    rdf:first 6 ;
+                                                                                                                    rdf:rest () ] ] ;
+                                                                                                    swrl:builtin swrlb:greaterThanOrEqual ] ;
+                                                                                            rdf:rest [ a swrl:AtomList ;
+                                                                                                    rdf:first [ a swrl:ClassAtom ;
+                                                                                                            swrl:argument1 :p ;
+                                                                                                            swrl:classPredicate :UPNPatient ] ;
+                                                                                                    rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 :pre2 ;
+                    swrl:argument2 :lymph1 ;
+                    swrl:propertyPredicate :dedoublementLymphocytaireValeurLymphocyte ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "N"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "Tp53 Muté et LLC alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "M"^^xsd:string ;
+                            swrl:propertyPredicate :TP53 ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "W"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "stade a pour intervalle inetrvalle 1 et intervalle 1 a pour fin t2 alors stade a pour fin t2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :p ;
+                    swrl:classPredicate :UPNPatient ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :st ;
+                            swrl:propertyPredicate :aPourStade ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :st ;
+                                    swrl:argument2 :i ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :i ;
+                                            swrl:argument2 :t2 ;
+                                            swrl:propertyPredicate time:hasEnd ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :st ;
+                    swrl:argument2 :t2 ;
+                    swrl:propertyPredicate time:hasEnd ] ;
+            rdf:rest () ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :MaladieAutoImmune :MaladieHematologique :MaladieInfectieuse ) .
+
+[] a swrl:Imp ;
+    rdfs:label "X"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment ""^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :p ;
+                    swrl:classPredicate :UPNPatient ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :pre1 ;
+                            swrl:propertyPredicate :aPourPrelevement ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :pre1 ;
+                                    swrl:argument2 :tt1 ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:argument2 :pre2 ;
+                                            swrl:propertyPredicate :aPourPrelevement ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :pre2 ;
+                                                    swrl:argument2 :tt2 ;
+                                                    swrl:propertyPredicate time:hasTime ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 :tt2 ;
+                                                            swrl:argument2 :tt1 ;
+                                                            swrl:propertyPredicate time:after ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                                    swrl:arguments ( :t1 :yeart1 :montht1 :dayt1 ) ;
+                                                                    swrl:builtin swrlb:date ] ;
+                                                            rdf:rest [ a swrl:AtomList ;
+                                                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                                            swrl:argument1 :tt1 ;
+                                                                            swrl:argument2 :t1 ;
+                                                                            swrl:propertyPredicate time:inXSDDate ] ;
+                                                                    rdf:rest [ a swrl:AtomList ;
+                                                                            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                                                                    swrl:argument1 :tt2 ;
+                                                                                    swrl:argument2 :t2 ;
+                                                                                    swrl:propertyPredicate time:inXSDDate ] ;
+                                                                            rdf:rest [ a swrl:AtomList ;
+                                                                                    rdf:first [ a swrl:BuiltinAtom ;
+                                                                                            swrl:arguments ( :t2 :yeart2 :montht2 :dayt2 ) ;
+                                                                                            swrl:builtin swrlb:date ] ;
+                                                                                    rdf:rest [ a swrl:AtomList ;
+                                                                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                                                                    swrl:arguments ( :val1 :yeart2 :yeart1 ) ;
+                                                                                                    swrl:builtin swrlb:subtract ] ;
+                                                                                            rdf:rest [ a swrl:AtomList ;
+                                                                                                    rdf:first [ a swrl:BuiltinAtom ;
+                                                                                                            swrl:arguments [ a rdf:List ;
+                                                                                                                    rdf:first :val2 ;
+                                                                                                                    rdf:rest [ a rdf:List ;
+                                                                                                                            rdf:first :val1 ;
+                                                                                                                            rdf:rest [ a rdf:List ;
+                                                                                                                                    rdf:first 12 ;
+                                                                                                                                    rdf:rest () ] ] ] ;
+                                                                                                            swrl:builtin swrlb:multiply ] ;
+                                                                                                    rdf:rest [ a swrl:AtomList ;
+                                                                                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                                                                                    swrl:arguments ( :val3 :montht2 :montht1 ) ;
+                                                                                                                    swrl:builtin swrlb:subtract ] ;
+                                                                                                            rdf:rest [ a swrl:AtomList ;
+                                                                                                                    rdf:first [ a swrl:BuiltinAtom ;
+                                                                                                                            swrl:arguments ( :val4 :val2 :val3 ) ;
+                                                                                                                            swrl:builtin swrlb:add ] ;
+                                                                                                                    rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 :pre2 ;
+                    swrl:argument2 :val4 ;
+                    swrl:propertyPredicate :nombreDeMois ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Bendamustine ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Idelalisib ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Chlorambucil :Cyclophosphamide ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :AdenopathieSuperficielle :Hepatomegalie :SignesGeneraux :Splenomegalie ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurProteineKinase ;
+    owl:oneOf ( :Idelalisib ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurBCL2 ;
+    owl:oneOf ( :Venetoclax ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :StatutATM :StatutBIRC3 :StatutBTK :StatutCD38 :StatutChromosome :StatutFBXW7 :StatutIGHV :StatutNOTCH1 :StatutPLCG2 :StatutPOT1 :StatutRPS15 :StatutSF3B1 :StatutTP53 :StatutXPO1 :StatutZap70 ) .
+
+[] a swrl:Imp ;
+    rdfs:label "A"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "Sexe feminin et LLC alors pronostic favorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "F"^^xsd:string ;
+                            swrl:propertyPredicate :sexe ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurBonPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurProteineKinase ;
+    owl:oneOf ( :Venetoclax ) .
+
+[] a swrl:Imp ;
+    rdfs:label "I"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "Deletion chromosome 11 et LLC alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "NEG"^^xsd:string ;
+                            swrl:propertyPredicate :CD38 ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurBonPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Chimiotherapie ;
+    owl:oneOf ( :Chlorambucil :Cyclophosphamide ) .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :SigneParaclinique ;
+    owl:onProperty :plaquette ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:integer ;
+            owl:withRestrictions ( [ xsd:maxExclusive 100000 ] ) ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :AgentAlkylantEtAnalogueDePurine ;
+    owl:oneOf ( :Bendamustine ) .
+
+[] a swrl:Imp ;
+    rdfs:label "M"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "zap70 pos et LLC alors pronostic defavorable"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "POS"^^xsd:string ;
+                            swrl:propertyPredicate :Zap70 ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Chimiotherapie ;
+    owl:oneOf ( :Bendamustine ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurTyrosineKinaseDeBruton ;
+    owl:oneOf ( :Ibrutinib ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Monotherapie ;
+    owl:oneOf ( :Fludarabine ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :CGH :CytometrieDeFlux :FISH :QMPSF ) .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :Signe ;
+    owl:onProperty :hemoglobine ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:float ;
+            owl:withRestrictions ( [ xsd:maxExclusive "10.0"^^xsd:float ] ) ] .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :SigneParaclinique ;
+    owl:onProperty :hemoglobine ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:float ;
+            owl:withRestrictions ( [ xsd:maxExclusive "10.0"^^xsd:float ] ) ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :AdenopathieProfonde :HbBasse :PlaquetteBasse ) .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :HbBasse ;
+    owl:onProperty :hemoglobine ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:float ;
+            owl:withRestrictions ( [ xsd:maxExclusive "10.0"^^xsd:float ] ) ] .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf :Signe ;
+    owl:onProperty :plaquette ;
+    owl:someValuesFrom [ a rdfs:Datatype ;
+            owl:onDatatype xsd:integer ;
+            owl:withRestrictions ( [ xsd:maxExclusive 100000 ] ) ] .
+
+[] a swrl:Imp ;
+    rdfs:label "Y"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "stade 1 a pour date t1 et stade 2 a pour date t2 et t2 aprés t1 alors stade 2 aprés stade 1"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :t2 ;
+                    swrl:argument2 :t1 ;
+                    swrl:propertyPredicate time:after ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :st2 ;
+                            swrl:propertyPredicate :aPourStade ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :st1 ;
+                                    swrl:argument2 :t1 ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :st2 ;
+                                            swrl:argument2 :t2 ;
+                                            swrl:propertyPredicate time:hasTime ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :p ;
+                                                    swrl:argument2 :st1 ;
+                                                    swrl:propertyPredicate :aPourStade ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :st2 ;
+                    swrl:argument2 :st1 ;
+                    swrl:propertyPredicate :aOrigine ] ;
+            rdf:rest () ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :PrelevementHemoglobine :PrelevementLymphocyte :PrelevementPlaquette :PrelevementPolynucleaireNeutrophile ) .
+
+[] a owl:Class ;
+    rdfs:subClassOf :AnticorpsMonoclonaux ;
+    owl:oneOf ( :Alemtuzumab :Obinutuzumab :Ofatumumab :Rituximab ) .
+
+[] a swrl:Imp ;
+    rdfs:label "T"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "signe clinique 1 a pour date t1 et signe clinique 2 a pour date t2 et date t1 avant date t2 alors signe clinique 1 avant signe clinique 2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :s ;
+                            swrl:propertyPredicate :aPourSigneClinique ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :s ;
+                                    swrl:argument2 :obs1 ;
+                                    swrl:propertyPredicate :aPourObservation ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :s ;
+                                            swrl:argument2 :obs2 ;
+                                            swrl:propertyPredicate :aPourObservation ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :obs1 ;
+                                                    swrl:argument2 :t1 ;
+                                                    swrl:propertyPredicate time:hasTime ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 :obs2 ;
+                                                            swrl:argument2 :t2 ;
+                                                            swrl:propertyPredicate time:hasTime ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                                    swrl:argument1 :t1 ;
+                                                                    swrl:argument2 :t2 ;
+                                                                    swrl:propertyPredicate time:before ] ;
+                                                            rdf:rest [ a swrl:AtomList ;
+                                                                    rdf:first [ a swrl:ClassAtom ;
+                                                                            swrl:argument1 :p ;
+                                                                            swrl:classPredicate :UPNPatient ] ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :obs1 ;
+                    swrl:argument2 :obs2 ;
+                    swrl:propertyPredicate :aEvolueVers ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :InhibiteurProteineKinase ;
+    owl:oneOf ( :Ibrutinib ) .
+
+[] a swrl:Imp ;
+    rdfs:label "H"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "CD38 pos et LLC alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "POS"^^xsd:string ;
+                            swrl:propertyPredicate :CD38 ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "Q"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "si prelevement 1 a pour date t1 et prelevement 2 a pour date t2 et t1 avant t2 alors prelevement 1 avant prelevement 2"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :p2 ;
+                    swrl:propertyPredicate :aPourPrelevement ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 :p1 ;
+                            swrl:propertyPredicate :aPourPrelevement ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p1 ;
+                                    swrl:argument2 :t1 ;
+                                    swrl:propertyPredicate time:hasTime ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :p2 ;
+                                            swrl:argument2 :t2 ;
+                                            swrl:propertyPredicate time:hasTime ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                    swrl:argument1 :t1 ;
+                                                    swrl:argument2 :t2 ;
+                                                    swrl:propertyPredicate time:before ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:ClassAtom ;
+                                                            swrl:argument1 :p ;
+                                                            swrl:classPredicate :UPNPatient ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p1 ;
+                    swrl:argument2 :p2 ;
+                    swrl:propertyPredicate :suivi ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "J"^^xsd:string ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "deletion 11q pos et LLC alors mauvais pronostic"^^xsd:string ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :LLC ;
+                    swrl:propertyPredicate :aPourMaladie ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 :p ;
+                            swrl:argument2 "POS"^^xsd:string ;
+                            swrl:propertyPredicate :chromosome11q ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :p ;
+                                    swrl:argument2 :fp ;
+                                    swrl:propertyPredicate :aPourFacteurPronostic ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 :p ;
+                                            swrl:classPredicate :UPNPatient ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :p ;
+                    swrl:argument2 :fp ;
+                    swrl:propertyPredicate :aPourFacteurMauvaisPronostic ] ;
+            rdf:rest () ] .
+
+[] a owl:Class ;
+    rdfs:subClassOf :Traitement ;
+    owl:oneOf ( :Venetoclax ) .
+

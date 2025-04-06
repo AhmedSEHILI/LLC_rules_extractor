@@ -111,6 +111,18 @@ def generer_arbre_classes_networkx(owl_file, output_image="classes_arbre.png", f
 
 
 class RuleExtractionController:
+    """
+    Contrôleur principal pour l'extraction de règles à partir d'une ontologie RDF/OWL.
+
+    Ce contrôleur relie la vue (interface utilisateur) et le modèle (données et logique métier).
+    Il gère :
+    - les signaux connectés à l'interface utilisateur,
+    - le chargement et la visualisation d'ontologies,
+    - l'extraction et la validation de règles avec AMIE3,
+    - l'affichage de graphes RDF,
+    - l'exécution de requêtes SPARQL,
+    - et les mesures de qualité des règles extraites.
+    """
     def __init__(self, model, view):
         self.model = model
         self.view = view
@@ -395,9 +407,6 @@ class RuleExtractionController:
         g = Graph()
         g.parse(self.model.ontologies[-1])
 
-        # print(body_full_query)
-        # print(head_full_query)
-        # print(rule_full_query)
 
         query_body = g.query(body_full_query)
         query_head = g.query(head_full_query)
@@ -640,10 +649,7 @@ class RuleExtractionController:
                 f.write(resultat)
 
         self.afficher_resultats_amie3(resultat)
-        # Afficher dans la text_edit
-        # self.view.page_extraction_regles.text_edit.clear()
-        # self.view.page_extraction_regles.text_edit.append("Résultats d'AMIE3 :")
-        # self.view.page_extraction_regles.text_edit.append(stdout)
+
         self.afficher_page(2)
 
     # Navigation entre pages
