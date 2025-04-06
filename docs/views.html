@@ -1,174 +1,62 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>views package &mdash; Documentation LLCrulesExtractor </title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d1a510d7"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/translations.js?v=e6b791cb"></script>
-    <script src="_static/js/theme.js"></script>
+    <title>views package &#8212; Documentation LLCrulesExtractor </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    
+    <script src="_static/documentation_options.js?v=d1a510d7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="prev" title="models package" href="models.html" /> 
-</head>
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="models package"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation LLCrulesExtractor </a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">views package</a></li> 
+      </ul>
+    </div>  
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            LLCrulesExtractor
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contenu :</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="controller.html">controller package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models.html">models package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">views package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.AccueilPage">views.AccueilPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.AccueilPage.AccueilPage"><code class="docutils literal notranslate"><span class="pre">AccueilPage</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.AccueilPage.AccueilPage.ouvrir_lien_llc"><code class="docutils literal notranslate"><span class="pre">AccueilPage.ouvrir_lien_llc()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.Amie3ParamsWidget">views.Amie3ParamsWidget module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.Amie3ParamsWidget.Amie3ParamsWidget"><code class="docutils literal notranslate"><span class="pre">Amie3ParamsWidget</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.Amie3ParamsWidget.Amie3ParamsWidget.build_amie3_params"><code class="docutils literal notranslate"><span class="pre">Amie3ParamsWidget.build_amie3_params()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.AnalyseDonneesPage">views.AnalyseDonneesPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.AnalyseDonneesPage.AnalyseDonneesPage"><code class="docutils literal notranslate"><span class="pre">AnalyseDonneesPage</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.ComparaisonPage">views.ComparaisonPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.ComparaisonPage.ComparaisonPage"><code class="docutils literal notranslate"><span class="pre">ComparaisonPage</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.ExtractionReglesPage">views.ExtractionReglesPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.ExtractionReglesPage.ExtractionReglesPage"><code class="docutils literal notranslate"><span class="pre">ExtractionReglesPage</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.FenetreGraphe">views.FenetreGraphe module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.afficher_graphe"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.afficher_graphe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.afficher_image"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.afficher_image()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.reset_zoom"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.reset_zoom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.update_pixmap"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.update_pixmap()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.zoom_in"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.zoom_in()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.zoom_out"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.zoom_out()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.GestionOntologiesPage">views.GestionOntologiesPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.GestionOntologiesPage.GestionOntologiesPage"><code class="docutils literal notranslate"><span class="pre">GestionOntologiesPage</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.QualiteValidationPage">views.QualiteValidationPage module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.QualiteValidationPage.QualiteValidationPage"><code class="docutils literal notranslate"><span class="pre">QualiteValidationPage</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.RequeteSPARQLView">views.RequeteSPARQLView module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.RequeteSPARQLView.RequeteSPARQLView"><code class="docutils literal notranslate"><span class="pre">RequeteSPARQLView</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.RequeteSPARQLView.RequeteSPARQLView.nettoyer"><code class="docutils literal notranslate"><span class="pre">RequeteSPARQLView.nettoyer()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.RuleExtractionView">views.RuleExtractionView module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.RuleExtractionView.RuleExtractionView"><code class="docutils literal notranslate"><span class="pre">RuleExtractionView</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.RuleExtractionView.RuleExtractionView.afficher_graphe"><code class="docutils literal notranslate"><span class="pre">RuleExtractionView.afficher_graphe()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.RuleSetTestView">views.RuleSetTestView module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.RuleSetTestView.RuleSetTestView"><code class="docutils literal notranslate"><span class="pre">RuleSetTestView</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.RuleSetTestView.RuleSetTestView.nettoyer"><code class="docutils literal notranslate"><span class="pre">RuleSetTestView.nettoyer()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views.RuleTestview">views.RuleTestview module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#views.RuleTestview.RuleTestView"><code class="docutils literal notranslate"><span class="pre">RuleTestView</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#views.RuleTestview.RuleTestView.connect_signals"><code class="docutils literal notranslate"><span class="pre">RuleTestView.connect_signals()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#views.RuleTestview.RuleTestView.lireSaisie"><code class="docutils literal notranslate"><span class="pre">RuleTestView.lireSaisie()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-views">Module contents</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">LLCrulesExtractor</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">views package</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/views.rst.txt" rel="nofollow"> Afficher la source de la page</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <section id="views-package">
-<h1>views package<a class="headerlink" href="#views-package" title="Lien vers cette rubrique"></a></h1>
+<h1>views package<a class="headerlink" href="#views-package" title="Lien vers cette rubrique">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Lien vers cette rubrique"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien vers cette rubrique">¶</a></h2>
 </section>
 <section id="module-views.AccueilPage">
-<span id="views-accueilpage-module"></span><h2>views.AccueilPage module<a class="headerlink" href="#module-views.AccueilPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-accueilpage-module"></span><h2>views.AccueilPage module<a class="headerlink" href="#module-views.AccueilPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.AccueilPage.AccueilPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.AccueilPage.</span></span><span class="sig-name descname"><span class="pre">AccueilPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.AccueilPage.AccueilPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.AccueilPage.</span></span><span class="sig-name descname"><span class="pre">AccueilPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.AccueilPage.AccueilPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Page d’accueil de l’application.</p>
 <p>Cette vue affiche un message de bienvenue centré, ainsi qu’un bouton
 permettant d’ouvrir une page Wikipédia sur la Leucémie lymphoïde chronique (LLC).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.AccueilPage.AccueilPage.ouvrir_lien_llc">
-<span class="sig-name descname"><span class="pre">ouvrir_lien_llc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.AccueilPage.AccueilPage.ouvrir_lien_llc" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">ouvrir_lien_llc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.AccueilPage.AccueilPage.ouvrir_lien_llc" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Ouvre une page Wikipédia expliquant la maladie LLC.</p>
 </dd></dl>
 
@@ -176,17 +64,17 @@ permettant d’ouvrir une page Wikipédia sur la Leucémie lymphoïde chronique 
 
 </section>
 <section id="module-views.Amie3ParamsWidget">
-<span id="views-amie3paramswidget-module"></span><h2>views.Amie3ParamsWidget module<a class="headerlink" href="#module-views.Amie3ParamsWidget" title="Lien vers cette rubrique"></a></h2>
+<span id="views-amie3paramswidget-module"></span><h2>views.Amie3ParamsWidget module<a class="headerlink" href="#module-views.Amie3ParamsWidget" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.Amie3ParamsWidget.Amie3ParamsWidget">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.Amie3ParamsWidget.</span></span><span class="sig-name descname"><span class="pre">Amie3ParamsWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.Amie3ParamsWidget.Amie3ParamsWidget" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.Amie3ParamsWidget.</span></span><span class="sig-name descname"><span class="pre">Amie3ParamsWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.Amie3ParamsWidget.Amie3ParamsWidget" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Widget graphique permettant de configurer les paramètres d’exécution de AMIE3.</p>
 <p>Il regroupe des champs de saisie textuelle pour les options numériques et des cases à cocher
 pour les options, et construit la liste des arguments à fournir à AMIE3.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.Amie3ParamsWidget.Amie3ParamsWidget.build_amie3_params">
-<span class="sig-name descname"><span class="pre">build_amie3_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.Amie3ParamsWidget.Amie3ParamsWidget.build_amie3_params" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">build_amie3_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.Amie3ParamsWidget.Amie3ParamsWidget.build_amie3_params" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Construit et retourne la liste des paramètres AMIE3 à partir des champs de saisie
 et des options sélectionnées par l’utilisateur.</p>
 <dl class="field-list simple">
@@ -203,10 +91,10 @@ et des options sélectionnées par l’utilisateur.</p>
 
 </section>
 <section id="module-views.AnalyseDonneesPage">
-<span id="views-analysedonneespage-module"></span><h2>views.AnalyseDonneesPage module<a class="headerlink" href="#module-views.AnalyseDonneesPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-analysedonneespage-module"></span><h2>views.AnalyseDonneesPage module<a class="headerlink" href="#module-views.AnalyseDonneesPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.AnalyseDonneesPage.AnalyseDonneesPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.AnalyseDonneesPage.</span></span><span class="sig-name descname"><span class="pre">AnalyseDonneesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.AnalyseDonneesPage.AnalyseDonneesPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.AnalyseDonneesPage.</span></span><span class="sig-name descname"><span class="pre">AnalyseDonneesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.AnalyseDonneesPage.AnalyseDonneesPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Vue dédiée à l’analyse et l’interrogation des données.</p>
 <p>Cette page contient un tableau pour afficher les résultats des requêtes sur l’ontologie médicale.</p>
@@ -214,10 +102,10 @@ et des options sélectionnées par l’utilisateur.</p>
 
 </section>
 <section id="module-views.ComparaisonPage">
-<span id="views-comparaisonpage-module"></span><h2>views.ComparaisonPage module<a class="headerlink" href="#module-views.ComparaisonPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-comparaisonpage-module"></span><h2>views.ComparaisonPage module<a class="headerlink" href="#module-views.ComparaisonPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.ComparaisonPage.ComparaisonPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.ComparaisonPage.</span></span><span class="sig-name descname"><span class="pre">ComparaisonPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.ComparaisonPage.ComparaisonPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.ComparaisonPage.</span></span><span class="sig-name descname"><span class="pre">ComparaisonPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.ComparaisonPage.ComparaisonPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Page d’interface pour comparer des ensembles de règles.</p>
 <p>Cette vue affiche deux panneaux côte à côte :
@@ -227,10 +115,10 @@ et des options sélectionnées par l’utilisateur.</p>
 
 </section>
 <section id="module-views.ExtractionReglesPage">
-<span id="views-extractionreglespage-module"></span><h2>views.ExtractionReglesPage module<a class="headerlink" href="#module-views.ExtractionReglesPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-extractionreglespage-module"></span><h2>views.ExtractionReglesPage module<a class="headerlink" href="#module-views.ExtractionReglesPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.ExtractionReglesPage.ExtractionReglesPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.ExtractionReglesPage.</span></span><span class="sig-name descname"><span class="pre">ExtractionReglesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.ExtractionReglesPage.ExtractionReglesPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.ExtractionReglesPage.</span></span><span class="sig-name descname"><span class="pre">ExtractionReglesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.ExtractionReglesPage.ExtractionReglesPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Page dédiée à l’extraction, l’affichage et la gestion des règles.</p>
 <p>Cette vue permet de présenter les résultats de l’extraction de règles
@@ -239,17 +127,17 @@ et des options sélectionnées par l’utilisateur.</p>
 
 </section>
 <section id="module-views.FenetreGraphe">
-<span id="views-fenetregraphe-module"></span><h2>views.FenetreGraphe module<a class="headerlink" href="#module-views.FenetreGraphe" title="Lien vers cette rubrique"></a></h2>
+<span id="views-fenetregraphe-module"></span><h2>views.FenetreGraphe module<a class="headerlink" href="#module-views.FenetreGraphe" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.FenetreGraphe.</span></span><span class="sig-name descname"><span class="pre">FenetreGraphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&quot;Graphe</span> <span class="pre">de</span> <span class="pre">l'ontologie&quot;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.FenetreGraphe.</span></span><span class="sig-name descname"><span class="pre">FenetreGraphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&quot;Graphe</span> <span class="pre">de</span> <span class="pre">l'ontologie&quot;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Fenêtre d’affichage graphique d’une ontologie.</p>
 <p>Cette classe affiche une image (un graphe RDF/OWL) dans une fenêtre avec
 des contrôles de zoom avant, zoom arrière et réinitialisation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.afficher_graphe">
-<span class="sig-name descname"><span class="pre">afficher_graphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.afficher_graphe" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">afficher_graphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.afficher_graphe" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Définit une nouvelle image à afficher et ouvre la fenêtre.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
@@ -260,31 +148,31 @@ des contrôles de zoom avant, zoom arrière et réinitialisation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.afficher_image">
-<span class="sig-name descname"><span class="pre">afficher_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.afficher_image" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">afficher_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.afficher_image" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Charge et affiche l’image à partir du chemin <cite>image_path</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.reset_zoom">
-<span class="sig-name descname"><span class="pre">reset_zoom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.reset_zoom" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">reset_zoom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.reset_zoom" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Réinitialise le zoom de l’image à son échelle d’origine.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.update_pixmap">
-<span class="sig-name descname"><span class="pre">update_pixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.update_pixmap" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">update_pixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.update_pixmap" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Met à jour l’affichage de l’image avec le facteur de zoom actuel.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.zoom_in">
-<span class="sig-name descname"><span class="pre">zoom_in</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.zoom_in" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">zoom_in</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.zoom_in" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Effectue un zoom avant sur l’image.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.FenetreGraphe.FenetreGraphe.zoom_out">
-<span class="sig-name descname"><span class="pre">zoom_out</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.zoom_out" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">zoom_out</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.FenetreGraphe.FenetreGraphe.zoom_out" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Effectue un zoom arrière sur l’image.</p>
 </dd></dl>
 
@@ -292,10 +180,10 @@ des contrôles de zoom avant, zoom arrière et réinitialisation.</p>
 
 </section>
 <section id="module-views.GestionOntologiesPage">
-<span id="views-gestionontologiespage-module"></span><h2>views.GestionOntologiesPage module<a class="headerlink" href="#module-views.GestionOntologiesPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-gestionontologiespage-module"></span><h2>views.GestionOntologiesPage module<a class="headerlink" href="#module-views.GestionOntologiesPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.GestionOntologiesPage.GestionOntologiesPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.GestionOntologiesPage.</span></span><span class="sig-name descname"><span class="pre">GestionOntologiesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.GestionOntologiesPage.GestionOntologiesPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.GestionOntologiesPage.</span></span><span class="sig-name descname"><span class="pre">GestionOntologiesPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.GestionOntologiesPage.GestionOntologiesPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Page de l’application dédiée à la gestion des ontologies.</p>
 <p>Cette vue permet d’afficher, manipuler et visualiser les ontologies chargées,
@@ -304,10 +192,10 @@ notamment sous forme textuelle et graphique.</p>
 
 </section>
 <section id="module-views.QualiteValidationPage">
-<span id="views-qualitevalidationpage-module"></span><h2>views.QualiteValidationPage module<a class="headerlink" href="#module-views.QualiteValidationPage" title="Lien vers cette rubrique"></a></h2>
+<span id="views-qualitevalidationpage-module"></span><h2>views.QualiteValidationPage module<a class="headerlink" href="#module-views.QualiteValidationPage" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.QualiteValidationPage.QualiteValidationPage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.QualiteValidationPage.</span></span><span class="sig-name descname"><span class="pre">QualiteValidationPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.QualiteValidationPage.QualiteValidationPage" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.QualiteValidationPage.</span></span><span class="sig-name descname"><span class="pre">QualiteValidationPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.QualiteValidationPage.QualiteValidationPage" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
 <p>Page dédiée à la qualité et à la validation des règles extraites.</p>
 <p>Cette vue permet d’afficher les règles dans un tableau afin de mesurer
@@ -316,17 +204,17 @@ leur qualité (selon des métriques spécifiques) et de les valider ou non.</p>
 
 </section>
 <section id="module-views.RequeteSPARQLView">
-<span id="views-requetesparqlview-module"></span><h2>views.RequeteSPARQLView module<a class="headerlink" href="#module-views.RequeteSPARQLView" title="Lien vers cette rubrique"></a></h2>
+<span id="views-requetesparqlview-module"></span><h2>views.RequeteSPARQLView module<a class="headerlink" href="#module-views.RequeteSPARQLView" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.RequeteSPARQLView.RequeteSPARQLView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RequeteSPARQLView.</span></span><span class="sig-name descname"><span class="pre">RequeteSPARQLView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RequeteSPARQLView.RequeteSPARQLView" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RequeteSPARQLView.</span></span><span class="sig-name descname"><span class="pre">RequeteSPARQLView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RequeteSPARQLView.RequeteSPARQLView" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
 <p>Fenêtre dédiée à l’exécution de requêtes SPARQL.</p>
 <p>Cette interface permet à l’utilisateur de saisir une requête SPARQL,
 de l’exécuter ou de nettoyer le champ de saisie.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.RequeteSPARQLView.RequeteSPARQLView.nettoyer">
-<span class="sig-name descname"><span class="pre">nettoyer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RequeteSPARQLView.RequeteSPARQLView.nettoyer" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">nettoyer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RequeteSPARQLView.RequeteSPARQLView.nettoyer" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Vide le champ de saisie de la requête SPARQL.</p>
 </dd></dl>
 
@@ -334,10 +222,10 @@ de l’exécuter ou de nettoyer le champ de saisie.</p>
 
 </section>
 <section id="module-views.RuleExtractionView">
-<span id="views-ruleextractionview-module"></span><h2>views.RuleExtractionView module<a class="headerlink" href="#module-views.RuleExtractionView" title="Lien vers cette rubrique"></a></h2>
+<span id="views-ruleextractionview-module"></span><h2>views.RuleExtractionView module<a class="headerlink" href="#module-views.RuleExtractionView" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.RuleExtractionView.RuleExtractionView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleExtractionView.</span></span><span class="sig-name descname"><span class="pre">RuleExtractionView</span></span><a class="headerlink" href="#views.RuleExtractionView.RuleExtractionView" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleExtractionView.</span></span><span class="sig-name descname"><span class="pre">RuleExtractionView</span></span><a class="headerlink" href="#views.RuleExtractionView.RuleExtractionView" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
 <p>Fenêtre principale de l’application d’extraction de règles à partir d’ontologies.</p>
 <p>Cette vue intègre toutes les pages fonctionnelles de l’application (chargement
@@ -345,7 +233,7 @@ d’ontologies, extraction, validation, comparaison…) via un QStackedWidget
 et une interface graphique organisée autour d’un panneau latéral de navigation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.RuleExtractionView.RuleExtractionView.afficher_graphe">
-<span class="sig-name descname"><span class="pre">afficher_graphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleExtractionView.RuleExtractionView.afficher_graphe" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">afficher_graphe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleExtractionView.RuleExtractionView.afficher_graphe" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Affiche une image de graphe dans une fenêtre dédiée.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
@@ -358,17 +246,17 @@ et une interface graphique organisée autour d’un panneau latéral de navigati
 
 </section>
 <section id="module-views.RuleSetTestView">
-<span id="views-rulesettestview-module"></span><h2>views.RuleSetTestView module<a class="headerlink" href="#module-views.RuleSetTestView" title="Lien vers cette rubrique"></a></h2>
+<span id="views-rulesettestview-module"></span><h2>views.RuleSetTestView module<a class="headerlink" href="#module-views.RuleSetTestView" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.RuleSetTestView.RuleSetTestView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleSetTestView.</span></span><span class="sig-name descname"><span class="pre">RuleSetTestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleSetTestView.RuleSetTestView" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleSetTestView.</span></span><span class="sig-name descname"><span class="pre">RuleSetTestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleSetTestView.RuleSetTestView" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
 <p>Fenêtre de saisie et de mesure de qualité pour un ensemble de règles.</p>
 <p>Permet à l’utilisateur d’entrer plusieurs règles (une par ligne),
 puis de déclencher leur évaluation à l’aide d’un bouton.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.RuleSetTestView.RuleSetTestView.nettoyer">
-<span class="sig-name descname"><span class="pre">nettoyer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleSetTestView.RuleSetTestView.nettoyer" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">nettoyer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleSetTestView.RuleSetTestView.nettoyer" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Vide le champ de saisie des règles.</p>
 </dd></dl>
 
@@ -376,23 +264,23 @@ puis de déclencher leur évaluation à l’aide d’un bouton.</p>
 
 </section>
 <section id="module-views.RuleTestview">
-<span id="views-ruletestview-module"></span><h2>views.RuleTestview module<a class="headerlink" href="#module-views.RuleTestview" title="Lien vers cette rubrique"></a></h2>
+<span id="views-ruletestview-module"></span><h2>views.RuleTestview module<a class="headerlink" href="#module-views.RuleTestview" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="views.RuleTestview.RuleTestView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleTestview.</span></span><span class="sig-name descname"><span class="pre">RuleTestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView" title="Lien vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.RuleTestview.</span></span><span class="sig-name descname"><span class="pre">RuleTestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
 <p>Fenêtre de saisie d’une règle individuelle.</p>
 <p>Cette interface permet à l’utilisateur d’entrer une seule règle
 et de consulter les classes et propriétés disponibles dans l’ontologie.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="views.RuleTestview.RuleTestView.connect_signals">
-<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView.connect_signals" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView.connect_signals" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Connecte les actions des boutons à leurs méthodes associées.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="views.RuleTestview.RuleTestView.lireSaisie">
-<span class="sig-name descname"><span class="pre">lireSaisie</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView.lireSaisie" title="Lien vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">lireSaisie</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#views.RuleTestview.RuleTestView.lireSaisie" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Lit et affiche la règle saisie dans le terminal (à des fins de test).</p>
 </dd></dl>
 
@@ -400,38 +288,148 @@ et de consulter les classes et propriétés disponibles dans l’ontologie.</p>
 
 </section>
 <section id="module-views">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-views" title="Lien vers cette rubrique"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-views" title="Lien vers cette rubrique">¶</a></h2>
 </section>
 </section>
 
 
-           </div>
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="models.html" class="btn btn-neutral float-left" title="models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Droits d'auteur 2025, SupGalileeING2.</p>
-  </div>
-
-  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
-    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table des matières</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">views package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-views.AccueilPage">views.AccueilPage module</a><ul>
+<li><a class="reference internal" href="#views.AccueilPage.AccueilPage"><code class="docutils literal notranslate"><span class="pre">AccueilPage</span></code></a><ul>
+<li><a class="reference internal" href="#views.AccueilPage.AccueilPage.ouvrir_lien_llc"><code class="docutils literal notranslate"><span class="pre">AccueilPage.ouvrir_lien_llc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.Amie3ParamsWidget">views.Amie3ParamsWidget module</a><ul>
+<li><a class="reference internal" href="#views.Amie3ParamsWidget.Amie3ParamsWidget"><code class="docutils literal notranslate"><span class="pre">Amie3ParamsWidget</span></code></a><ul>
+<li><a class="reference internal" href="#views.Amie3ParamsWidget.Amie3ParamsWidget.build_amie3_params"><code class="docutils literal notranslate"><span class="pre">Amie3ParamsWidget.build_amie3_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.AnalyseDonneesPage">views.AnalyseDonneesPage module</a><ul>
+<li><a class="reference internal" href="#views.AnalyseDonneesPage.AnalyseDonneesPage"><code class="docutils literal notranslate"><span class="pre">AnalyseDonneesPage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.ComparaisonPage">views.ComparaisonPage module</a><ul>
+<li><a class="reference internal" href="#views.ComparaisonPage.ComparaisonPage"><code class="docutils literal notranslate"><span class="pre">ComparaisonPage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.ExtractionReglesPage">views.ExtractionReglesPage module</a><ul>
+<li><a class="reference internal" href="#views.ExtractionReglesPage.ExtractionReglesPage"><code class="docutils literal notranslate"><span class="pre">ExtractionReglesPage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.FenetreGraphe">views.FenetreGraphe module</a><ul>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe</span></code></a><ul>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.afficher_graphe"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.afficher_graphe()</span></code></a></li>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.afficher_image"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.afficher_image()</span></code></a></li>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.reset_zoom"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.reset_zoom()</span></code></a></li>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.update_pixmap"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.update_pixmap()</span></code></a></li>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.zoom_in"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.zoom_in()</span></code></a></li>
+<li><a class="reference internal" href="#views.FenetreGraphe.FenetreGraphe.zoom_out"><code class="docutils literal notranslate"><span class="pre">FenetreGraphe.zoom_out()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.GestionOntologiesPage">views.GestionOntologiesPage module</a><ul>
+<li><a class="reference internal" href="#views.GestionOntologiesPage.GestionOntologiesPage"><code class="docutils literal notranslate"><span class="pre">GestionOntologiesPage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.QualiteValidationPage">views.QualiteValidationPage module</a><ul>
+<li><a class="reference internal" href="#views.QualiteValidationPage.QualiteValidationPage"><code class="docutils literal notranslate"><span class="pre">QualiteValidationPage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.RequeteSPARQLView">views.RequeteSPARQLView module</a><ul>
+<li><a class="reference internal" href="#views.RequeteSPARQLView.RequeteSPARQLView"><code class="docutils literal notranslate"><span class="pre">RequeteSPARQLView</span></code></a><ul>
+<li><a class="reference internal" href="#views.RequeteSPARQLView.RequeteSPARQLView.nettoyer"><code class="docutils literal notranslate"><span class="pre">RequeteSPARQLView.nettoyer()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.RuleExtractionView">views.RuleExtractionView module</a><ul>
+<li><a class="reference internal" href="#views.RuleExtractionView.RuleExtractionView"><code class="docutils literal notranslate"><span class="pre">RuleExtractionView</span></code></a><ul>
+<li><a class="reference internal" href="#views.RuleExtractionView.RuleExtractionView.afficher_graphe"><code class="docutils literal notranslate"><span class="pre">RuleExtractionView.afficher_graphe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.RuleSetTestView">views.RuleSetTestView module</a><ul>
+<li><a class="reference internal" href="#views.RuleSetTestView.RuleSetTestView"><code class="docutils literal notranslate"><span class="pre">RuleSetTestView</span></code></a><ul>
+<li><a class="reference internal" href="#views.RuleSetTestView.RuleSetTestView.nettoyer"><code class="docutils literal notranslate"><span class="pre">RuleSetTestView.nettoyer()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views.RuleTestview">views.RuleTestview module</a><ul>
+<li><a class="reference internal" href="#views.RuleTestview.RuleTestView"><code class="docutils literal notranslate"><span class="pre">RuleTestView</span></code></a><ul>
+<li><a class="reference internal" href="#views.RuleTestview.RuleTestView.connect_signals"><code class="docutils literal notranslate"><span class="pre">RuleTestView.connect_signals()</span></code></a></li>
+<li><a class="reference internal" href="#views.RuleTestview.RuleTestView.lireSaisie"><code class="docutils literal notranslate"><span class="pre">RuleTestView.lireSaisie()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-views">Module contents</a></li>
+</ul>
+</li>
+</ul>
 
-</body>
+  </div>
+  <div>
+    <h4>Sujet précédent</h4>
+    <p class="topless"><a href="models.html"
+                          title="Chapitre précédent">models package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/views.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="models package"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation LLCrulesExtractor </a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">views package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, SupGalileeING2.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
 </html>
