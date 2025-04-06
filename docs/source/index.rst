@@ -10,3 +10,4 @@ LLCrulesExtractor documentation
    controller
    models
    views
+   tests

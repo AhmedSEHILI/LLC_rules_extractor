@@ -44,5 +44,5 @@ html_context = {
     "display_github": False,
 }
 
-html_theme = 'classic' 
+html_theme = 'furo' 
 
