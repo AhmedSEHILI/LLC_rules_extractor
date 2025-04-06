@@ -26,5 +26,23 @@ language = 'fr'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "classic"
+html_baseurl = '/'
+
+html_theme_options = {
+    "style_external_links": False,
+}
+
 html_static_path = ['_static']
+html_css_files = []
+html_js_files = []
+
+html_copy_source = False
+html_show_sourcelink = False
+html_show_sphinx = False
+
+html_context = {
+    "display_github": False,
+}
+
+html_theme = 'classic' 
+
