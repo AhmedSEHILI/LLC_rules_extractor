@@ -49,14 +49,14 @@ LLCrulesExtractor/
 
 - Python 3.8+
 - Java (JDK 8 ou plus) pour faire tourner AMIE3
-- AMIE3 (fichier `amie3.jar`) dans le dossier du projet
+- AMIE3 (fichier `amie3.jar`) dans le dossier controller du projet
 
 ### 📥 Installation locale
 
 1. Clone le dépôt :
    ```bash
-   git clone https://github.com/votre-nom/LLCrulesExtractor.git
-   cd LLCrulesExtractor
+   git clone https://github.com/votre-nom/LLC_rules_extractor.git
+   cd LLC_rules_extractor
    ```
 
 2. Installe les dépendances :
